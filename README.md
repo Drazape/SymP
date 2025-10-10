@@ -128,11 +128,11 @@ will be used on the following file-hierarchy:
 
 📁 link-dir				# Target
 ├── 🔗 same-dir → dir/same-dir
-├── 🔗 udir-d → dir/udir-x
+├── 🔗 udir-d → dir/udir-d
 ├── 📁 udir-l
 │   └── 📄 subfile
 ├── 🔗 same-file → dir/same-file
-├── 🔗 ufile-d → dir/ufile-x
+├── 🔗 ufile-d → dir/ufile-d
 └── 📄 ufile-l
 ```
 
