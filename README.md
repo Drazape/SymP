@@ -1,7 +1,7 @@
 - `ln --symbolic`… but it overwrites
 - `cp --recursive --symbolic-link`… but it links the whole-directories that are a *pure* subset
 
-I made this [`fish`](https://fishshell.com/) script for personal system configuration backup use, which turned out be something more than a function demands
+I made this [`fish`](https://fishshell.com/) script for personal system configuration backup use, which turned out be something outside a function's scope
 
 # Description
 This script smartly overwrites directories by symlinking the whole directories (unlike `cp -r --symbolic-link` that only symlinks the files), while conserving the unique parts of the target (unlike `ln -s`)
