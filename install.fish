@@ -132,7 +132,20 @@ cd {$source_code_dir}
 
 
 ## Operate
-### Main executable
+set --local local_vendor_functions_dir /usr/local/share/fish/vendor_functions.d
+### Functions' path for root
+begin
+	set --local local_functions_config_path /root/.local/share/fish/vendor_functions.d/local-functions.fish
+
+	touch {$local_functions_config_path}
+	echo 'if ! contains '"$local_vendor_functions_dir[1]"' {$fish_function_path}
+'\t'set --prepend fish_function_path
+end' | sudo tee {$local_functions_config_path} 
+end
+
+
+### Source code
+#### Main executable
 begin
 	set --local executable_install_path /usr/local/bin/{$official_git_repository_name}
 
@@ -140,21 +153,17 @@ begin
 	sudo-on-fail chmod +x {$executable_install_path}
 end
 
-### Libraries
-begin
-	set --local local_vendor_functions_dir /usr/local/share/fish/vendor_functions.d
-	sudo-on-fail mkdir -p {$VERBOSE} {$local_vendor_functions_dir}
+#### Libraries
+sudo-on-fail mkdir -p {$VERBOSE} {$local_vendor_functions_dir[1]}
 
-	set --local libraries (fd --base-directory=./lib/ --type=file --extension=fish)
-	set --local absolute_library_names (string replace --all '/' '_' {$libraries} | string replace --all '_sub' \0 | string replace --all '_main' \0)
+set --local libraries (fd --base-directory=./lib/ --type=file --extension=fish)
+set --local absolute_library_names (string replace --all '/' '_' {$libraries} | string replace --all '_sub' \0 | string replace --all '_main' \0)
 
-
-	for i in (seq (count {$libraries}))
-		sudo-on-fail cp {$VERBOSE} lib/"$libraries[$i]" {$local_vendor_functions_dir}/_{$official_git_repository_name}_{$absolute_library_names[$i]}
-	end
+for i in (seq (count {$libraries}))
+	sudo-on-fail cp {$VERBOSE} lib/"$libraries[$i]" {$local_vendor_functions_dir[1]}/_{$official_git_repository_name}_{$absolute_library_names[$i]}
 end
 
-### Completion
+#### Completion
 begin
 	set --local local_vendor_completions_dir /usr/local/share/fish/vendor_completions.d
 	sudo-on-fail mkdir -p {$local_vendor_completions_dir}
