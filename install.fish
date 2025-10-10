@@ -137,7 +137,11 @@ set --local local_vendor_functions_dir /usr/local/share/fish/vendor_functions.d
 begin
 	set --local local_functions_config_path /root/.local/share/fish/vendor_functions.d/local-functions.fish
 
+	# Preparation
+	mkdir -p (path dirname {$local_functions_config_path})
 	touch {$local_functions_config_path}
+
+	# Main file
 	echo 'if ! contains '"$local_vendor_functions_dir[1]"' {$fish_function_path}
 '\t'set --prepend fish_function_path
 end' | sudo tee {$local_functions_config_path} 
