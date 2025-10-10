@@ -67,7 +67,7 @@ will be used on the following file-hierarchy:
 
 🔗 link-dir → dir		# Target
 ```
-- ### `cp --recursive --symbolic-link --dereference`
+- ### `cp --recursive --symbolic-link --force --dereference`
 ```
 📁 dir						# Source
 └── 📁 link-dir
