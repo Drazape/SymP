@@ -15,7 +15,7 @@ The commands
 - `cp --recursive --symbolic-link --force --dereference`  
 - `smart-symlink`  
 
-will be used on the following file-hierarchy:  
+will be used on the following file-hierarchy (since this script is an balance between the 2 standard utility commands):  
 - **Source**: `dir/`  
 - **Target**: `link-dir/`  
 
