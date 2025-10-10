@@ -1,4 +1,4 @@
-I made this [`fish`](https://fishshell.com/) script for personal system configuration backup use, which turned out be something outside a function's scope
+I made this [`fish`](https://fishshell.com/) script for personal system configuration backup—and showcase the shell's ease-of-use, which turned out be something outside a function's scope (Due to its technical limitations)
 
 # Description
 This script smartly overwrites directories by symlinking the whole directories (unlike `cp -r --symbolic-link` that only symlinks the files), while conserving the unique parts of the target (unlike `ln -s`)
