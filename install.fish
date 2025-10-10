@@ -47,10 +47,7 @@ end
 
 function sudo-on-fail --description 'Retry command with sudo if failed the first time'
 	if ! {$argv}
-		if set -q VERBOSE # Verbosity announcement
-			echo -n 'Retrying with '; set_color --italics; echo 'sudo'
-		end
-
+		echo -n 'Retrying with '; set_color --italics; echo 'sudo'
 		sudo {$argv}
 	end
 end
