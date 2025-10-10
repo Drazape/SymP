@@ -1,6 +1,3 @@
-- `ln --symbolic`… but it overwrites
-- `cp --recursive --symbolic-link`… but it links the whole-directories that are a *pure* subset
-
 I made this [`fish`](https://fishshell.com/) script for personal system configuration backup use, which turned out be something outside a function's scope
 
 # Description
