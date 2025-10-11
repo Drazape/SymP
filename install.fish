@@ -3,8 +3,16 @@ set --global official_git_repository_url 'https://github.com/Dracape/SymP'
 set --global official_git_repository_name (string split --fields=5 '/' {$official_git_repository_url})
 
 # Handle external configuration
-## Switches
+## Arguments
+### Switches
 argparse 'r/repository=&' 'h/help&' 'v/verbose&' -- {$argv}
+### Positional
+if test (count {$argv}) -ne 0
+	echo (status basename)': Positional arguments are not supported'
+	exit 1
+else
+	set --erase --local argv
+end
 
 ### Individual
 ## Verbose
