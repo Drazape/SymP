@@ -11,6 +11,11 @@ function _symp_operate_case_recursive_operate-on-children --description 'Operate
 
 		if path is -d "$source_item"
 			"$this_function"_recurse "$source_item" "$target_item"
+
+			set --local recurse_status {$status}
+			if test "$recurse_status" -ne 0
+				exit {$recurse_status}
+			end
 		else
 			if set -qg common_only
 				if test -e "$target_item"
