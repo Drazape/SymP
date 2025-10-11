@@ -88,7 +88,7 @@ will be used on the following file-hierarchy (since this script is an balance be
 </details>
 
 3. ### `symp`
-	* Normal
+* Normal
 <details>
 <summary>File-hierarchy</summary>
 
@@ -104,7 +104,7 @@ will be used on the following file-hierarchy (since this script is an balance be
 ```
 </details>
 
-	- `--common-only`
+- `--common-only`
 <details>
 <summary>File-hierarchy</summary>
 
