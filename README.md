@@ -19,6 +19,9 @@ will be used on the following file-hierarchy (since this script is an balance be
 - **Source**: `dir/`  
 - **Target**: `link-dir/`  
 
+<details>
+<summary>Demonstration file-hierarchy</summary>
+
 ```
 📁 dir					# Source
 ├── 📁 same-dir
@@ -46,6 +49,7 @@ will be used on the following file-hierarchy (since this script is an balance be
 ├── 📄 same-file
 └── 📄 ufile-l
 ```
+</details>
 ## Results
 - ### `ln --symbolic`
 	* #### With link-dir
@@ -56,6 +60,9 @@ will be used on the following file-hierarchy (since this script is an balance be
 🔗 link-dir → dir
 ```
 - ### `cp --recursive --symbolic-link --force --dereference`
+<details>
+<summary>Result</summary>
+
 ```
 📁 link-dir
 ├── 📁 dir
@@ -82,17 +89,36 @@ will be used on the following file-hierarchy (since this script is an balance be
 ├── 📄 same-file
 └── 📄 ufile-l
 ```
+</details>
 - ### `symp`
+- #### Normal
+<details>
+<summary>Result</summary>
+
 ```
 📁 link-dir
 ├── 🔗 same-dir → dir/same-dir
-├── 🔗 udir-d → dir/udir-d
+├── 🔗 udir-d → dir/udir-d		# Directory not present in Target
 ├── 📁 udir-l
 │   └── 📄 subfile
 ├── 🔗 same-file → dir/same-file
-├── 🔗 ufile-d → dir/ufile-d
+├── 🔗 ufile-d → dir/ufile-d		# File not present in Target
 └── 📄 ufile-l
 ```
+</details>
+- #### `--common-only`
+<details>
+<summary>Result</summary>
+
+```
+📁 link-dir
+├── 🔗 same-dir → dir/same-dir
+├── 📁 udir-l
+│   └── 📄 subfile
+├── 🔗 same-file → dir/same-file
+└── 📄 ufile-l
+```
+</details>
 
 # Installation
 `fish -c "$(curl -fsSL https://raw.githubusercontent.com/Dracape/symp/main/install.fish)"`
