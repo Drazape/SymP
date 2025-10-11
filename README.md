@@ -93,7 +93,7 @@ will be used on the following file-hierarchy (since this script is an balance be
 ```
 📁 link-dir
 ├── 🔗 same-dir → dir/same-dir
-├── 🔗 udir-d → dir/udir-d		# Directory not present in Target
+├── 🔗 udir-d → dir/udir-d			# Directory not present in Target
 ├── 📁 udir-l
 │   └── 📄 subfile
 ├── 🔗 same-file → dir/same-file
