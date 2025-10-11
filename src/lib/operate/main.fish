@@ -4,6 +4,7 @@ function _smart-symlink_operate --description 'Main operation logic'
 
 	"$operate_function"_file_verify
 
-	"$operate_function"_case_non-recursive 	# Simple, Non-recursive operations
-	"$operate_function"_case_recursive 	# Complex, Recursive operations (super-set directories)
+	if ! "$operate_function"_case_non-recursive 	# Simple, Non-recursive operations
+		"$operate_function"_case_recursive 	# Complex, Recursive operations (super-set directories)
+	end
 end

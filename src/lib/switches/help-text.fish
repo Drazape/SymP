@@ -11,6 +11,8 @@ function _smart-symlink_switches_help-text
 	set_color --bold; echo -n -- '  --[b|behaviour]=[i|interactive]'; set_color normal; echo -n -- ', '; set_color --bold; echo -n -- '--[b|behaviour]=[f|force]'; set_color normal; echo ' (default)'
 	echo \t'Change behaviour for overwrites'
 	echo -n \t'(Environment: '; set_color --italics; echo -n 'INTERACTIVE'; set_color normal; echo ')'
+	set_color --bold; echo -n -- '  -c'; set_color normal; echo -n ', '; set_color --bold; echo -- '--common-only'
+	set_color normal; echo \t'Only symlink common files'
 
 	if set -q VERBOSE
 		set_color --bold --underline; echo \n'Variables:'

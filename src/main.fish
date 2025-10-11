@@ -20,8 +20,15 @@ end
 ## Arguments
 ### Switches
 #### Parse
-argparse --name "$script_name" 'v/verbose&' 'h/help&' 'b/behaviour=&!_'"$script_name"'_switches_validate-behaviour' 'B/blend&' -- {$argv}
+argparse --name "$script_name" 'v/verbose&' 'h/help&' 'b/behaviour=&!_'"$script_name"'_switches_validate-behaviour' 'B/blend&' 'c/common-only&' -- {$argv}
 #### Individual
+##### Common only
+if set -q _flag_common_only
+	set --global --export common_only
+	set --erase --local _flag_c _flag_common_only
+end
+
+##### Blend
 if set -q _flag_blend
 	set --global blend
 	set --erase --local _flag_B _flag_blend
@@ -29,10 +36,10 @@ end
 
 ##### Behaviour
 if contains "$_flag_behaviour" i interactive
-	set --global behaviour '--interactive'
+	set --global --export behaviour '--interactive'
 end
-if ! set -qg behaviour
-	set --global behaviour '--force'
+if ! set -qgx behaviour
+	set --global --export behaviour '--force'
 end
 
 ##### Verbose

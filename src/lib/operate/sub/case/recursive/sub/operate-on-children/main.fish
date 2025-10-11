@@ -12,7 +12,13 @@ function _smart-symlink_operate_case_recursive_operate-on-children --description
 		if path is -d "$source_item"
 			"$this_function"_recurse "$source_item" "$target_item"
 		else
-			"$this_function"_overwrite "$source_item" "$target_item"
+			if set -qg common_only
+				if test -e "$target_item"
+					"$this_function"_overwrite "$source_item" "$target_item"
+				end
+			else
+				"$this_function"_overwrite "$source_item" "$target_item"
+			end
 		end
 	end
 end

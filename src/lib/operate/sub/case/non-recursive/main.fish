@@ -4,11 +4,13 @@ function _smart-symlink_operate_case_non-recursive --description 'Simple, Non-re
 
 	# If target doesn't exist, simply create a symlink to the source and exit
 	if ! test -e "$target_path"
-		if set -q VERBOSE # Verbosity announcement
-			echo 'Non-existant target: '{$target_path}\t'linking entire source'
-		end
+		if ! set -qg common_only
+			if set -q VERBOSE # Verbosity announcement
+				echo 'Non-existant target: '{$target_path}\t'linking entire source'
+			end
 
-		"$this_function"_link-entire
+			"$this_function"_link-entire
+		end
 	# If target is not a directory, it's a conflict. Overwrite it as a symlink.
 	else if ! test -d "$target_path"
 		if set -q VERBOSE # Verbosity announcement
@@ -16,5 +18,7 @@ function _smart-symlink_operate_case_non-recursive --description 'Simple, Non-re
 		end
 
 		"$this_function"_overwrite-entire
+	else
+		return 1
 	end
 end
