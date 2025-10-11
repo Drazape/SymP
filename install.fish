@@ -144,7 +144,7 @@ begin
 	# Main file
 	echo 'if ! contains '"$local_vendor_functions_dir[1]"' {$fish_function_path}
 '\t'set --prepend fish_function_path
-end' | sudo tee {$local_functions_config_path} 
+end' | sudo tee {$local_functions_config_path} > /dev/null 
 end
 
 
