@@ -20,7 +20,7 @@ will be used on the following file-hierarchy (since this script is an balance be
 - **Target**: `link-dir/`  
 
 <details>
-<summary>Demonstration file-hierarchy</summary>
+<summary>File-hierarchy</summary>
 
 ```
 📁 dir					# Source
@@ -50,18 +50,14 @@ will be used on the following file-hierarchy (since this script is an balance be
 └── 📄 ufile-l
 ```
 </details>
+
 ## Results
-- ### `ln --symbolic`
-	* #### With link-dir
-	`ln: Already exists`
-	* #### Without link-dir
-(After removing `link-dir`)
-```
-🔗 link-dir → dir
-```
-- ### `cp --recursive --symbolic-link --force --dereference`
+1. ### `ln --symbolic`
+	- **With link-dir**: `ln: Already exists`
+	- **Without link-dir**: `🔗 link-dir → dir`
+2. ### `cp --recursive --symbolic-link --force --dereference`
 <details>
-<summary>Result</summary>
+<summary>File-hierarchy</summary>
 
 ```
 📁 link-dir
@@ -90,10 +86,11 @@ will be used on the following file-hierarchy (since this script is an balance be
 └── 📄 ufile-l
 ```
 </details>
-- ### `symp`
-- #### Normal
+
+3. ### `symp`
+	* Normal
 <details>
-<summary>Result</summary>
+<summary>File-hierarchy</summary>
 
 ```
 📁 link-dir
@@ -106,9 +103,10 @@ will be used on the following file-hierarchy (since this script is an balance be
 └── 📄 ufile-l
 ```
 </details>
-- #### `--common-only`
+
+	- `--common-only`
 <details>
-<summary>Result</summary>
+<summary>File-hierarchy</summary>
 
 ```
 📁 link-dir
