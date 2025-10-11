@@ -1,15 +1,15 @@
 #!/usr/bin/env fish
+# Only allow execution as root
+if ! fish_is_root_user
+	echo (status basename)': Must be ran as root'
+	exit 1
+end
+
+
+
 set --global official_git_repository_url 'https://github.com/Dracape/SymP'
 set --global official_git_repository_name (string split --fields=5 '/' {$official_git_repository_url})
 set --global executable_name (string lower {$official_git_repository_name})
-
-
-
-# Only allow execution as root
-if ! fish_is_root_user
-	echo (status basename)': This script must run as root'
-	exit 1
-end
 
 
 
