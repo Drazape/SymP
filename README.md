@@ -53,38 +53,11 @@ will be used on the following file-hierarchy (since this script is an balance be
 	* #### Without link-dir
 (After removing `link-dir`)
 ```
-📁 dir					# Source
-├── 📁 same-dir
-│   ├── 📁 a
-│   │   ├── 📄 afile-1
-│   │   └── 📄 afile-2
-│   └── 📁 b
-│       ├── 📄 bfile-1
-│       └── 📄 bfile-2
-├── 📁 udir-d
-│   └── 📄 subfile
-├── 📄 same-file
-└── 📄 ufile-d
-
-🔗 link-dir → dir		# Target
+🔗 link-dir → dir
 ```
 - ### `cp --recursive --symbolic-link --force --dereference`
 ```
-📁 dir						# Source
-└── 📁 link-dir
-    ├── 📁 same-dir
-    │   ├── 📁 a
-    │   │   ├── 📄 afile-1
-    │   │   └── 📄 afile-2
-    │   └── 📁 b
-    │       ├── 📄 bfile-1
-    │       └── 📄 bfile-2
-    ├── 📁 udir-d
-    │   └── 📄 subfile
-    ├── 📄 same-file
-    └── 📄 ufile-d
-
-📁 link-dir					# Target
+📁 link-dir
 ├── 📁 dir
 │   ├── 📁 same-dir
 │   │   ├── 📁 a
@@ -111,20 +84,7 @@ will be used on the following file-hierarchy (since this script is an balance be
 ```
 - ### `smart-symlink`
 ```
-📁 dir					# Source
-├── 📁 same-dir
-│   ├── 📁 a
-│   │   ├── 📄 afile-1
-│   │   └── 📄 afile-2
-│   └── 📁 b
-│       ├── 📄 bfile-1
-│       └── 📄 bfile-2
-├── 📁 udir-d
-│   └── 📄 subfile
-├── 📄 same-file
-└── 📄 ufile-d
-
-📁 link-dir				# Target
+📁 link-dir
 ├── 🔗 same-dir → dir/same-dir
 ├── 🔗 udir-d → dir/udir-d
 ├── 📁 udir-l
