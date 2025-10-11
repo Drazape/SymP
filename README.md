@@ -55,9 +55,8 @@ will be used on the following file-hierarchy (since this script is an balance be
 1. ### `ln --symbolic`
 	- **With link-dir**: `ln: Already exists`
 	- **Without link-dir**: `🔗 link-dir → dir`
-2. ### `cp --recursive --symbolic-link --force --dereference`
 <details>
-<summary>File-hierarchy</summary>
+<summary>2. `cp --recursive --symbolic-link --force --dereference`</summary>
 
 ```
 📁 link-dir
@@ -88,9 +87,8 @@ will be used on the following file-hierarchy (since this script is an balance be
 </details>
 
 3. ### `symp`
-* Normal
 <details>
-<summary>File-hierarchy</summary>
+<summary>Normal</summary>
 
 ```
 📁 link-dir
@@ -104,9 +102,8 @@ will be used on the following file-hierarchy (since this script is an balance be
 ```
 </details>
 
-- `--common-only`
 <details>
-<summary>File-hierarchy</summary>
+<summary>With `--common-only`</summary>
 
 ```
 📁 link-dir
