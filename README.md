@@ -1,7 +1,7 @@
 I made this [`fish`](https://fishshell.com/) script for personal system configuration backup—and showcase the shell's ease-of-use, which turned out be something outside a function's scope (Due to its technical limitations)
 
 # Description
-*Symp* (**Sym**link **p**opulate) smartly overwrites directories by symlinking the whole directories (unlike `cp -r --symbolic-link` that only symlinks the files), while conserving the unique parts of the target (unlike `ln -s`)
+*SymP* (**Sym**link **P**opulate) smartly overwrites directories by symlinking the whole directories (unlike `cp -r --symbolic-link` that only symlinks the files), while conserving the unique parts of the target (unlike `ln -s`)
 
 This means that if there are 2 directories that have the same name and child files (i.e., the directory is a *pure* subset), they will be symlinked as a whole  
 Meaning that any changes to that directory (in either the source or target) after-wards would also appear in the other places  
