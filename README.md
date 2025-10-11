@@ -1,7 +1,7 @@
 I made this [`fish`](https://fishshell.com/) script for personal system configuration backup—and showcase the shell's ease-of-use, which turned out be something outside a function's scope (Due to its technical limitations)
 
 # Description
-This script smartly overwrites directories by symlinking the whole directories (unlike `cp -r --symbolic-link` that only symlinks the files), while conserving the unique parts of the target (unlike `ln -s`)
+*Symp* (**Sym**link **p**opulate) smartly overwrites directories by symlinking the whole directories (unlike `cp -r --symbolic-link` that only symlinks the files), while conserving the unique parts of the target (unlike `ln -s`)
 
 This means that if there are 2 directories that have the same name and child files (i.e., the directory is a *pure* subset), they will be symlinked as a whole  
 Meaning that any changes to that directory (in either the source or target) after-wards would also appear in the other places  
@@ -13,7 +13,7 @@ Additionally, if `--blend` is used, symlinked files inherit the permissions and 
 The commands  
 - `ln --symbolic`  
 - `cp --recursive --symbolic-link --force --dereference`  
-- `smart-symlink`  
+- `symp`  
 
 will be used on the following file-hierarchy (since this script is an balance between the 2 standard utility commands):  
 - **Source**: `dir/`  
@@ -82,7 +82,7 @@ will be used on the following file-hierarchy (since this script is an balance be
 ├── 📄 same-file
 └── 📄 ufile-l
 ```
-- ### `smart-symlink`
+- ### `symp`
 ```
 📁 link-dir
 ├── 🔗 same-dir → dir/same-dir
@@ -95,4 +95,4 @@ will be used on the following file-hierarchy (since this script is an balance be
 ```
 
 # Installation
-`fish -c "$(curl -fsSL https://raw.githubusercontent.com/Dracape/smart-symlink/main/install.fish)"`
+`fish -c "$(curl -fsSL https://raw.githubusercontent.com/Dracape/symp/main/install.fish)"`

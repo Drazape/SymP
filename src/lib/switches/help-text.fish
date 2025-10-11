@@ -1,4 +1,4 @@
-function _smart-symlink_switches_help-text
+function _symp_switches_help-text
 	echo 'Smartly symlink SOURCE_DIR to TARGET.'\n
 	set_color --bold --underline; echo -n 'Usage:'; set_color normal; echo ' '"$script_name"' [OPTION] SOURCE_DIR TARGET'\n
 	set_color --bold --underline; echo 'Arguments:'; set_color normal; echo \t'<paths>…'\n

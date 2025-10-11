@@ -1,4 +1,4 @@
-function _smart-symlink_operate_case_recursive --description 'Recursive operation on super-set directories'
+function _symp_operate_case_recursive --description 'Recursive operation on super-set directories'
 	set --append --local --export OUTPUT_PREFIX (status current-function | string split '_' | tail -n 1)':' # Append the Output-prefix with the current function name
 	set --local this_function (status current-function) # Set function-name for execution on sub-functions
 

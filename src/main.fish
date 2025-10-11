@@ -1,5 +1,5 @@
 #!/usr/bin/env fish
-set --global script_name 'smart-symlink'
+set --global script_name 'symp'
 
 # Behaviour setting
 ## Variables

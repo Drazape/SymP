@@ -1,5 +1,5 @@
 #!/usr/bin/env fish
-set --global official_git_repository_url 'https://github.com/Dracape/smart-symlink'
+set --global official_git_repository_url 'https://github.com/Dracape/symp'
 set --global official_git_repository_name (string split --fields=5 '/' {$official_git_repository_url})
 
 # Handle external configuration

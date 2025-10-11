@@ -1,4 +1,4 @@
-function _smart-symlink_operate_file_blend-link --description "Symlink files while inheriting their parent directory's permission"
+function _symp_operate_file_blend-link --description "Symlink files while inheriting their parent directory's permission"
 	set --append --local --export OUTPUT_PREFIX (status current-function | string split '_' | tail -n 1)':' # Append the Output-prefix with the current function name
 
 	# Parse arguments
