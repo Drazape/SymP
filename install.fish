@@ -103,7 +103,7 @@ if set -q REPOSITORY
 		set --global source_code_dir {$REPOSITORY}/src
 	else
 		if ! string match --regex -- 'https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()!@:%_\\+.~#?&\\/\\/=]*)' {$REPOSITORY}
-			echo -- (status basename)': Invalid URL' 1>&2
+			echo -- (status basename)': Invalid path' 1>&2
 			return 1
 		end
 
@@ -145,15 +145,15 @@ cd {$source_code_dir}
 set --local local_vendor_functions_dir /usr/local/share/fish/vendor_functions.d
 ### Functions' path for root
 begin
-	set --local local_functions_config_path /root/.local/share/fish/vendor_functions.d/local-functions.fish
+	set --local root_fish_config_path /root/.config/fish/conf.d/local_functions.fish
 
 	# Preparation
 	mkdir -p (path dirname {$local_functions_config_path})
 	touch {$local_functions_config_path}
 
 	# Main file
-	echo 'if ! contains '"$local_vendor_functions_dir[1]"' {$fish_function_path}
-'\t'set --prepend fish_function_path
+	echo 'if ! contains '"$local_vendor_functions_dir"' {$fish_function_path}
+'\t'set --prepend fish_function_path '"$local_vendor_functions_dir"'
 end' | sudo tee {$local_functions_config_path} > /dev/null 
 end
 
@@ -168,13 +168,13 @@ begin
 end
 
 #### Libraries
-mkdir -p {$VERBOSE} {$local_vendor_functions_dir[1]}
+mkdir -p {$VERBOSE} {$local_vendor_functions_dir}
 
 set --local libraries (fd --base-directory=./lib/ --type=file --extension=fish)
 set --local absolute_library_names (string replace --all '/' '_' {$libraries} | string replace --all '_sub' \0 | string replace --all '_main' \0)
 
 for i in (seq (count {$libraries}))
-	cp {$VERBOSE} lib/"$libraries[$i]" {$local_vendor_functions_dir[1]}/_{$executable_name}_{$absolute_library_names[$i]}
+	cp {$VERBOSE} lib/"$libraries[$i]" {$local_vendor_functions_dir}/_{$executable_name}_{$absolute_library_names[$i]}
 end
 
 #### Completion
