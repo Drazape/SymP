@@ -116,5 +116,4 @@ will be used on the following file-hierarchy (since this script is an balance be
 </details>
 
 # Installation
-- ***Fish***: `curl -fsSL 'https://raw.githubusercontent.com/Dracape/symp/main/install.fish' | source`
-- **POSIX**: `fish -c "$(curl -fsSL 'https://raw.githubusercontent.com/Dracape/symp/main/install.fish')"`
+`curl -fsSL 'https://raw.githubusercontent.com/Dracape/symp/main/install.fish' | fish`
