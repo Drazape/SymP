@@ -2,6 +2,16 @@
 set --global official_git_repository_url 'https://github.com/Dracape/SymP'
 set --global official_git_repository_name (string split --fields=5 '/' {$official_git_repository_url})
 
+
+
+# Only allow execution as root
+if ! fish_is_root_user
+	echo (status basename)': This script must run as root'
+	exit 1
+end
+
+
+
 # Handle external configuration
 ## Arguments
 ### Switches
@@ -53,15 +63,6 @@ end
 
 
 
-function sudo-on-fail --description 'Retry command with sudo if failed the first time'
-	if ! {$argv}
-		echo -n 'Retrying with '; set_color --italics; echo 'sudo'
-		sudo {$argv}
-	end
-end
-
-
-
 # Verify dependencies
 begin
 	set --local coreutils ls rm ln chmod chown
@@ -73,9 +74,9 @@ begin
 			echo (status basename)': Missing command: '"$mention_if_core"{$command} 1>&2
 			if type --query pacman
 				if set -qf mention_if_core
-					sudo-on-fail pacman -Syu --needed coreutils
+					pacman -Syu --needed coreutils
 				else
-					sudo-on-fail pacman -Syu --needed fd 
+					pacman -Syu --needed fd 
 				end
 			else
 				exit 1
@@ -108,7 +109,7 @@ if set -q REPOSITORY
 		set --global repository_dir (mktemp --directory /tmp/"$(string split '/' "$REPOSITORY" | tail -n 1)"-'XXXXXXXXX')
 		set --global tmp_repo
 
-		sudo-on-fail git clone "$REPOSITORY" "$repository_dir"
+		git clone "$REPOSITORY" "$repository_dir"
 		if test {$status} -ne 0
 			exit 1
 		end
@@ -125,7 +126,7 @@ if ! path is -d {$source_code_dir}
 	else # Official remote
 		set --global repository_dir (mktemp --directory /tmp/"$official_git_repository_name"-XXXXXXXXXX)
 		set --global tmp_repo
-		sudo-on-fail git clone "$official_git_repository_url"'.git' {$repository_dir}
+		git clone "$official_git_repository_url"'.git' {$repository_dir}
 		set --global source_code_dir {$repository_dir}/src
 	end
 end
@@ -161,28 +162,28 @@ end
 begin
 	set --local executable_install_path /usr/local/bin/{$official_git_repository_name}
 
-	sudo-on-fail cp {$VERBOSE} ./main.fish {$executable_install_path} # Install main executable script
-	sudo-on-fail chmod +x {$executable_install_path}
+	cp {$VERBOSE} ./main.fish {$executable_install_path} # Install main executable script
+	chmod +x {$executable_install_path}
 end
 
 #### Libraries
-sudo-on-fail mkdir -p {$VERBOSE} {$local_vendor_functions_dir[1]}
+mkdir -p {$VERBOSE} {$local_vendor_functions_dir[1]}
 
 set --local libraries (fd --base-directory=./lib/ --type=file --extension=fish)
 set --local absolute_library_names (string replace --all '/' '_' {$libraries} | string replace --all '_sub' \0 | string replace --all '_main' \0)
 
 for i in (seq (count {$libraries}))
-	sudo-on-fail cp {$VERBOSE} lib/"$libraries[$i]" {$local_vendor_functions_dir[1]}/_{$official_git_repository_name}_{$absolute_library_names[$i]}
+	cp {$VERBOSE} lib/"$libraries[$i]" {$local_vendor_functions_dir[1]}/_{$official_git_repository_name}_{$absolute_library_names[$i]}
 end
 
 #### Completion
 begin
 	set --local local_vendor_completions_dir /usr/local/share/fish/vendor_completions.d
-	sudo-on-fail mkdir -p {$local_vendor_completions_dir}
-	sudo-on-fail cp {$VERBOSE} ./completion.fish "$local_vendor_completions_dir"/"$official_git_repository_name".fish
+	mkdir -p {$local_vendor_completions_dir}
+	cp {$VERBOSE} ./completion.fish "$local_vendor_completions_dir"/"$official_git_repository_name".fish
 end
 
 # Cleanup
 if set -qg tmp_repo
-	sudo-on-fail rm -rf {$repository_dir}
+	rm -rf {$repository_dir}
 end
