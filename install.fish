@@ -1,6 +1,7 @@
 #!/usr/bin/env fish
 set --global official_git_repository_url 'https://github.com/Dracape/SymP'
 set --global official_git_repository_name (string split --fields=5 '/' {$official_git_repository_url})
+set --global executable_name (string lower {$official_git_repository_name})
 
 
 
@@ -160,7 +161,7 @@ end
 ### Source code
 #### Main executable
 begin
-	set --local executable_install_path /usr/local/bin/{$official_git_repository_name}
+	set --local executable_install_path /usr/local/bin/{$executable_name}
 
 	cp {$VERBOSE} ./main.fish {$executable_install_path} # Install main executable script
 	chmod +x {$executable_install_path}
@@ -173,14 +174,14 @@ set --local libraries (fd --base-directory=./lib/ --type=file --extension=fish)
 set --local absolute_library_names (string replace --all '/' '_' {$libraries} | string replace --all '_sub' \0 | string replace --all '_main' \0)
 
 for i in (seq (count {$libraries}))
-	cp {$VERBOSE} lib/"$libraries[$i]" {$local_vendor_functions_dir[1]}/_{$official_git_repository_name}_{$absolute_library_names[$i]}
+	cp {$VERBOSE} lib/"$libraries[$i]" {$local_vendor_functions_dir[1]}/_{$executable_name}_{$absolute_library_names[$i]}
 end
 
 #### Completion
 begin
 	set --local local_vendor_completions_dir /usr/local/share/fish/vendor_completions.d
 	mkdir -p {$local_vendor_completions_dir}
-	cp {$VERBOSE} ./completion.fish "$local_vendor_completions_dir"/"$official_git_repository_name".fish
+	cp {$VERBOSE} ./completion.fish "$local_vendor_completions_dir"/"$executable_name".fish
 end
 
 # Cleanup
