@@ -174,14 +174,14 @@ set --local libraries (fd --base-directory=./lib/ --type=file --extension=fish)
 set --local absolute_library_names (string replace --all '/' '_' {$libraries} | string replace --all '_sub' \0 | string replace --all '_main' \0)
 
 for i in (seq (count {$libraries}))
-	cp {$VERBOSE} lib/"$libraries[$i]" {$local_vendor_functions_dir}/_{$executable_name}_{$absolute_library_names[$i]}
+	install --mode 644 {$VERBOSE} lib/"$libraries[$i]" {$local_vendor_functions_dir}/_{$executable_name}_{$absolute_library_names[$i]}
 end
 
 #### Completion
 begin
 	set --local local_vendor_completions_dir /usr/local/share/fish/vendor_completions.d
 	mkdir -p {$local_vendor_completions_dir}
-	cp {$VERBOSE} ./completion.fish "$local_vendor_completions_dir"/"$executable_name".fish
+	install --mode 644 {$VERBOSE} ./completion.fish "$local_vendor_completions_dir"/"$executable_name".fish
 end
 
 # Cleanup
