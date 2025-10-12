@@ -163,7 +163,7 @@ end
 begin
 	set --local executable_install_path /usr/local/bin/{$executable_name}
 
-	cp {$VERBOSE} ./main.fish {$executable_install_path} # Install main executable script
+	install {$VERBOSE} ./main.fish {$executable_install_path} # Install main executable script
 	chmod +x {$executable_install_path}
 end
 
