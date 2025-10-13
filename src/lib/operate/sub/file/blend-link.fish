@@ -26,7 +26,7 @@ function _symp_operate_file_blend-link --description "Symlink files while inheri
 
 	# Operation
 	## Access
-	if set -qg blend
+	if set -q blend
 		set --local target_parent (path dirname {$target_file})
 		### Ownership
 		if set -q VERBOSE

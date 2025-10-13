@@ -33,16 +33,17 @@ end
 
 ##### Blend
 if set -q _flag_blend
-	set --global blend
+	set --global --export blend
 	set --erase --local _flag_B _flag_blend
 end
 
 ##### Behaviour
 if contains "$_flag_behaviour" i interactive
-	set --global --export behaviour '--interactive'
+	set --global -- behaviour '--interactive'
+	set --global --export INTERACTIVE
 end
 if ! set -qgx behaviour
-	set --global --export behaviour '--force'
+	set --global -- behaviour '--force'
 end
 
 ##### Verbose
