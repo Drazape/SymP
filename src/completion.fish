@@ -3,4 +3,6 @@ complete --command='symp' --short-option='v' --long-option='verbose'	 	--descrip
 complete --command='symp' --short-option='B' --long-option='blend' 		--description='Inherit permissions of the new parent'
 complete --command='symp' --short-option='c' --long-option='common-only' 	--description='Only symlink common files'
 
-complete --command='symp' --exclusive --short-option='b' --long-option='behaviour' --arguments 'interactive force' --description='Change behaviour for overwrites'
+complete --command='symp' --exclusive --short-option='b' --long-option='behaviour' --arguments 'interactive' --description='Confirm overwrites interactively'
+complete --command='symp' --exclusive --short-option='b' --long-option='behaviour' --arguments 'force' --description='Overwrite files'
+complete --command='symp' --exclusive --short-option='b' --long-option='behaviour' --description='Change behaviour for overwrites'
