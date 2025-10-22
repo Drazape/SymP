@@ -16,7 +16,7 @@ set --global executable_name (string lower {$official_git_repository_name})
 # Handle external configuration
 ## Arguments
 ### Switches
-argparse 'r/repository=&' 'h/help&' 'v/verbose&' -- {$argv}
+argparse 'r/repository=&' 'h/help&' 'v/verbose&' -- {$argv} or return 1
 ### Positional
 if test (count {$argv}) -ne 0
 	echo (status basename)': Positional arguments are not supported'

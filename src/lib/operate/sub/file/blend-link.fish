@@ -3,7 +3,7 @@ function _symp_operate_file_blend-link --description "Symlink files while inheri
 
 	# Parse arguments
 	## Switches
-	argparse --move-unknown -- {$argv} # Store `ln` arguments
+	argparse --move-unknown -- {$argv} or return 1 # Store `ln` arguments
 
 	## Postitional
 	### 2 Only

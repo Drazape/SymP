@@ -20,7 +20,7 @@ end
 ## Arguments
 ### Switches
 #### Parse
-argparse --name "$script_name" 'v/verbose&' 'h/help&' 'b/behaviour=&!_'"$script_name"'_switches_validate-behaviour' 'B/blend&' 'c/common-only&' -- {$argv}
+argparse --name "$script_name" 'v/verbose&' 'h/help&' 'b/behaviour=&!_'"$script_name"'_switches_validate-behaviour' 'B/blend&' 'c/common-only&' -- {$argv} or return 1
 if test "$status" -ne 0 # Exit on incorrect arguments
 	exit 1
 end
