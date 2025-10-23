@@ -5,7 +5,8 @@ I made this [`fish`](https://fishshell.com/) script for personal system configur
 
 This means that if there are 2 directories that have the same name and child files (i.e., the directory is a *pure* subset), they will be symlinked as a whole  
 Meaning that any changes to that directory (in either the source or target) after-wards would also appear in the other places  
-This is just like doing `ln -s`, but recursively based on the rules above
+This is just like doing `ln -s`, but recursively based on the rules above  
+In other words, it tries to symlink the files with fewest symlinks as possible
 
 Additionally, if `--blend` is used, symlinked files inherit the permissions and ownership of their new parent directory
 
