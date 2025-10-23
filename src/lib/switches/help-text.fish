@@ -11,7 +11,7 @@ function _symp_switches_help-text
 	set_color --bold; echo -n -- '  -v'; set_color normal; echo -n ', '; set_color --bold; echo -- '--verbose'
 	set_color normal; echo -n \t'Show more information'\n\t'(Variable: '; set_color --italics; echo -n 'VERBOSE'; set_color normal; echo \)
 	
-	set_color --bold; echo -n -- '  -b [i|f]'; set_color normal; echo -n -- ', '; set_color --bold; echo -n -- '--behaviour [interactive|force]'; set_color normal; echo ' (default)'
+	set_color --bold; echo -n -- '  -b '; set_color normal; echo -n '['; set_color --bold; echo -n 'i'; set_color normal; echo -n '|'; set_color --bold; echo -n 'f'; set_color normal; echo -n '], '; set_color --bold; echo -n -- '--behaviour'; set_color normal; echo -n ' ['; set_color --bold; echo -n 'interactive'; set_color normal; echo -n '|'; set_color --bold; echo -n 'force'; set_color normal; echo ' (default)]'
 	echo \t'Change behaviour for overwrites'
 	echo -n \t'(Environment: '; set_color --italics; echo -n 'INTERACTIVE'; set_color normal; echo ')'
 	
