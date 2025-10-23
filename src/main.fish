@@ -22,7 +22,7 @@ end
 #### Parse
 argparse --name "$script_name" 'v/verbose&' 'h/help&' 'b/behaviour=&!_'"$script_name"'_switches_validate-behaviour' 'B/blend&' 'c/common-only&' -- {$argv}
 if test "$status" -ne 0 # Exit on incorrect arguments
-	exit 1
+	return 1
 end
 #### Individual
 ##### Common only

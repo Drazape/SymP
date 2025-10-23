@@ -2,7 +2,7 @@
 # Only allow execution as root
 if ! fish_is_root_user
 	echo (status basename)': Must be ran as root'
-	exit 1
+	return  1
 end
 
 
@@ -18,13 +18,13 @@ set --global executable_name (string lower {$official_git_repository_name})
 ### Switches
 argparse 'r/repository=&' 'h/help&' 'v/verbose&' -- {$argv}
 if test "$status" -ne 0 # Exit on incorrect arguments
-    exit 1
+    return 1
 end
 
 ### Positional
 if test (count {$argv}) -ne 0
 	echo (status basename)': Positional arguments are not supported'
-	exit 1
+	return 1
 else
 	set --erase --local argv
 end
@@ -84,7 +84,7 @@ begin
 					pacman -Syu --needed fd 
 				end
 			else
-				exit 1
+				return 1
 			end
 		end
 	end
@@ -116,7 +116,7 @@ if set -q REPOSITORY
 
 		git clone "$REPOSITORY" "$repository_dir"
 		if test {$status} -ne 0
-			exit 1
+			return 1
 		end
 
 		set --erase --function REPOSITORY
