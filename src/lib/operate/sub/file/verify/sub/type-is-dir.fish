@@ -3,7 +3,7 @@ function _symp_operate_file_verify_type-is-dir --description 'Verify that the so
 
 	for file_path in {$argv}
 		if ! path is -d {$file_path}
-			echo {$OUTPUT_PREFIX} 'Not a directory: '{$file_path} 1>&2
+			echo {$OUTPUT_PREFIX} 'Not a directory: '"$file_path" 1>&2
 			exit 1			
 		end
 	end
