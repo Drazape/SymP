@@ -8,7 +8,11 @@ Meaning that any changes to that directory (in either the source or target) afte
 This is just like doing `ln -s`, but recursively based on the rules above  
 In other words, it tries to symlink the files with fewest symlinks as possible
 
-Additionally, if `--blend` is used, symlinked files inherit the permissions and ownership of their new parent directory
+## Additional functionality
+### `--blend`
+Symlinked files inherit the permissions and ownership of their new parent directory
+### `--occurrence`
+Filter files to symlink based on if the file with the same name is also present in the target
 
 # Demonstration
 The commands  
