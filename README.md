@@ -87,10 +87,8 @@ will be used on the following file-hierarchy (since this script is an balance be
 ```
 </details>
 
-3. ### `symp`
 <details>
-<summary>Normal</summary>
-
+### <summary>3. *SymP*</summary>
 ```
 📁 link-dir
 ├── 🔗 same-dir → dir/same-dir
@@ -99,19 +97,6 @@ will be used on the following file-hierarchy (since this script is an balance be
 │   └── 📄 subfile
 ├── 🔗 same-file → dir/same-file
 ├── 🔗 ufile-d → dir/ufile-d		# File not present in Target
-└── 📄 ufile-l
-```
-</details>
-
-<details>
-<summary>With `--common-only`</summary>
-
-```
-📁 link-dir
-├── 🔗 same-dir → dir/same-dir
-├── 📁 udir-l
-│   └── 📄 subfile
-├── 🔗 same-file → dir/same-file
 └── 📄 ufile-l
 ```
 </details>

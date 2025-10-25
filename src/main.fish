@@ -20,21 +20,28 @@ end
 ## Arguments
 ### Switches
 #### Parse
-argparse --name "$script_name" 'v/verbose&' 'h/help&' 'b/behaviour=&!_'"$script_name"'_switches_validate-behaviour' 'B/blend&' 'c/common-only&' -- {$argv}
+argparse --name "$script_name" 'v/verbose&' 'h/help&' 'b/behaviour=&!contains "$_flag_value" i interactive f force' 'B/blend&' 'o/occurrence=&!contains "$_flag_value" c common u unique' -- {$argv}
 if test "$status" -ne 0 # Exit on incorrect arguments
 	return 1
 end
 #### Individual
 ##### Common only
-if set -q _flag_common_only
-	set --global --export common_only
-	set --erase --local _flag_c _flag_common_only
+if set -ql _flag_occurrence
+	set --global --export symp_file_occurrence {$_flag_occurrence}
+	set --erase --local _flag_o{,ccurrence}
+
+	# Convert short form into long
+	if test "$symp_file_occurrence" = 'c'
+		set symp_file_occurrence 'common'
+	else if test "$symp_file_occurrence" = 'u'
+		set symp_file_occurrence 'unique'
+	end
 end
 
 ##### Blend
-if set -q _flag_blend
+if set -ql _flag_blend
 	set --global --export blend
-	set --erase --local _flag_B _flag_blend
+	set --erase --local _flag_{B,blend}
 end
 
 ##### Behaviour
@@ -55,7 +62,7 @@ end
 
 ##### Help
 if set -ql _flag_help
-	_{$script_name}_switches_help-text
+	_{$script_name}_help-text
 	return 0
 end
 

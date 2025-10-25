@@ -1,4 +1,4 @@
-function _symp_switches_help-text
+function _symp_help-text
 	echo 'Smartly symlink SOURCE_DIR to TARGET.'\n
 	set_color --bold --underline; echo -n 'Usage:'; set_color normal; echo ' '"$script_name"' [OPTION] SOURCE_DIR TARGET'\n
 	set_color --bold --underline; echo 'Arguments:'; set_color normal; echo \t'<paths>…'\n
@@ -15,8 +15,8 @@ function _symp_switches_help-text
 	echo \t'Change behaviour for overwrites'
 	echo -n \t'(Environment: '; set_color --italics; echo -n 'INTERACTIVE'; set_color normal; echo ')'
 	
-	set_color --bold; echo -n -- '  -c'; set_color normal; echo -n ', '; set_color --bold; echo -- '--common-only'
-	set_color normal; echo \t'Only symlink common files'
+	set_color --bold; echo -n -- '  -o '; set_color normal; echo -n '['; set_color --bold; echo -n 'c'; set_color normal; echo -n '|'; set_color --bold; echo -n 'u'; set_color normal; echo -n '], '; set_color --bold; echo -n -- '--occurrence'; set_color normal; echo -n ' ['; set_color --bold; echo -n 'common'; set_color normal; echo -n '|'; set_color --bold; echo -n 'unique'; set_color normal; echo ']'
+	set_color normal; echo \t'Filter files based on their occurrences'
 	
 	set_color --bold; echo -n -- '  -B'; set_color normal; echo -n ', '; set_color --bold; echo -- '--blend'
 	set_color normal; echo \t'Inherit permissions of the new parent'

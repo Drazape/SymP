@@ -152,13 +152,13 @@ begin
 	set --local root_fish_config_path /root/.config/fish/conf.d/local_functions.fish
 
 	# Preparation
-	mkdir -p (path dirname {$local_functions_config_path})
-	touch {$local_functions_config_path}
+	mkdir -p (path dirname {$root_fish_config_path})
+	touch {$root_fish_config_path}
 
 	# Main file
 	echo 'if ! contains '"$local_vendor_functions_dir"' {$fish_function_path}
 '\t'set --prepend fish_function_path '"$local_vendor_functions_dir"'
-end' | sudo tee {$local_functions_config_path} > /dev/null 
+end' | tee {$root_fish_config_path} > /dev/null 
 end
 
 
@@ -167,11 +167,13 @@ end
 begin
 	set --local executable_install_path /usr/local/bin/{$executable_name}
 
+	rm --force {$executable_install_path} # Remove if already exists
 	install {$VERBOSE} ./main.fish {$executable_install_path} # Install main executable script
 	chmod +x {$executable_install_path}
 end
 
 #### Libraries
+rm --force {$local_vendor_functions_dir}/_symp_* # Remove old libraries
 mkdir -p {$VERBOSE} {$local_vendor_functions_dir}
 
 set --local libraries (fd --base-directory=./lib/ --type=file --extension=fish)
@@ -185,7 +187,10 @@ end
 begin
 	set --local local_vendor_completions_dir /usr/local/share/fish/vendor_completions.d
 	mkdir -p {$local_vendor_completions_dir}
-	install --mode 644 {$VERBOSE} ./completion.fish "$local_vendor_completions_dir"/"$executable_name".fish
+
+	set --local completion_install_path "$local_vendor_completions_dir"/"$executable_name".fish
+	rm --force {$completion_install_path}
+	install --mode 644 {$VERBOSE} ./completion.fish "$completion_install_path"
 end
 
 # Cleanup
