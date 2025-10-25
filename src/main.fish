@@ -7,12 +7,12 @@ set --global script_name 'symp'
 set --global --export OUTPUT_PREFIX {$script_name}':'
 
 ### Verbose
-if set -qlx VERBOSE
+if set -qx VERBOSE
 	set --global --export VERBOSE '--verbose'
 end
 
 ### Interactive
-if set -qlx INTERACTIVE
+if set -qx INTERACTIVE
 	set --global overwrites --interactive
 end
 
@@ -49,7 +49,7 @@ if contains "$_flag_overwrites" i interactive
 	set --global -- overwrites '--interactive'
 	set --global --export INTERACTIVE
 end
-if ! set -qgx overwrites
+if ! set -qg overwrites
 	set --global -- overwrites '--force'
 end
 
@@ -85,5 +85,5 @@ end
 
 
 
-
+echo {$overwrites}
 _"$script_name"_operate # Main Operation
