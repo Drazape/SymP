@@ -25,7 +25,7 @@ if test "$status" -ne 0 # Exit on incorrect arguments
 	return 1
 end
 #### Individual
-##### Common only
+##### Occurrences
 if set -ql _flag_occurrence
 	set --global --export symp_file_occurrence {$_flag_occurrence}
 	set --erase --local _flag_o{,ccurrence}
