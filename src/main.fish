@@ -13,14 +13,14 @@ end
 
 ### Interactive
 if set -qlx INTERACTIVE
-	set --global behaviour --interactive
+	set --global overwrites --interactive
 end
 
 
 ## Arguments
 ### Switches
 #### Parse
-argparse --name "$script_name" 'v/verbose&' 'h/help&' 'b/behaviour=&!contains "$_flag_value" i interactive f force' 'B/blend&' 'o/occurrence=&!contains "$_flag_value" c common u unique' -- {$argv}
+argparse --name "$script_name" 'v/verbose&' 'h/help&' 'O/overwrites=&!contains "$_flag_value" i interactive f force' 'b/blend&' 'o/occurrence=&!contains "$_flag_value" c common u unique' -- {$argv}
 if test "$status" -ne 0 # Exit on incorrect arguments
 	return 1
 end
@@ -44,13 +44,13 @@ if set -ql _flag_blend
 	set --erase --local _flag_{B,blend}
 end
 
-##### Behaviour
-if contains "$_flag_behaviour" i interactive
-	set --global -- behaviour '--interactive'
+##### Overwrites
+if contains "$_flag_overwrites" i interactive
+	set --global -- overwrites '--interactive'
 	set --global --export INTERACTIVE
 end
-if ! set -qgx behaviour
-	set --global -- behaviour '--force'
+if ! set -qgx overwrites
+	set --global -- overwrites '--force'
 end
 
 ##### Verbose

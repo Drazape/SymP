@@ -11,6 +11,7 @@ In other words, it tries to symlink the files with fewest symlinks as possible
 ## Additional functionality
 - **`--blend`**: Symlinked files inherit the permissions and ownership of their new parent directory
 - **`--occurrence`**: Filter files to symlink based on if the file with the same name is also present in the target
+- **`--overwrites`**: Change behaviour for performing overwrites
 
 # Demonstration
 The commands  

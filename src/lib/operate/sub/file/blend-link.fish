@@ -70,5 +70,5 @@ function _symp_operate_file_blend-link --description "Symlink files while inheri
 
 
 	## Link
-	ln -s {$VERBOSE} {$behaviour} {$argv_opts} -- {$source_file} {$target_file}
+	ln -s {$VERBOSE} {$overwrites} {$argv_opts} -- {$source_file} {$target_file}
 end
