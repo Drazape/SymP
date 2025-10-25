@@ -3,5 +3,5 @@ function _symp_operate_file_verify --description 'Verify positional arguments (s
 	set --local this_function (status current-function) # Set function-name for execution on sub-functions
 
 	"$this_function"_type-is-dir "$source_dir"
-	"$this_function"_writability "$target_path" "$source_dir"
+	"$this_function"_writability "$target_path"
 end

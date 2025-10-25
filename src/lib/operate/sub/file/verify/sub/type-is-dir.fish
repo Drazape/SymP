@@ -8,6 +8,6 @@ function _symp_operate_file_verify_type-is-dir --description 'Verify that the so
 		end
 	end
 	if set -q VERBOSE # Verbosity announcement
-		echo {$OUTPUT_PREFIX} 'Verified directories: '{$argv}
+		echo {$OUTPUT_PREFIX} 'Verified directory: '{$argv}
 	end
 end
