@@ -7,7 +7,7 @@ function _symp_operate_file_verify_writability --description 'Verify that the so
 			if set -q VERBOSE # Verbosity announcement
 				echo {$OUTPUT_PREFIX} 'testing for parent directory of non-directory file '\"{$file_path}\"': '(path dirname {$file_path})
 			end
-			set --function argv (path dirname {$file_path})
+			set --function file_path (path dirname {$file_path})
 			set --erase --local argv
 		end
 
