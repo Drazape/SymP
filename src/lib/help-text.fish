@@ -9,7 +9,7 @@ function _symp_help-text
 	set_color normal; echo \t'Print help'
 	
 	set_color --bold; echo -n -- '  -v'; set_color normal; echo -n ', '; set_color --bold; echo -- '--verbose'
-	set_color normal; echo -n \t'Show more information'\n\t'(Variable: '; set_color --italics; echo -n 'VERBOSE'; set_color normal; echo \)
+	set_color normal; echo -n \t'Show more information'\n\t'(Environment: '; set_color --italics; echo -n 'VERBOSE'; set_color normal; echo \)
 	
 	set_color --bold; echo -n -- '  -o '; set_color normal; echo -n '['; set_color --bold; echo -n 'c'; set_color normal; echo -n '|'; set_color --bold; echo -n 'u'; set_color normal; echo -n '], '; set_color --bold; echo -n -- '--occurrence'; set_color normal; echo -n ' ['; set_color --bold; echo -n 'common'; set_color normal; echo -n '|'; set_color --bold; echo -n 'unique'; set_color normal; echo ']'
 	set_color normal; echo \t'Filter files based on their occurrences'
