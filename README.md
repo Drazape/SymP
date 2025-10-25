@@ -91,6 +91,7 @@ will be used on the following file-hierarchy (since this script is an balance be
 
 <details>
 <summary>3. SymP</summary>
+
 ```
 📁 link-dir
 ├── 🔗 same-dir → dir/same-dir
