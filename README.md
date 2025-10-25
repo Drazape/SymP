@@ -1,4 +1,4 @@
-I made this [`fish`](https://fishshell.com/) script for personal system configuration backup—and showcase the shell's ease-of-use, which turned out be something outside a function's scope (Due to its technical limitations)
+I made this [`fish`](https://fishshell.com/) program for personal system configuration backup—and showcase the shell's ease-of-use, which turned out be something outside a function's scope (Due to its technical limitations)
 
 # Description
 *SymP* (**Sym**link **P**opulate) *SymP*ly *Sy*ncs (overwrites) directories by symlinking the whole directories (unlike `cp -r --symbolic-link` that only symlinks the files), while conserving the unique parts of the target (unlike `ln -s`)
@@ -18,7 +18,7 @@ The commands
 - `cp --recursive --symbolic-link --force --dereference`  
 - `symp`  
 
-will be used on the following file-hierarchy (since this script is an balance between the 2 standard utility commands):  
+will be used on the following file-hierarchy (since this program is an balance between the 2 standard utility commands):  
 - **Source**: `dir/`  
 - **Target**: `link-dir/`  
 
