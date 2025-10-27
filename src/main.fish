@@ -20,7 +20,7 @@ end
 ## Arguments
 ### Switches
 #### Parse
-argparse --name "$program_name" 'v/verbose&' 'h/help&' 'O/overwrites=&!contains "$_flag_value" i interactive f force' 'b/blend&' 'o/occurrence=&!contains "$_flag_value" c common u unique' -- {$argv}
+argparse --name="$program_name" 'v/verbose&' 'h/help&' 'O/overwrites=&!contains "$_flag_value" i interactive f force' 'b/blend&' 'o/occurrence=&!contains "$_flag_value" c common u unique' -- {$argv}
 if test "$status" -ne 0 # Exit on incorrect arguments
 	return 1
 end
