@@ -25,6 +25,12 @@ if test "$status" -ne 0 # Exit on incorrect arguments
 	return 1
 end
 #### Individual
+##### Help
+if set -ql _flag_help
+	_{$program_name}_help-text
+	return 0
+end
+
 ##### Occurrences
 if set -ql _flag_occurrence
 	set --global --export symp_file_occurrence {$_flag_occurrence}
@@ -58,12 +64,6 @@ if set -ql _flag_verbose
 	if ! set -qgx VERBOSE # Only if not set above
 		set --global --export VERBOSE '--verbose'
 	end
-end
-
-##### Help
-if set -ql _flag_help
-	_{$program_name}_help-text
-	return 0
 end
 
 
