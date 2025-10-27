@@ -25,6 +25,13 @@ if test "$status" -ne 0 # Exit on incorrect arguments
 	return 1
 end
 #### Individual
+##### Verbose
+if set -ql _flag_verbose
+	if ! set -qgx VERBOSE # Only if not set above
+		set --global --export VERBOSE '--verbose'
+	end
+end
+
 ##### Help
 if set -ql _flag_help
 	_{$program_name}_help-text
@@ -57,13 +64,6 @@ if contains "$_flag_overwrites" i interactive
 end
 if ! set -qg overwrites
 	set --global -- overwrites '--force'
-end
-
-##### Verbose
-if set -ql _flag_verbose
-	if ! set -qgx VERBOSE # Only if not set above
-		set --global --export VERBOSE '--verbose'
-	end
 end
 
 
