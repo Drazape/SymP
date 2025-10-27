@@ -1,6 +1,6 @@
 function _symp_help-text
 	echo 'Populate TARGET with the least amount of symbolic links as possible from SOURCE_DIR.'\n
-	set_color --bold --underline; echo -n 'Usage:'; set_color normal; echo ' '"$script_name"' [OPTION] SOURCE_DIR TARGET'\n
+	set_color --bold --underline; echo -n 'Usage:'; set_color normal; echo ' '"$program_name"' [OPTION] SOURCE_DIR TARGET'\n
 	set_color --bold --underline; echo 'Arguments:'; set_color normal; echo \t'<paths>…'\n
 
 

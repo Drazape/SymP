@@ -14,5 +14,5 @@ function _symp_operate_case_recursive_operate-on-children_recurse --description 
 	end
 
 	# Main
-	"$script_name" "$source_item" "$target_item"
+	"$program_name" "$source_item" "$target_item"
 end

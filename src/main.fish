@@ -1,10 +1,10 @@
 #!/usr/bin/env fish
-set --global script_name 'symp'
+set --global program_name 'symp'
 
 # Behaviour setting
 ## Variables
 ### Output prefix
-set --global --export OUTPUT_PREFIX {$script_name}':'
+set --global --export OUTPUT_PREFIX {$program_name}':'
 
 ### Verbose
 if set -qx VERBOSE
@@ -20,7 +20,7 @@ end
 ## Arguments
 ### Switches
 #### Parse
-argparse --name "$script_name" 'v/verbose&' 'h/help&' 'O/overwrites=&!contains "$_flag_value" i interactive f force' 'b/blend&' 'o/occurrence=&!contains "$_flag_value" c common u unique' -- {$argv}
+argparse --name "$program_name" 'v/verbose&' 'h/help&' 'O/overwrites=&!contains "$_flag_value" i interactive f force' 'b/blend&' 'o/occurrence=&!contains "$_flag_value" c common u unique' -- {$argv}
 if test "$status" -ne 0 # Exit on incorrect arguments
 	return 1
 end
@@ -62,7 +62,7 @@ end
 
 ##### Help
 if set -ql _flag_help
-	_{$script_name}_help-text
+	_{$program_name}_help-text
 	return 0
 end
 
@@ -86,4 +86,4 @@ end
 
 
 
-_"$script_name"_operate # Main Operation
+_"$program_name"_operate # Main Operation
