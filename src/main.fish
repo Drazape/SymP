@@ -6,11 +6,6 @@ set --global program_name 'symp'
 ### Output prefix
 set --global --export OUTPUT_PREFIX {$program_name}':'
 
-### Verbose
-if set -qx VERBOSE
-	set --global --export VERBOSE '--verbose'
-end
-
 ### Interactive
 if set -qx INTERACTIVE
 	set --global overwrites --interactive
@@ -26,10 +21,8 @@ if test "$status" -ne 0 # Exit on incorrect arguments
 end
 #### Individual
 ##### Verbose
-if set -ql _flag_verbose
-	if ! set -qgx VERBOSE # Only if not set above
-		set --global --export VERBOSE '--verbose'
-	end
+if set -ql _flag_verbose || set -qx VERBOSE
+	set --global --export VERBOSE '--verbose'
 end
 
 ##### Help
