@@ -8,7 +8,7 @@ function _symp_operate_file_symlink --description="Symlink files while inheritin
 	if test "$status" -ne 0 # Exit on incorrect arguments
 		return 1
 	end
-	
+
 
 	## Postitional
 	### 2 Only
@@ -25,14 +25,16 @@ function _symp_operate_file_symlink --description="Symlink files while inheritin
 
 
 	# Operation
-	set --local target_parent (path dirname {$target_file})
+	set --function target_parent (path dirname {$target_file})
+
 	## Access
 	if set -q blend
 		"$this_function"_inherit {$source_file} {$target_parent}
 	end
+
 	## Resolution
 	if test "$resolution" = 'relative'
-		set --function source_file ("$this_function"_relative-resolution)
+		set --function source_file (realpath --relative-to={$target_parent} {$source_file})
 	end
 
 	## Link

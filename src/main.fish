@@ -15,11 +15,11 @@ end
 ## Arguments
 ### Switches
 #### Parse
-argparse --name="$program_name" 'v/verbose&' 'h/help&' 'O/overwrites=&!contains "$_flag_value" i interactive f force' 'b/blend&' 'o/occurrence=&!contains "$_flag_value" c common u unique' 'r/resolution=!contains a absolute r relative' -- {$argv}
-set --erase --local _flag_{v,h,O,i,f,b,o,r} # Erase unused short versions
+argparse --name="$program_name" 'v/verbose&' 'h/help&' 'O/overwrites=&!contains "$_flag_value" i interactive f force' 'b/blend&' 'o/occurrence=&!contains "$_flag_value" c common u unique' 'r/resolution=!contains {$_flag_value} a absolute r relative' -- {$argv}
 if test "$status" -ne 0 # Exit on incorrect arguments
 	return 1
 end
+set --erase --local _flag_{v,h,O,i,f,b,o,r} # Erase unused short versions
 #### Individual
 ##### Verbose
 if set -ql _flag_verbose || set -qx VERBOSE
@@ -80,7 +80,6 @@ else if test (count {$argv}) -eq 2
 else
 	echo {$OUTPUT_PREFIX} 'Invalid number of arguments' 1>&2
 	return 1
-	set --erase argv
 end
 
 
