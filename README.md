@@ -9,7 +9,14 @@ In other words, it tries to symlink the files with fewest symlinks as possible
 ## Additional functionality
 - **`--blend`**: Symlinked files inherit the permissions and ownership of their new parent directory
 - **`--occurrence`**: Filter files to symlink based on if the file with the same name is also present in the target
+    * **Common**: Present in the target
+    * **Unique**: Absent in the target (avoid overwrites)
 - **`--overwrites`**: Change behavior for performing overwrites
+    * **Force**: Overwrite files without any confirmation
+    * **Interactive**: Confirm overwrites interactively
+- **`--resolution`**: Configure how symbolic links are resolved
+    * **Absolute**: Make symbolic links point to the **absolute** path of the source file
+    * **Relative**: Make symbolic links point to the **relative** path of the source file
 
 # Demonstration
 The commands  

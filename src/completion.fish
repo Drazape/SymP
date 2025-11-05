@@ -3,8 +3,8 @@ complete --command='symp' --short-option='v' --long-option='verbose'	 	--descrip
 complete --command='symp' --short-option='B' --long-option='blend' 		--description='Inherit permissions of the new parent'
 
 
-complete --command='symp' --exclusive --short-option='b' --long-option='overwrites' --arguments='interactive' 	--description='Confirm overwrites interactively'
-complete --command='symp' --exclusive --short-option='b' --long-option='overwrites' --arguments='force'		--description='Overwrite files'
+complete --command='symp' --exclusive --short-option='b' --long-option='overwrites' --arguments='interactive' 	--description='Confirm interactively'
+complete --command='symp' --exclusive --short-option='b' --long-option='overwrites' --arguments='force'		--description='No confirmation'
 complete --command='symp' --exclusive --short-option='b' --long-option='overwrites' 				--description='Change behavior for overwrites' 
 
 complete --command='symp' --exclusive --short-option='o' --long-option='occurrence' --arguments='common' 	--description='Present in the target'

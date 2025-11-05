@@ -18,7 +18,7 @@ function _symp_help-text --description='Help text for the `--help` switch of Sym
 	set_color normal; echo \t'Filter files based on their occurrences'
 
 	set_color --bold; echo -n -- '  -r '; set_color normal; echo -n '['; set_color --bold; echo -n 'a'; set_color normal; echo -n '|'; set_color --bold; echo -n 'r'; set_color normal; echo -n '], '; set_color --bold; echo -n -- '--resolution'; set_color normal; echo -n ' ['; set_color --bold; echo -n 'absolute'; set_color normal; echo -n '|'; set_color --bold; echo -n 'relative'; set_color normal; echo ' (default)]'
-	set_color normal; echo \t'Filter files based on their occurrences'
+	set_color normal; echo \t'Configure how symbolic links are resolved'
 
 	set_color --bold; echo -n -- '  -O '; set_color normal; echo -n '['; set_color --bold; echo -n 'i'; set_color normal; echo -n '|'; set_color --bold; echo -n 'f'; set_color normal; echo -n '], '; set_color --bold; echo -n -- '--overwrites'; set_color normal; echo -n ' ['; set_color --bold; echo -n 'interactive'; set_color normal; echo -n '|'; set_color --bold; echo -n 'force'; set_color normal; echo ' (default)]'
 	echo \t'Change behavior for overwrites'
