@@ -15,7 +15,7 @@ function _symp_help-text --description='Help text for the `--help` switch of Sym
 	set_color normal; echo \t'Filter files based on their occurrences'
 
 	set_color --bold; echo -n -- '  -O '; set_color normal; echo -n '['; set_color --bold; echo -n 'i'; set_color normal; echo -n '|'; set_color --bold; echo -n 'f'; set_color normal; echo -n '], '; set_color --bold; echo -n -- '--overwrites'; set_color normal; echo -n ' ['; set_color --bold; echo -n 'interactive'; set_color normal; echo -n '|'; set_color --bold; echo -n 'force'; set_color normal; echo ' (default)]'
-	echo \t'Change behaviour for overwrites'
+	echo \t'Change behavior for overwrites'
 	echo -n \t'(Environment: '; set_color --italics; echo -n 'INTERACTIVE'; set_color normal; echo \)
 	
 	set_color --bold; echo -n -- '  -b'; set_color normal; echo -n ', '; set_color --bold; echo -- '--blend'

@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 set --global program_name 'symp'
 
-# Behaviour setting
+# Behavior setting
 ## Variables
 ### Output prefix
 set --global --export output_prefix {$program_name}':'
