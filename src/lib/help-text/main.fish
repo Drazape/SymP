@@ -29,9 +29,6 @@ function _symp_help-text --description='Help text for the `--help` switch of Sym
 		set_color normal; echo \t'Show more information'
 		set_color normal; echo -n \t'(Switch: '; set_color --italics; echo -n -- '-v';set_color normal; echo -n ', ';set_color --italics ; echo -n -- '--verbose' ; set_color normal; echo \)
 	
-		set_color --bold normal; echo '  OUTPUT_PREFIX'
-		set_color normal; echo \t'Change default output stream prefix'
-
 		set_color --bold normal; echo '  INTERACTIVE'
 		set_color normal; echo \t'Confirm overwrites interactively'
 		echo -n \t'(Switch: '; set_color --italics; echo -n -- '--[b|overwrites]=[i|interactive]'; set_color normal; echo \) 

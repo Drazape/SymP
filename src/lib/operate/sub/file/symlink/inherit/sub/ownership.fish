@@ -3,7 +3,7 @@ function _symp_operate_file_symlink_inherit_ownership --description='Inherit own
 	set --local target_parent {$argv[2]}
 
 	if set --query VERBOSE
-		echo {$OUTPUT_PREFIX} 'Setting ownership of Source '\"{$source_file}\"' to that of the new parent'
+		echo {$output_prefix} 'Setting ownership of Source '\"{$source_file}\"' to that of the new parent'
 	end
 
 	set --local parent_ownership (stat -c %u:%g {$target_parent})

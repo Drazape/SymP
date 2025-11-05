@@ -4,7 +4,7 @@ set --global program_name 'symp'
 # Behaviour setting
 ## Variables
 ### Output prefix
-set --global --export OUTPUT_PREFIX {$program_name}':'
+set --global --export output_prefix {$program_name}':'
 
 ### Interactive
 if set -qx INTERACTIVE
@@ -78,7 +78,7 @@ else if test (count {$argv}) -eq 2
 	set --global target_path (path normalize {$argv[2]})
 #### argument count != 1 or 2 → throw error
 else
-	echo {$OUTPUT_PREFIX} 'Invalid number of arguments' 1>&2
+	echo {$output_prefix} 'Invalid number of arguments' 1>&2
 	return 1
 end
 

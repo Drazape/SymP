@@ -1,8 +1,8 @@
 function _symp_operate_case_recursive_reserve-and-link --description 'Forcefully remove the target and link the source'
-	set --append --local --export OUTPUT_PREFIX $(status current-function | string split '_' | tail -n 1)': ' # Append the Output-prefix with the current function name
+	set --append --local --export output_prefix $(status current-function | string split '_' | tail -n 1)': ' # Append the Output-prefix with the current function name
 
 	if set -q VERBOSE # Verbosity announcement
-		echo {$OUTPUT_PREFIX} 'Pure subset directory: '{$target_path}
+		echo {$output_prefix} 'Pure subset directory: '{$target_path}
 	end
 
 	"$operate_function"_file_remove -r "$target_path"
