@@ -10,3 +10,7 @@ complete --command='symp' --exclusive --short-option='b' --long-option='overwrit
 complete --command='symp' --exclusive --short-option='o' --long-option='occurrence' --arguments='common' 	--description='Present in the target'
 complete --command='symp' --exclusive --short-option='o' --long-option='occurrence' --arguments='unique' 	--description='Absent in the target (avoid overwrites)'
 complete --command='symp' --exclusive --short-option='o' --long-option='occurrence' 				--description='Filter files based on their occurrences'
+
+complete --command='symp' --exclusive --short-option='r' --long-option='resolution' --arguments='absolute' 	--description='Point symlinks to absolute path'
+complete --command='symp' --exclusive --short-option='r' --long-option='resolution' --arguments='relative' 	--description='Point symlinks to relative path'
+complete --command='symp' --exclusive --short-option='r' --long-option='resolution' 				--description='Configure symlink resolution'
