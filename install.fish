@@ -173,7 +173,9 @@ begin
 end
 
 #### Libraries
-rm --force {$local_vendor_functions_dir}/_symp_* # Remove old libraries
+if rm --force {$local_vendor_functions_dir}/_symp_* && set --query VERBOSE # Put in a if block to bypass wildcard match error when the libraries do not exist
+	echo 'Removed old libraries'
+end
 mkdir -p {$VERBOSE} {$local_vendor_functions_dir}
 
 set --local libraries (fd --base-directory=./lib/ --type=file --extension=fish)
