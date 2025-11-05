@@ -11,5 +11,5 @@ function _symp_operate_case_recursive_operate-on-children_overwrite --descriptio
 	set --local target_item {$argv[2]}
 
 	"$operate_function"_file_remove "$target_item" # Remove target item if it exists
-	"$operate_function"_file_blend-link "$source_item" "$target_item"
+	"$operate_function"_file_symlink "$source_item" "$target_item"
 end

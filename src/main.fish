@@ -15,7 +15,8 @@ end
 ## Arguments
 ### Switches
 #### Parse
-argparse --name="$program_name" 'v/verbose&' 'h/help&' 'O/overwrites=&!contains "$_flag_value" i interactive f force' 'b/blend&' 'o/occurrence=&!contains "$_flag_value" c common u unique' -- {$argv}
+argparse --name="$program_name" 'v/verbose&' 'h/help&' 'O/overwrites=&!contains "$_flag_value" i interactive f force' 'b/blend&' 'o/occurrence=&!contains "$_flag_value" c common u unique' 'r/resolution=!contains a absolute r relative' -- {$argv}
+set --erase --local _flag_{v,h,O,i,f,b,o,r} # Erase unused short versions
 if test "$status" -ne 0 # Exit on incorrect arguments
 	return 1
 end
@@ -54,9 +55,15 @@ end
 if contains "$_flag_overwrites" i interactive
 	set --global -- overwrites '--interactive'
 	set --global --export INTERACTIVE
-end
-if ! set -qg overwrites
+else
 	set --global -- overwrites '--force'
+end
+
+##### Resolution
+if set --query '_flag_resolution'
+	set --global --export resolution {$flag_resolution}
+else	
+	set --global --export resolution 'relative'
 end
 
 
@@ -75,6 +82,7 @@ else
 	return 1
 	set --erase argv
 end
+
 
 
 

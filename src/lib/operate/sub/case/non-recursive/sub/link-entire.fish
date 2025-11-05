@@ -4,6 +4,6 @@ function _symp_operate_case_non-recursive_link-entire --description 'Link entire
 		echo {$OUTPUT_PREFIX} 'Target Does not exist: "'{$target_path}\"
 	end
 
-	"$operate_function"_file_blend-link "$source_dir" "$target_path"
+	"$operate_function"_file_symlink "$source_dir" "$target_path"
 	exit 0
 end

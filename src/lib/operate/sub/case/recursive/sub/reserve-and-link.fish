@@ -6,5 +6,5 @@ function _symp_operate_case_recursive_reserve-and-link --description 'Forcefully
 	end
 
 	"$operate_function"_file_remove -r "$target_path"
-	"$operate_function"_file_blend-link -n "$source_dir" "$target_path"
+	"$operate_function"_file_symlink -n "$source_dir" "$target_path"
 end
