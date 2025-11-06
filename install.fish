@@ -77,14 +77,7 @@ begin
 				set --function mention_if_core 'coreutils: '
 			end
 			echo (status basename)': Missing command: '"$mention_if_core"{$command} 1>&2
-			if type --query pacman
-				if set -qf mention_if_core
-					pacman -Syu --needed coreutils
-				else
-					pacman -Syu --needed fd 
-				end
-			else
-				return 1
+			return 1
 			end
 		end
 	end
