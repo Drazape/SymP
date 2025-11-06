@@ -61,7 +61,7 @@ will be used on the following file-hierarchy (since this program is an balance b
 </details>
 
 ## Results
-1. ### `ln --symbolic`
+1. `ln --symbolic`
 	- **With link-dir**: `ln: Already exists`
 	- **Without link-dir**: `🔗 link-dir → dir`
 <details>
