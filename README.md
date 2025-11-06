@@ -61,12 +61,10 @@ will be used on the following file-hierarchy (since this program is an balance b
 </details>
 
 ## Results
-<details>
-<summary>1. ln --symbolic</summary>
+1. `ln --symbolic`
 
 	- **With link-dir**: `ln: Already exists`
 	- **Without link-dir**: `🔗 link-dir → dir`
-</details>
 
 <details>
 <summary>2. cp --recursive --symbolic-link --force --dereference</summary>
