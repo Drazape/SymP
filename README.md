@@ -113,4 +113,4 @@ will be used on the following file-hierarchy (since this program is an balance b
 </details>
 
 # Installation
-`curl -fsSL 'https://raw.githubusercontent.com/Dracape/symp/main/install.fish' | fish`
+`# curl -fsSL 'https://raw.githubusercontent.com/Dracape/symp/main/install.fish' | fish`
