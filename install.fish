@@ -169,23 +169,21 @@ end
 if rm --force {$local_vendor_functions_dir}/_symp_* && set --query VERBOSE # Put in a if block to bypass wildcard match error when the libraries do not exist
 	echo 'Removed old libraries'
 end
-mkdir -p {$VERBOSE} {$local_vendor_functions_dir}
 
 set --local libraries (fd --base-directory=./lib/ --type=file --extension=fish)
 set --local absolute_library_names (string replace --all '/' '_' {$libraries} | string replace --all '_sub' \0 | string replace --all '_main' \0)
 
 for i in (seq (count {$libraries}))
-	install --mode 644 {$VERBOSE} lib/"$libraries[$i]" {$local_vendor_functions_dir}/_{$executable_name}_{$absolute_library_names[$i]}
+	install -D --mode=644 {$VERBOSE} lib/"$libraries[$i]" {$local_vendor_functions_dir}/_{$executable_name}_{$absolute_library_names[$i]}
 end
 
 #### Completion
 begin
 	set --local local_vendor_completions_dir /usr/local/share/fish/vendor_completions.d
-	mkdir -p {$local_vendor_completions_dir}
 
 	set --local completion_install_path "$local_vendor_completions_dir"/"$executable_name".fish
 	rm --force {$completion_install_path}
-	install --mode 644 {$VERBOSE} ./completion.fish "$completion_install_path"
+	install -D --mode=644 {$VERBOSE} ./completion.fish "$completion_install_path"
 end
 
 # Cleanup
