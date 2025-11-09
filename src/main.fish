@@ -39,9 +39,9 @@ if set -ql _flag_occurrence
 
 	# Convert short form into long
 	if test "$symp_file_occurrence" = 'c'
-		set symp_file_occurrence 'common'
+		set --global --export symp_file_occurrence 'common'
 	else if test "$symp_file_occurrence" = 'u'
-		set symp_file_occurrence 'unique'
+		set --global --export symp_file_occurrence 'unique'
 	end
 end
 

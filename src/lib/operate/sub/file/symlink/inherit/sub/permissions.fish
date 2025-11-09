@@ -24,7 +24,7 @@ function _symp_operate_file_symlink_inherit_permissions --description='Inherit p
 	end
 
 	# Set new permissions
-	if path is -d {$source_file}
+	if path is --type=dir {$source_file}
 		chmod {$new_parent_octal} {$source_file}
 		fd . --type=directory {$source_file} --exec-batch chmod {$new_parent_octal} '{}'
 		fd . --type=file {$source_file} --exec-batch chmod {$file_octal} '{}'	

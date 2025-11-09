@@ -93,7 +93,7 @@ end
 
 ## Parse repository switch/variable
 if set -q REPOSITORY
-	if path is -d {$REPOSITORY}/src # Set repository as local if the source code directory in the specified path exists
+	if path is --type=dir {$REPOSITORY}/src # Set repository as local if the source code directory in the specified path exists
 		if set -q VERBOSE
 			echo 'Repository found locally: '{$REPOSITORY}
 		end
@@ -118,8 +118,8 @@ if set -q REPOSITORY
 end
 
 ## Fallback
-if ! path is -d {$source_code_dir}
-	if path is -d {$PWD}/src # Local
+if ! path is --type=dir {$source_code_dir}
+	if path is --type=dir {$PWD}/src # Local
 		set --global source_code_dir {$PWD}/src
 	else # Official remote
 		set --global repository_dir (mktemp --directory /tmp/"$official_git_repository_name"-XXXXXXXXXX)

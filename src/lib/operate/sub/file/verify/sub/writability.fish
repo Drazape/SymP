@@ -3,7 +3,7 @@ function _symp_operate_file_verify_writability --description 'Verify that the so
 
 	for file_path in {$argv}
 		# Check for parent-directory if target is not a directory
-		if ! path is -d {$file_path}
+		if ! path is --type=dir {$file_path}
 			if set -q VERBOSE # Verbosity announcement
 				echo {$output_prefix} 'testing for parent directory of non-directory file '\"{$file_path}\"': '(path dirname {$file_path})
 			end
