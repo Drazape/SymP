@@ -1,6 +1,6 @@
 function _symp_operate_file_verify_type-is-dir --description 'Verify that the source is a directory'
 	if set -qx LIST_FUNCTIONS
-		set --append --local output_prefix (status current-function | string split '_' | tail -n 1)':' # Append the Output-prefix with the current function name
+		set --append --function output_prefix (status current-function | string split '_' | tail -n 1)':' # Append the Output-prefix with the current function name
 	end
 
 	for file_path in {$argv}
