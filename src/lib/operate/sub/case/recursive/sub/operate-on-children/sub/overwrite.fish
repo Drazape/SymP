@@ -1,5 +1,5 @@
 function _symp_operate_case_recursive_operate-on-children_overwrite --description 'Forcefully remove the target item (if it exists) and overwrite it with the source item'
-	set --append --local --export output_prefix (status current-function | string split '_' | tail -n 1)':' # Append the Output-prefix with the current function name
+	set --append --local output_prefix (status current-function | string split '_' | tail -n 1)':' # Append the Output-prefix with the current function name
 
 
 	# Parse arguments

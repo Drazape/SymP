@@ -1,5 +1,5 @@
 function _symp_operate_file_verify_type-is-dir --description 'Verify that the source is a directory'
-	set --append --local --export output_prefix (status current-function | string split '_' | tail -n 1)': ' # Append the Output-prefix with the current function name
+	set --append --local output_prefix (status current-function | string split '_' | tail -n 1)': ' # Append the Output-prefix with the current function name
 
 	for file_path in {$argv}
 		if ! path is --type=dir {$file_path}
