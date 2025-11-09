@@ -1,5 +1,7 @@
 function _symp_operate_file_symlink --description="Symlink files while inheriting their parent directory's permission"
-	set --append --local output_prefix (status current-function | string split '_' | tail -n 1)':' # Append the Output-prefix with the current function name
+	if set -qx LIST_FUNCTIONS
+		set --append --local output_prefix (status current-function | string split '_' | tail -n 1)':' # Append the Output-prefix with the current function name
+	end
 	set --local this_function (status current-function)
 
 	# Parse arguments

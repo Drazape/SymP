@@ -1,6 +1,8 @@
 function _symp_operate_case_non-recursive_link-entire --description 'Link entire directory'
 	if set -q VERBOSE # Verbosity announcement
-		set --append --local output_prefix (status current-function | string split '_' | tail -n 1)':' # Append the Output-prefix with the current function name
+		if set -qx LIST_FUNCTIONS
+			set --append --local output_prefix (status current-function | string split '_' | tail -n 1)':' # Append the Output-prefix with the current function name
+		end
 		echo {$output_prefix} 'Target Does not exist: "'{$target_path}\"
 	end
 

@@ -4,7 +4,7 @@ set --global program_name 'symp'
 # Behavior setting
 ## Variables
 ### Output prefix
-set --global --export output_prefix {$program_name}':'
+set --global output_prefix {$program_name}':'
 
 ### Interactive
 if set -qx INTERACTIVE
@@ -15,11 +15,11 @@ end
 ## Arguments
 ### Switches
 #### Parse
-argparse --name="$program_name" 'v/verbose&' 'h/help&' 'O/overwrites=&!contains "$_flag_value" i interactive f force' 'b/blend&' 'o/occurrence=&!contains "$_flag_value" c common u unique' 'r/resolution=!contains {$_flag_value} a absolute r relative' -- {$argv}
+argparse --name="$program_name" 'v/verbose&' 'h/help&' 'O/overwrites=&!contains "$_flag_value" i interactive f force' 'b/blend&' 'o/occurrence=&!contains "$_flag_value" c common u unique' 'r/resolution=!contains {$_flag_value} a absolute r relative' 'f/functions' -- {$argv}
 if test "$status" -ne 0 # Exit on incorrect arguments
 	return 1
 end
-set --erase --local _flag_{v,h,O,i,f,b,o,r} # Erase unused short versions
+set --erase --local _flag_{v,h,O,i,f,b,o,r,f} # Erase unused short versions
 #### Individual
 ##### Verbose
 if set -ql _flag_verbose || set -qx VERBOSE
@@ -64,6 +64,11 @@ if set --query '_flag_resolution'
 	set --global --export resolution {$flag_resolution}
 else	
 	set --global --export resolution 'relative'
+end
+
+##### Print Functions
+if set --query '_flag_functions'
+	set --global --export LIST_FUNCTIONS
 end
 
 

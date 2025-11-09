@@ -1,5 +1,7 @@
 function _symp_operate_case_recursive --description 'Recursive operation on super-set directories'
-	set --append --local output_prefix (status current-function | string split '_' | tail -n 1)':' # Append the Output-prefix with the current function name
+	if set -qx LIST_FUNCTIONS
+		set --append --local output_prefix (status current-function | string split '_' | tail -n 1)':' # Append the Output-prefix with the current function name
+	end
 	set --local this_function (status current-function) # Set function-name for execution on sub-functions
 
 
