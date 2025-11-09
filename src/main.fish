@@ -67,7 +67,7 @@ else
 end
 
 ##### Print Functions
-if set --query '_flag_functions'
+if set -ql '_flag_functions'
 	set --global --export LIST_FUNCTIONS
 end
 
