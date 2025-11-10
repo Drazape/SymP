@@ -1,5 +1,5 @@
 function _symp_operate_file_symlink_inherit_permissions --description='Inherit permissions of the new parent directory'
-	if set -qx LIST_FUNCTIONS
+	if set -qx SYMP_LIST_FUNCTIONS
 		set --append --function output_prefix (status current-function | string split '_' | tail -n 1)':' # Append the Output-prefix with the current function name
 	end
 	set --local this_function (status current-function)
@@ -9,7 +9,7 @@ function _symp_operate_file_symlink_inherit_permissions --description='Inherit p
 
 
 	set --local new_parent_octal (stat -c %a -- {$target_parent}) # New Parent directory's octal permissions for setting in source directories
-	if set -q VERBOSE # Verbosity announcement
+	if set -q SYMP_VERBOSE # Verbosity announcement
 		echo {$output_prefix} "Permissions of target's parent directory: "{$new_parent_octal}
 	end
 
@@ -21,7 +21,7 @@ function _symp_operate_file_symlink_inherit_permissions --description='Inherit p
 		set --append --function file_octal {$byte}
 	end
 	set --function file_octal (string join \0 {$file_octal})
-	if set -q VERBOSE # Verbosity announcement
+	if set -q SYMP_VERBOSE # Verbosity announcement
 		echo {$output_prefix} 'File octal calculated: '{$file_octal}
 	end
 

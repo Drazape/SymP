@@ -1,11 +1,11 @@
 function _symp_operate_case_recursive_operate-on-children --description 'Operate individually on contents of `$target_path`'
 	set --local this_function (status current-function) # Set function-name for execution on sub-functions
-	if set -qx LIST_FUNCTIONS
+	if set -qx SYMP_LIST_FUNCTIONS
 		set --append --function output_prefix (status current-function | string split '_' | tail -n 1)':' # Append the Output-prefix with the current function name
 	end
 
 	for item in (command ls -A "$source_dir") # Items in source content
-		if set -q VERBOSE # Verbosity announcement
+		if set -q SYMP_VERBOSE # Verbosity announcement
 			echo {$output_prefix} 'Processing item: '{$item}
 		end
 		set --local source_item "$source_dir"/"$item"

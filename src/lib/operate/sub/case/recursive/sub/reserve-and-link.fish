@@ -1,9 +1,9 @@
 function _symp_operate_case_recursive_reserve-and-link --description 'Forcefully remove the target and link the source'
-	if set -qx LIST_FUNCTIONS
+	if set -qx SYMP_LIST_FUNCTIONS
 		set --append --function output_prefix (status current-function | string split '_' | tail -n 1)':' # Append the Output-prefix with the current function name
 	end
 
-	if set -q VERBOSE # Verbosity announcement
+	if set -q SYMP_VERBOSE # Verbosity announcement
 		echo {$output_prefix} 'Pure subset directory: '{$target_path}
 	end
 

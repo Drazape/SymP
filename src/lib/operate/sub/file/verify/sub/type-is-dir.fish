@@ -1,5 +1,5 @@
 function _symp_operate_file_verify_type-is-dir --description 'Verify that the source is a directory'
-	if set -qx LIST_FUNCTIONS
+	if set -qx SYMP_LIST_FUNCTIONS
 		set --append --function output_prefix (status current-function | string split '_' | tail -n 1)':' # Append the Output-prefix with the current function name
 	end
 
@@ -9,7 +9,7 @@ function _symp_operate_file_verify_type-is-dir --description 'Verify that the so
 			exit 1			
 		end
 	end
-	if set -q VERBOSE # Verbosity announcement
+	if set -q SYMP_VERBOSE # Verbosity announcement
 		echo {$output_prefix} 'Verified directory: '{$argv}
 	end
 end

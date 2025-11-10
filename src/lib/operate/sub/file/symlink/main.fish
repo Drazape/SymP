@@ -1,5 +1,5 @@
 function _symp_operate_file_symlink --description="Symlink files while inheriting their parent directory's permission"
-	if set -qx LIST_FUNCTIONS
+	if set -qx SYMP_LIST_FUNCTIONS
 		set --append --function output_prefix (status current-function | string split '_' | tail -n 1)':' # Append the Output-prefix with the current function name
 	end
 	set --local this_function (status current-function)
@@ -40,5 +40,5 @@ function _symp_operate_file_symlink --description="Symlink files while inheritin
 	end
 
 	## Link
-	ln -s {$VERBOSE} {$overwrites} {$argv_opts} -- {$source_file} {$target_file}
+	ln -s {$SYMP_VERBOSE} {$overwrites} {$argv_opts} -- {$source_file} {$target_file}
 end

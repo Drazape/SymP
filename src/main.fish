@@ -3,12 +3,14 @@ set --global program_name 'symp'
 
 # Behavior setting
 ## Variables
+set --function accepted_values 'true' '1' 'yes'
 ### Output prefix
 set --global output_prefix {$program_name}':'
 
 ### Interactive
-if set -qx INTERACTIVE
-	set --global overwrites --interactive
+if contains "$INTERACTIVE" {$accepted_values}
+	set --global -- overwrites '--interactive'
+	set --global --export 'SYMP_INTERACTIVE'
 end
 
 
@@ -22,8 +24,8 @@ end
 set --erase --local _flag_{v,h,O,i,f,b,o,r,f} # Erase unused short versions
 #### Individual
 ##### Verbose
-if set -ql _flag_verbose || set -qx VERBOSE
-	set --global --export VERBOSE '--verbose'
+if set -ql _flag_verbose || contains "$VERBOSE" {$accepted_values}
+	set --global --export SYMP_VERBOSE '--verbose'
 end
 
 ##### Help
@@ -54,9 +56,9 @@ end
 ##### Overwrites
 if contains "$_flag_overwrites" i interactive
 	set --global -- overwrites '--interactive'
-	set --global --export INTERACTIVE
+	set --global --export SYMP_INTERACTIVE
 else
-	set --global -- overwrites '--force'
+	set --global --export -- overwrites '--force'
 end
 
 ##### Resolution
@@ -67,7 +69,7 @@ else
 end
 
 ##### Print Functions
-if set -ql 'LIST_FUNTCIONS'
+if contains "$LIST_FUNCTIONS" 'true' '1' 'yes'
 	set --global --export SYMP_LIST_FUNCTIONS
 end
 

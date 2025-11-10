@@ -9,7 +9,7 @@ function _symp_help-text --description='Help text for the `--help` switch of Sym
 	set_color normal; echo \t'Print help'
 	
 	set_color --bold; echo -n -- '  -v'; set_color normal; echo -n ', '; set_color --bold; echo -- '--verbose'
-	set_color normal; echo -n \t'Show more information'\n\t'(Environment: '; set_color --italics; echo -n 'VERBOSE'; set_color normal; echo \)
+	set_color normal; echo -n \t'Show more information'\n\t'(Environment: '; set_color --italics; echo -n 'SYMP_VERBOSE'; set_color normal; echo \)
 	
 	set_color --bold; echo -n -- '  -b'; set_color normal; echo -n ', '; set_color --bold; echo -- '--blend'
 	set_color normal; echo \t'Inherit permissions of the new parent'
@@ -22,17 +22,17 @@ function _symp_help-text --description='Help text for the `--help` switch of Sym
 
 	set_color --bold; echo -n -- '  -O '; set_color normal; echo -n '['; set_color --bold; echo -n 'i'; set_color normal; echo -n '|'; set_color --bold; echo -n 'f'; set_color normal; echo -n '], '; set_color --bold; echo -n -- '--overwrites'; set_color normal; echo -n ' ['; set_color --bold; echo -n 'interactive'; set_color normal; echo -n '|'; set_color --bold; echo -n 'force'; set_color normal; echo ' (default)]'
 	echo \t'Change behavior for overwrites'
-	echo -n \t'(Environment: '; set_color --italics; echo -n 'INTERACTIVE'; set_color normal; echo \)
+	echo -n \t'(Environment: '; set_color --italics; echo -n 'SYMP_INTERACTIVE'; set_color normal; echo \)
 
 
 
-	if set -q VERBOSE
+	if set -q SYMP_VERBOSE
 		set_color --bold --underline; echo \n'Variables:'
-		set_color --bold normal; echo '  VERBOSE'
-		set_color normal; echo \t'Show more information'
+		set_color --bold normal; echo -n '  SYMP_VERBOSE'; set_color normal; echo -n ', '; set_color --bold; echo -n 'VERBOSE'; set_color normal; echo -n '=['; set_color --bold; echo -n '1'; set_color normal; echo -n '|'; set_color --bold; echo -n 'true'; set_color normal; echo -n '|'; set_color --bold; echo -n 'yes'; set_color normal; echo ']' 
+		echo \t'Show more information'
 		set_color normal; echo -n \t'(Switch: '; set_color --italics; echo -n -- '-v';set_color normal; echo -n ', ';set_color --italics ; echo -n -- '--verbose' ; set_color normal; echo \)
 	
-		set_color --bold normal; echo '  INTERACTIVE'
+		set_color --bold normal; echo -n '  SYMP_INTERACTIVE'; set_color normal; echo -n ', '; set_color --bold; echo -n 'INTERACTIVE'; set_color normal; echo -n '=['; set_color --bold; echo -n '1'; set_color normal; echo -n '|'; set_color --bold; echo -n 'true'; set_color normal; echo -n '|'; set_color --bold; echo -n 'yes'; set_color normal; echo ']'
 		set_color normal; echo \t'Confirm overwrites interactively'
 		echo -n \t'(Switch: '; set_color --italics; echo -n -- '--[b|overwrites]=[i|interactive]'; set_color normal; echo \) 
 	end
