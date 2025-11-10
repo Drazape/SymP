@@ -94,3 +94,4 @@ end
 
 
 _"$program_name"_operate # Main Operation
+wait
