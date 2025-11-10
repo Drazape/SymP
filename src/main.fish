@@ -15,7 +15,7 @@ end
 ## Arguments
 ### Switches
 #### Parse
-argparse --name="$program_name" 'v/verbose&' 'h/help&' 'O/overwrites=&!contains "$_flag_value" i interactive f force' 'b/blend&' 'o/occurrence=&!contains "$_flag_value" c common u unique' 'r/resolution=!contains {$_flag_value} a absolute r relative' 'f/functions' -- {$argv}
+argparse --name="$program_name" 'v/verbose&' 'h/help&' 'O/overwrites=&!contains "$_flag_value" i interactive f force' 'b/blend&' 'o/occurrence=&!contains "$_flag_value" c common u unique' 'r/resolution=!contains {$_flag_value} a absolute r relative' -- {$argv}
 if test "$status" -ne 0 # Exit on incorrect arguments
 	return 1
 end
@@ -67,8 +67,8 @@ else
 end
 
 ##### Print Functions
-if set -ql '_flag_functions'
-	set --global --export LIST_FUNCTIONS
+if set -ql 'LIST_FUNTCIONS'
+	set --global --export SYMP_LIST_FUNCTIONS
 end
 
 
