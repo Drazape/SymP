@@ -78,7 +78,6 @@ begin
 			end
 			echo (status basename)': Missing command: '"$mention_if_core"{$command} 1>&2
 			return 1
-			end
 		end
 	end
 end
