@@ -4,6 +4,7 @@ function _symp_operate_file_symlink_inherit --description='Inherit properties of
 	end
 	set --local this_function (status current-function)	
 
-	"$this_function"_ownership {$argv}
-	"$this_function"_permissions {$argv}
+	for blend_mode in {$blend}
+		{$this_function}_{$blend_mode} {$argv}
+	end
 end

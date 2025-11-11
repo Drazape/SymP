@@ -16,10 +16,11 @@ set --global executable_name (string lower {$official_git_repository_name})
 # Handle external configuration
 ## Arguments
 ### Switches
-argparse 'r/repository=&' 'h/help&' 'v/verbose&' -- {$argv}
+argparse 'r/repository=&' 'h/help&' 'v/verbose&' 's/symlink&' -- {$argv}
 if test "$status" -ne 0 # Exit on incorrect arguments
     return 1
 end
+set --erase --local _flag_{r,h,v,s} # Unused, short name flags
 
 ### Positional
 if test (count {$argv}) -ne 0
@@ -33,7 +34,7 @@ end
 ## Verbose
 if set -ql _flag_verbose || set -qlx VERBOSE
 	set --global --export VERBOSE '--verbose'
-	set --erase --local _flag_verbose _flag_v
+	set --erase --local _flag_verbose
 end
 
 #### Help
@@ -47,11 +48,14 @@ if set -ql _flag_help
 
 	set_color --bold; echo -n -- '  -v'; set_color normal; echo -n ', '; set_color --bold; echo -- '--verbose'
 	set_color normal; echo \t'Show more information'
-	echo -n \t'(Variable: '; set_color --italics; echo -n 'VERBOSE'; set_color normal; echo \) 
+	echo -n \t'(Variable: '; set_color --italics; echo -n 'VERBOSE'; set_color normal; echo \)
 
 	set_color --bold; echo -n -- '  -r'; set_color normal; echo -n ', '; set_color --bold; echo -- '--repository'
 	set_color normal; echo \t'Specify source-code repository path (local or remote git)'
 	echo -n \t'(Variable: '; set_color --italics; echo -n 'REPOSITORY'; set_color normal; echo \)
+
+	set_color --bold; echo -n -- '  -s'; set_color normal; echo -n ', '; set_color --bold; echo -- '--symlink'
+	set_color normal; echo \t'Symlink files from git-repository instead of copying'
 
 	if set -qgx VERBOSE
 		set_color --bold --underline; echo \n'Variables:'
@@ -87,7 +91,7 @@ end
 ## Overwrite REPOSITORY environment variable if the equivalent switch is provided
 if set -ql _flag_repository
 	set --function REPOSITORY {$_flag_repository}
-	set --erase --local _flag_r{epository,} # Remove the flags as already set as REPOSITORY
+	set --erase --local _flag_repository # Remove the flags as already set as REPOSITORY
 end
 
 ## Parse repository switch/variable
@@ -103,6 +107,9 @@ if set -q REPOSITORY
 			return 1
 		end
 
+		if set -ql _flag_symlink
+			echo 'Cannot symlink from a temporary directory' >&2
+		end
 		set --global repository_dir (mktemp --directory /tmp/"$(string split '/' "$REPOSITORY" | tail -n 1)"-'XXXXXXXXX')
 		set --global tmp_repo
 
@@ -160,8 +167,13 @@ begin
 	set --local executable_install_path /usr/local/bin/{$executable_name}
 
 	rm --force {$executable_install_path} # Remove if already exists
-	install {$VERBOSE} ./main.fish {$executable_install_path} # Install main executable script
-	chmod +x {$executable_install_path}
+	if set -ql _flag_symlink
+		mkdir -p (path dirname {$executable_install_path})
+		ln -s {$VERBOSE} -- (realpath ./main.fish) {$executable_install_path}
+		chmod +x {$executable_install_path}
+	else
+		install -D {$VERBOSE} -- ./main.fish {$executable_install_path} # Install main executable script
+	end
 end
 
 #### Libraries
@@ -173,19 +185,32 @@ set --local libraries (fd --base-directory=./lib/ --type=file --extension=fish)
 set --local absolute_library_names (string replace --all '/' '_' {$libraries} | string replace --all '_sub' \0 | string replace --all '_main' \0)
 
 for i in (seq (count {$libraries}))
-	install -D --mode=644 {$VERBOSE} lib/"$libraries[$i]" {$local_vendor_functions_dir}/_{$executable_name}_{$absolute_library_names[$i]}
+	set --local install_path {$local_vendor_functions_dir}/_{$executable_name}_{$absolute_library_names[$i]} 
+	if set -ql _flag_symlink
+		mkdir -p {$local_vendor_functions_dir}
+		ln -s {$VERBOSE} lib/"$libraries[$i]" {$install_path}
+	else
+		install -D --mode=644 {$VERBOSE} lib/"$libraries[$i]" {$install_path}
+	end
 end
 
 #### Completion
 begin
 	set --local local_vendor_completions_dir /usr/local/share/fish/vendor_completions.d
-
 	set --local completion_install_path "$local_vendor_completions_dir"/"$executable_name".fish
 	rm --force {$completion_install_path}
-	install -D --mode=644 {$VERBOSE} ./completion.fish "$completion_install_path"
+
+	if set -ql _flag_symlink
+		mkdir -p {$local_vendor_completions_dir}
+		ln -s {$VERBOSE} ./completion.fish "$completion_install_path"
+	else
+		install -D --mode=644 {$VERBOSE} ./completion.fish "$completion_install_path"
+	end	
 end
 
 # Cleanup
-if set -qg tmp_repo
-	rm -rf {$repository_dir}
+function cleanup_temporary_repository --description='Nuke temporary repository on exit' --on-event=fish_exit
+	if set -qg tmp_repo
+		rm -rf {$repository_dir}
+	end
 end

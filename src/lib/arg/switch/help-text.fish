@@ -1,4 +1,4 @@
-function _symp_help-text --description='Help text for the `--help` switch of SymP'
+function _symp_arg_switch_help-text --description='Help text for the `--help` switch of SymP'
 	echo 'Populate TARGET with the least amount of symbolic links as possible from SOURCE_DIR.'\n
 	set_color --bold --underline; echo -n 'Usage:'; set_color normal; echo ' '"$program_name"' [OPTION] SOURCE_DIR TARGET'\n
 	set_color --bold --underline; echo 'Arguments:'; set_color normal; echo \t'<paths>…'\n
