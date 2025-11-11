@@ -7,7 +7,13 @@ This is just like doing `ln -s`, but recursively based on the rules above
 In other words, it tries to symlink the files with fewest symlinks as possible
 
 ## Additional functionality
-- **`--blend`**: Symlinked files inherit the permissions and ownership of their new parent directory
+- **`--blend`**: Symlinked files inherit the access of their new parent directory
+    * **Disable**: *none false 0 no* (default)
+    * **Enable**
+        - **Both**: *both true 1 yes* (default: when flag is empty)
+        - **Individual**
+            * **Permission**: DAC permissions
+            * **Ownership**: User & Group ownerships
 - **`--occurrence`**: Filter files to symlink based on if the file with the same name is also present in the target
     * **Common**: Present in the target
     * **Unique**: Absent in the target (avoid overwrites)
