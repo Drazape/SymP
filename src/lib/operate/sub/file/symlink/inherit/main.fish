@@ -5,6 +5,6 @@ function _symp_operate_file_symlink_inherit --description='Inherit properties of
 	set --local this_function (status current-function)	
 
 	for blend_mode in {$blend}
-		{$this_function}_{$blend_mode} {$argv}
+		"$this_function"_{$blend_mode} {$argv}
 	end
 end

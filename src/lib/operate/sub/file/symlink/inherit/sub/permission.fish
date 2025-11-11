@@ -1,4 +1,4 @@
-function _symp_operate_file_symlink_inherit_permissions --description='Inherit permissions of the new parent directory'
+function _symp_operate_file_symlink_inherit_permission --description='Inherit permissions of the new parent directory'
 	if set -qx SYMP_LIST_FUNCTIONS
 		set --append --function output_prefix (status current-function | string split '_' | tail -n 1)':' # Append the Output-prefix with the current function name
 	end

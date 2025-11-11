@@ -1,4 +1,4 @@
-function _symp_arg_switch_occurrence --description='Parse switch: blend' --inherit-variable='accept_values'
+function _symp_arg_switch_blend --description='Parse switch: blend' --inherit-variable='accept_values'
 	set --function individual_modes 'permission' 'ownership'
 
 	# Singular choice
