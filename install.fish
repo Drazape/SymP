@@ -1,12 +1,4 @@
 #!/usr/bin/env fish
-# Only allow execution as root
-if ! fish_is_root_user
-	echo (status basename)': Must be ran as root'
-	return  1
-end
-
-
-
 set --global official_git_repository_url 'https://github.com/Dracape/SymP'
 set --global official_git_repository_name (string split --fields=5 '/' {$official_git_repository_url})
 set --global executable_name (string lower {$official_git_repository_name})
@@ -68,6 +60,14 @@ if set -ql _flag_help
 		echo -n \t'(Switch: '; set_color --italics; echo -n -- '-r'; set_color normal; echo -n ', '; set_color --italics; echo -n -- '--repository'; set_color normal; echo \)
 	end
 	return 0
+end
+
+
+
+# Only allow execution as root
+if ! fish_is_root_user
+	echo (status basename)': Must be ran as root'
+	return  1
 end
 
 
