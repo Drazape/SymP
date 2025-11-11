@@ -188,7 +188,7 @@ for i in (seq (count {$libraries}))
 	set --local install_path {$local_vendor_functions_dir}/_{$executable_name}_{$absolute_library_names[$i]} 
 	if set -ql _flag_symlink
 		mkdir -p {$local_vendor_functions_dir}
-		ln -s {$VERBOSE} lib/"$libraries[$i]" {$install_path}
+		ln -s {$VERBOSE} (realpath lib/"$libraries[$i]") {$install_path}
 	else
 		install -D --mode=644 {$VERBOSE} lib/"$libraries[$i]" {$install_path}
 	end
@@ -202,7 +202,7 @@ begin
 
 	if set -ql _flag_symlink
 		mkdir -p {$local_vendor_completions_dir}
-		ln -s {$VERBOSE} ./completion.fish "$completion_install_path"
+		ln -s {$VERBOSE} (realpath ./completion.fish) "$completion_install_path"
 	else
 		install -D --mode=644 {$VERBOSE} ./completion.fish "$completion_install_path"
 	end	
