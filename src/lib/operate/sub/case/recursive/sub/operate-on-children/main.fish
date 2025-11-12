@@ -19,13 +19,11 @@ function _symp_operate_case_recursive_operate-on-children --description 'Operate
 				exit {$recurse_status}
 			end
 		else
-			if set --query 'file_occurrence'
-				if test "$file_occurrence" = 'common'
-					if test -e "$target_item"
-						"$this_function"_overwrite "$source_item" "$target_item"
-					end
+			if test -e "$target_item"
+				if contains "$file_occurrence" 'common'
+					"$this_function"_overwrite "$source_item" "$target_item"
 				end
-			else
+			else if contains "$file_occurrence" 'unique'
 				"$this_function"_overwrite "$source_item" "$target_item"
 			end
 		end
