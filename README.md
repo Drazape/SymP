@@ -8,9 +8,9 @@ In other words, it tries to symlink the files with fewest symlinks as possible
 
 ## Additional functionality
 - **`--blend`**: Symlinked files inherit the access of their new parent directory
-    * **Disable**: *none false 0 no* (default)
+    * **Disable**: `none` `false` `0` `no` (default)
     * **Enable**
-        - **Both**: *both true 1 yes* (default: when flag is empty)
+        - **Both**: `both` `true` `1` `yes` (default: empty flag)
         - **Individual**
             * **Permission**: DAC permissions
             * **Ownership**: User & Group ownerships
