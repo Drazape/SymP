@@ -40,5 +40,5 @@ function _symp_operate_file_symlink --description="Symlink files while inheritin
 	end
 
 	## Link
-	ln -s {$SYMP_VERBOSE} {$overwrites} {$argv_opts} -- {$source_file} {$target_file}
+	ln -s {$SYMP_VERBOSE} {$overwrites} {$argv_opts} -- {$source_file} {$target_file} | string replace -- '->' '→'
 end
