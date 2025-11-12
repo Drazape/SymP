@@ -1,10 +1,15 @@
 function _symp_arg_switch_blend --description='Parse switch: blend' --inherit-variable='accept_values'
-	set --function individual_modes 'permission' 'ownership'
+	set --function individual_modes 'p' 'permission' 'o' 'ownership'
 
-	# Singular choice
-	## Reverse values to prioritise last the last ones
+	# Parse arguments
 	for i in {$argv}
-		set --function --prepend choices {$i}
+		## Individual choices: Short → Long
+		if test {$i} = 'p'
+			set i 'permission'
+		else if test {$i} = 'o'
+			set i 'ownership'
+		end
+		set --function --prepend choices {$i} # Reverse values to prioritise last the last ones
 	end
 	set --erase --local 'argv'
 
