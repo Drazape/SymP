@@ -4,6 +4,7 @@ set --global program_name 'symp'
 # Behavior setting
 ## Variables
 set --function accept_values 'true' '1' 'yes'
+set --function decline_values 'none' 'false' '0' 'no'
 ### Individual
 #### Output prefix
 set --global output_prefix {$program_name}':'
@@ -23,9 +24,9 @@ end
 ## Arguments
 ### Switches
 #### Parse
-argparse --name="$program_name" 'v/verbose&' 'h/help&' 'O/overwrites=&!contains "$_flag_value" i interactive f force' 'b/blend=*&!_symp_arg_switch_blend_validate' 'o/occurrence=&!contains "$_flag_value" c common u unique' 'r/resolution=!contains {$_flag_value} a absolute r relative' -- {$argv}
+argparse --max-args=2 --name="$program_name" 'v/verbose&' 'h/help&' 'O/overwrites=&!contains "$_flag_value" i interactive f force' 'b/blend=*&!_symp_arg_switch_multi-choice_validate -iownership -ipermission' 'o/occurrence=+&!_symp_arg_switch_multi-choice_validate -icommon -iunique' 'r/resolution=!contains {$_flag_value} a absolute r relative' -- {$argv}
 if test "$status" -ne 0 # Exit on incorrect arguments
-	return 1
+	exit 1
 end
 set --erase --local _flag_{v,h,O,i,f,b,o,r} # Erase unused short versions
 #### Individual
@@ -42,13 +43,15 @@ end
 
 ##### Occurrences
 if set -ql '_flag_occurrence'
-	_symp_arg_switch_occurrence {$_flag_occurrence}
+	set --local arguments 'common' 'unique'
+	_symp_arg_switch_multi-choice --individual={$arguments} --variable=file_occurrence {$_flag_occurrence}
 	set --erase --local '_flag_occurrence'
 end
 
 ##### Blend
 if set -ql '_flag_blend'
-	_symp_arg_switch_blend {$_flag_blend}
+	set --local arguments 'permission' 'ownership'
+	_symp_arg_switch_multi-choice --individual={$arguments} --variable='blend' {$_flag_blend}
 	set --erase --local '_flag_blend'
 end
 

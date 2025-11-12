@@ -6,7 +6,7 @@ function _symp_operate_case_non-recursive --description 'Simple, Non-recursive o
 
 	# If target doesn't exist, simply create a symlink to the source and exit
 	if ! test -e "$target_path"
-		if test "$symp_file_occurrence" != 'common'
+		if test "$file_occurrence" != 'common'
 			if set -q SYMP_VERBOSE # Verbosity announcement
 				echo 'Non-existant target: '{$target_path}\t'linking entire source'
 			end
@@ -14,8 +14,8 @@ function _symp_operate_case_non-recursive --description 'Simple, Non-recursive o
 			"$this_function"_link-entire
 		end
 	# If target is not a directory, it's a conflict. Overwrite it as a symlink.
-	else if ! test -d "$target_path"
-		if test "$symp_file_occurrence" != 'unique'
+	else if ! path is --type=dir "$target_path"
+		if test "$file_occurrence" != 'unique'
 			if set -q SYMP_VERBOSE # Verbosity announcement
 				echo 'Non-directory target: '{$target_path}\t'Overwriting entire target'
 			end

@@ -9,7 +9,7 @@ function _symp_arg --description='Parse arguments'
 		set --global target_path (path normalize {$argv[2]})
 	#### argument count != 1 or 2 → throw error
 	else
-		echo {$output_prefix} 'Invalid number of arguments' 1>&2
+		echo {$output_prefix} 'Atleast 1 argument must be specified' 1>&2
 		return 1
 	end
 end
