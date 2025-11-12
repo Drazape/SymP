@@ -148,16 +148,16 @@ cd {$source_code_dir}
 set --local local_vendor_functions_dir /usr/local/share/fish/vendor_functions.d
 ### Functions' path for root
 begin
-	set --local root_fish_config_path /root/.config/fish/conf.d/local_functions.fish
+	set --local global_fish_config_path /etc/fish/conf.d/local-functions.fish
 
 	# Preparation
-	mkdir -p (path dirname {$root_fish_config_path})
-	touch {$root_fish_config_path}
+	mkdir -p (path dirname {$global_fish_config_path})
+	touch {$global_fish_config_path}
 
 	# Main file
 	echo 'if ! contains '"$local_vendor_functions_dir"' {$fish_function_path}
 '\t'set --prepend fish_function_path '"$local_vendor_functions_dir"'
-end' | tee {$root_fish_config_path} > /dev/null 
+end' | tee {$global_fish_config_path} > /dev/null 
 end
 
 
@@ -177,9 +177,7 @@ begin
 end
 
 #### Libraries
-if rm --force {$local_vendor_functions_dir}/_symp_* && set --query VERBOSE # Put in a if block to bypass wildcard match error when the libraries do not exist
-	echo 'Removed old libraries'
-end
+fd --regex '^_symp_\w*' {$local_vendor_functions_dir} --exec-batch rm --force 
 
 set --local libraries (fd --base-directory=./lib/ --type=file --extension=fish)
 set --local absolute_library_names (string replace --all '/' '_' {$libraries} | string replace --all '_sub' \0 | string replace --all '_main' \0)
