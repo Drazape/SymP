@@ -1,5 +1,5 @@
 # Description
-*SymP* (**Sym**link **P**opulate) is a [`fish`](https://fishshell.com/) program that *SymP*ly *SymP*link the files with fewest *SymP*links as possible
+*SymP* (**Sym**link **P**opulate) is a program that *SymP*ly *SymP*link the files with fewest *SymP*links as possible
 [Wiki: Purpose](https://github.com/Dracape/SymP/wiki#purpose)
 ## Additional functionality
 - **`--blend`**: Symlinked files inherit access of their new parent directory
