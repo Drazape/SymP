@@ -18,6 +18,7 @@
 - **`--resolution`**: Configure symlink resolution
     * **Absolute**: Point to the **absolute** path
     * **Relative**: Point to the **relative** path
+
 [Wiki: Switches](https://github.com/Dracape/SymP/wiki/Usage#switches)
 # Demonstration
 The commands  
