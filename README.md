@@ -1,29 +1,24 @@
 # Description
-*SymP* (**Sym**link **P**opulate) is a [`fish`](https://fishshell.com/) program that *SymP*ly *Sy*ncs (overwrites) directories by symlinking the whole directories (unlike `cp -r --symbolic-link` that only symlinks the files), while conserving the unique parts of the target (unlike `ln -s`)
-
-This means that if there are 2 directories that have the same name and child files (i.e., the directory is a *pure* subset), they will be symlinked as a whole  
-Meaning that any changes to that directory (in either the source or target) after-wards would also appear in the other places  
-This is just like doing `ln -s`, but recursively based on the rules above  
-In other words, it tries to symlink the files with fewest symlinks as possible
-
+*SymP* (**Sym**link **P**opulate) is a [`fish`](https://fishshell.com/) program that *SymP*ly *SymP*link the files with fewest *SymP*links as possible
+[Wiki: Purpose](https://github.com/Dracape/SymP/wiki#purpose)
 ## Additional functionality
-- **`--blend`**: Symlinked files inherit the access of their new parent directory
+- **`--blend`**: Symlinked files inherit access of their new parent directory
     * **Disable**: `none` `false` `0` `no` (default)
     * **Enable**
         - **Both**: `both` `true` `1` `yes` (default: empty flag)
         - **Individual**
             * **Permission**: DAC permissions
             * **Ownership**: User & Group ownerships
-- **`--occurrence`**: Filter files to symlink based on if the file with the same name is also present in the target
+- **`--occurrence`**: Filter files based on their appearance in the target
     * **Common**: Present in the target
     * **Unique**: Absent in the target (avoid overwrites)
 - **`--overwrites`**: Change behavior for performing overwrites
-    * **Force**: Overwrite files without any confirmation
+    * **Force**: Overwrite files without confirmation
     * **Interactive**: Confirm overwrites interactively
-- **`--resolution`**: Configure how symbolic links are resolved
-    * **Absolute**: Make symbolic links point to the **absolute** path of the source file
-    * **Relative**: Make symbolic links point to the **relative** path of the source file
-
+- **`--resolution`**: Configure symlink resolution
+    * **Absolute**: Point to the **absolute** path
+    * **Relative**: Point to the **relative** path
+[Wiki: Switches](https://github.com/Dracape/SymP/wiki/Usage#switches)
 # Demonstration
 The commands  
 - `ln --symbolic`  
