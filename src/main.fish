@@ -62,14 +62,14 @@ end
 ##### Overwrites
 if set -ql '_flag_overwrites'
 	_symp_arg_switch_overwrites {$_flag_overwrites}
-	set --erase --local '__flag_overwrites'
+	set --erase --local '_flag_overwrites'
 end
 
 ##### Resolution
-if set -ql {$_flag_resolution} 
-	if ! contains {$_flag_resolution} 'a' 'absolute'
-		set --global --export relative_resolution
-	end
+if set -ql '_flag_resolution'
+	_symp_arg_switch_resolution {$_flag_resolution}
+else if ! set -qgx resolution
+	set --global --export resolution 'relative'
 end
 
 ##### Print Functions

@@ -35,7 +35,7 @@ function _symp_operate_file_symlink --description="Symlink files while inheritin
 	end
 
 	## Resolution
-	if set --query 'relative_resolution'
+	if test {$resolution} = 'relative'
 		set --function -- relative_path --relative-to={$target_parent}
 	end
 	set --function source_file (realpath {$relative_path} {$source_file})
