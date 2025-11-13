@@ -24,7 +24,7 @@ end
 ## Arguments
 ### Switches
 #### Parse
-argparse --max-args=2 --name="$program_name" 'v/verbose&' 'h/help&' 'O/overwrites=&!contains "$_flag_value" i interactive f force' 'b/blend=*&!_symp_arg_switch_multi-choice_validate -iownership -ipermission' 'o/occurrence=+&!_symp_arg_switch_multi-choice_validate -icommon -iunique' 'r/resolution=!contains {$_flag_value} a absolute r relative' -- {$argv}
+argparse --max-args=2 --name="$program_name" 'v/verbose&' 'h/help&' 'O/overwrites=&!contains "$_flag_value" i interactive f force' 'b/blend=*&!_symp_arg_switch_multi-choice_validate -iownership -ipermission' 'o/occurrence=+&!_symp_arg_switch_multi-choice_validate -m -icommon -iunique' 'r/resolution=!contains {$_flag_value} a absolute r relative' -- {$argv}
 if test "$status" -ne 0 # Exit on incorrect arguments
 	exit 1
 end
