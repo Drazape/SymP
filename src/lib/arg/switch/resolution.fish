@@ -3,6 +3,6 @@ function _symp_arg_switch_resolution --description='Parse switch: overwrites'
 		set --global -- resolution '--absolute'
 		set --global --export SYMP_INTERACTIVE
 	else
-		set --global --export -- overwrites '--relative'
+		set --global --export -- resolution '--relative'
 	end
 end
