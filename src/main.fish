@@ -15,10 +15,6 @@ if contains "$INTERACTIVE" {$accept_values}
 	set --global --export 'SYMP_INTERACTIVE'
 end
 
-#### Blend
-if set -qx blend
-	set --global --export blend (string split ' ' {$blend})
-end
 
 
 ## Arguments
@@ -47,9 +43,9 @@ begin
 	if set -ql '_flag_occurrence'
 		_symp_arg_switch_multi-choice --individual={$arguments} --variable=file_occurrence {$_flag_occurrence}
 		set --erase --local '_flag_occurrence'
-	else if ! set -qx file_occurrence
+	else if ! set -qx file_occurrence # Default
 		set --global --export file_occurrence {$arguments}
-	else
+	else # Split multiple values if already set
 		set --global --export file_occurrence (string split ' ' {$file_occurrence})
 	end
 end
@@ -59,6 +55,8 @@ if set -ql '_flag_blend'
 	set --local arguments 'permission' 'ownership'
 	_symp_arg_switch_multi-choice --individual={$arguments} --variable='blend' {$_flag_blend}
 	set --erase --local '_flag_blend'
+else if set -qx blend # Split multiple values if already set
+	set --global --export blend (string split ' ' {$blend})
 end
 
 ##### Overwrites
@@ -71,7 +69,7 @@ end
 if set -ql '_flag_resolution'
 	set --global --export resolution {$flag_resolution}
 	set --erase --local '_flag_resolution'
-else
+else # Default
 	set --global --export resolution 'relative'
 end
 
