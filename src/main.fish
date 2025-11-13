@@ -67,10 +67,10 @@ end
 
 ##### Resolution
 if set -ql '_flag_resolution'
-	set --global --export resolution {$flag_resolution}
+	_symp_arg_switch_resolution
 	set --erase --local '_flag_resolution'
-else # Default
-	set --global --export resolution 'relative'
+else
+	set --global --export -- overwrites '--relative'
 end
 
 ##### Print Functions
