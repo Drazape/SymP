@@ -206,6 +206,11 @@ begin
 	end	
 end
 
+# Clone wiki on standard installation
+if ! set -ql _flag_symlink
+	git clone https://github.com/Dracape/SymP.wiki.git /usr/local/share/doc/SymP
+end
+
 # Cleanup
 function cleanup_temporary_repository --description='Nuke temporary repository on exit' --on-event=fish_exit
 	if set -qg tmp_repo
