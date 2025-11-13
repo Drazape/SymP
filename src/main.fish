@@ -70,6 +70,8 @@ if set -ql {$_flag_resolution}
 	if ! contains {$_flag_resolution} 'a' 'absolute'
 		set --global --export relative_resolution
 	end
+else
+	set --global --export relative_resolution
 end
 
 ##### Print Functions
