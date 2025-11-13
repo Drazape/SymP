@@ -42,10 +42,16 @@ if set -ql '_flag_help'
 end
 
 ##### Occurrences
-if set -ql '_flag_occurrence'
+begin
 	set --local arguments 'common' 'unique'
-	_symp_arg_switch_multi-choice --individual={$arguments} --variable=file_occurrence {$_flag_occurrence}
-	set --erase --local '_flag_occurrence'
+	if set -ql '_flag_occurrence'
+		_symp_arg_switch_multi-choice --individual={$arguments} --variable=file_occurrence {$_flag_occurrence}
+		set --erase --local '_flag_occurrence'
+	else if ! set -qx file_occurrence
+		set --global --export file_occurrence {$arguments}
+	else
+		set --global --export file_occurrence (string split ' ' {$file_occurrence})
+	end
 end
 
 ##### Blend

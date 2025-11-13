@@ -20,10 +20,10 @@ function _symp_operate_case_recursive_operate-on-children --description 'Operate
 			end
 		else
 			if test -e "$target_item"
-				if contains "$file_occurrence" 'common'
+				if contains 'common' {$file_occurrence}
 					"$this_function"_overwrite "$source_item" "$target_item"
 				end
-			else if contains "$file_occurrence" 'unique'
+			else if contains 'unique' {$file_occurrence}
 				"$this_function"_overwrite "$source_item" "$target_item"
 			end
 		end
