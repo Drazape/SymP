@@ -28,8 +28,8 @@ The commands
 - `symp`  
 
 will be used on the following file-hierarchy (since this program is an balance between the 2 standard utility commands):  
-- **Source**: `📁 dir/`  
-- **Target**: `📁 link-dir/`  
+- **Source**: `📁 dir`  
+- **Target**: `📁 link-dir`  
 
 <details>
 <summary>File-hierarchy</summary>
