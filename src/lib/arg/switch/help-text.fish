@@ -28,7 +28,7 @@ function _symp_arg_switch_help-text --description='Help text for the `--help` sw
 	set_color normal; echo \t'Configure symlink resolution'
 
 	set_color --bold; echo -n -- '  -O '; set_color normal; echo -n '['; set_color --bold; echo -n 'i'; set_color normal; echo -n '|'; set_color --bold; echo -n 'f'; set_color normal; echo -n '], '; set_color --bold; echo -n -- '--overwrites'; set_color normal; echo -n ' ['; set_color --bold; echo -n 'interactive'; set_color normal; echo -n '|'; set_color --bold; echo -n 'force'; set_color normal; echo ' (default)]'
-	echo \t'Change overwrite confirmation behavior'
+	echo \t'Change overwrite behavior'
 	echo -n \t'(Environment: '; set_color --italics; echo -n 'SYMP_INTERACTIVE INTERACTIVE='; set_color normal; echo \)
 
 
