@@ -1,26 +1,26 @@
 # Description
 *SymP* (**Sym**link **P**opulate) is a program written in [`fish`](https://fishshell.com/) that *SymP*ly *SymP*link the files with fewest *SymP*links as possible  
-[Wiki: Purpose](https://github.com/Dracape/SymP/wiki#purpose)
+[Wiki: Purpose](https://github.com/Dracape/SymP/wiki#purpose "The home-page of the wiki: 'Purpose' section")
 ## Additional functionality
-- [**Resolution**](https://github.com/Dracape/SymP/wiki/Resolution): Configure symlink resolution
+- [**Resolution**](https://github.com/Dracape/SymP/wiki/Resolution "Wiki: single-Choice switch 'Resolution'"): Configure symlink resolution
     * **Absolute**: Point to the **absolute** path
     * **Relative**: Point to the **relative** path
-- [**Overwrites**](https://github.com/Dracape/SymP/wiki/Overwrites): Change behavior for performing overwrites
+- [**Overwrites**](https://github.com/Dracape/SymP/wiki/Overwrites "Wiki: single-choice switch 'Overwrites'"): Change behavior for performing overwrites
     * **Force**: Overwrite files without confirmation
     * **Interactive**: Confirm overwrites interactively
     * **Backup**: Create a backup before overwriting
-- [**Blend**](https://github.com/Dracape/SymP/wiki/Blend): Symlinked files inherit access of their new parent directory
+- [**Blend**](https://github.com/Dracape/SymP/wiki/Blend "Wiki: dual-choice switch 'Blend'"): Symlinked files inherit access of their new parent directory
     * **Disable**: `none` `false` `0` `no` (default)
     * **Enable**
         - **Both**: `both` `true` `1` `yes` (default: empty flag)
         - **Individual**
             * **Permission**: DAC permissions
             * **Ownership**: User & Group ownerships
-- [**Occurrence**](https://github.com/Dracape/SymP/wiki/Occurrence): Filter files based on their appearance in the target
+- [**Occurrence**](https://github.com/Dracape/SymP/wiki/Occurrence "Wiki: dual-choice switch 'Blend'"): Filter files based on their appearance in the target
     * **Common**: Present in the target
     * **Unique**: Absent in the target (avoid overwrites)
 
-[Wiki: Switches](https://github.com/Dracape/SymP/wiki/Usage#switches)
+[Wiki: Switches](https://github.com/Dracape/SymP/wiki/Usage#switches "Wiki: Page Usage#switches")
 # Demonstration
 The commands  
 - `ln --symbolic`  
