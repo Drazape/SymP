@@ -16,7 +16,7 @@ function _symp_operate_case_recursive_operate-on-children --description 'Operate
 
 			set --local recurse_status {$status}
 			if test "$recurse_status" -ne 0
-				exit {$recurse_status}
+				return {$recurse_status}
 			end
 		else
 			if test -e "$target_item"
