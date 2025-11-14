@@ -2,20 +2,21 @@
 *SymP* (**Sym**link **P**opulate) is a program written in [`fish`](https://fishshell.com/) that *SymP*ly *SymP*link the files with fewest *SymP*links as possible  
 [Wiki: Purpose](https://github.com/Dracape/SymP/wiki#purpose)
 ## Additional functionality
-- **`--blend`**: Symlinked files inherit access of their new parent directory
+- **`Blend`**: Symlinked files inherit access of their new parent directory
     * **Disable**: `none` `false` `0` `no` (default)
     * **Enable**
         - **Both**: `both` `true` `1` `yes` (default: empty flag)
         - **Individual**
             * **Permission**: DAC permissions
             * **Ownership**: User & Group ownerships
-- **`--occurrence`**: Filter files based on their appearance in the target
+- **`Occurrence`**: Filter files based on their appearance in the target
     * **Common**: Present in the target
     * **Unique**: Absent in the target (avoid overwrites)
-- **`--overwrites`**: Change behavior for performing overwrites
+- **`Overwrites`**: Change behavior for performing overwrites
     * **Force**: Overwrite files without confirmation
     * **Interactive**: Confirm overwrites interactively
-- **`--resolution`**: Configure symlink resolution
+    * **Backup**: Create a backup before overwriting
+- **`Resolution`**: Configure symlink resolution
     * **Absolute**: Point to the **absolute** path
     * **Relative**: Point to the **relative** path
 
