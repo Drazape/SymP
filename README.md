@@ -95,10 +95,10 @@ will be used on the following file-hierarchy (since this program is an balance b
 ```
 📁 link-dir
 ├── 🔗 same-dir → 📁 dir/same-dir
+├── 🔗 same-file → 📄 dir/same-file
 ├── 🔗 udir-d → 📁 dir/udir-d		# Directory not present in Target
 ├── 📁 udir-l
 │   └── 📄 subfile
-├── 🔗 same-file → 📄 dir/same-file
 ├── 🔗 ufile-d → 📄 dir/ufile-d		# File not present in Target
 └── 📄 ufile-l
 ```
