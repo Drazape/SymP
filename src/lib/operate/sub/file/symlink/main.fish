@@ -41,5 +41,5 @@ function _symp_operate_file_symlink --description="Symlink files while inheritin
 	set --function source_file (realpath {$relative_path} {$source_file})
 
 	## Link
-	ln -s {$SYMP_VERBOSE} {$overwrites} {$argv_opts} -- {$source_file} {$target_file} | string replace -- '->' '→'
+	ln --symbolic --no-target-directory {$SYMP_VERBOSE} {$overwrites} {$argv_opts} -- {$source_file} {$target_file} | string replace -- '->' '→'
 end
