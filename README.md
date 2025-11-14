@@ -2,23 +2,23 @@
 *SymP* (**Sym**link **P**opulate) is a program written in [`fish`](https://fishshell.com/) that *SymP*ly *SymP*link the files with fewest *SymP*links as possible  
 [Wiki: Purpose](https://github.com/Dracape/SymP/wiki#purpose)
 ## Additional functionality
-- **Blend**: Symlinked files inherit access of their new parent directory
+- [**Resolution**](https://github.com/Dracape/SymP/wiki/Resolution): Configure symlink resolution
+    * **Absolute**: Point to the **absolute** path
+    * **Relative**: Point to the **relative** path
+- [**Overwrites**](https://github.com/Dracape/SymP/wiki/Overwrites): Change behavior for performing overwrites
+    * **Force**: Overwrite files without confirmation
+    * **Interactive**: Confirm overwrites interactively
+    * **Backup**: Create a backup before overwriting
+- [**Blend**](https://github.com/Dracape/SymP/wiki/Blend): Symlinked files inherit access of their new parent directory
     * **Disable**: `none` `false` `0` `no` (default)
     * **Enable**
         - **Both**: `both` `true` `1` `yes` (default: empty flag)
         - **Individual**
             * **Permission**: DAC permissions
             * **Ownership**: User & Group ownerships
-- **Occurrence**: Filter files based on their appearance in the target
+- [**Occurrence**](https://github.com/Dracape/SymP/wiki/Occurrence): Filter files based on their appearance in the target
     * **Common**: Present in the target
     * **Unique**: Absent in the target (avoid overwrites)
-- **Overwrites**: Change behavior for performing overwrites
-    * **Force**: Overwrite files without confirmation
-    * **Interactive**: Confirm overwrites interactively
-    * **Backup**: Create a backup before overwriting
-- **Resolution**: Configure symlink resolution
-    * **Absolute**: Point to the **absolute** path
-    * **Relative**: Point to the **relative** path
 
 [Wiki: Switches](https://github.com/Dracape/SymP/wiki/Usage#switches)
 # Demonstration
