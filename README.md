@@ -90,7 +90,7 @@ will be used on the following file-hierarchy (since this program is an balance b
 </details>
 
 <details>
-<summary>3. SymP</summary>
+<summary>3. symp</summary>
 
 ```
 📁 link-dir
