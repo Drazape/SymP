@@ -18,6 +18,7 @@ complete --command='symp' --exclusive --short-option='r' 	--long-option='resolut
 complete --command='symp' --exclusive --short-option='r' 	--long-option='resolution' 	--arguments='relative' 		--description='Point symlinks to relative path'
 complete --command='symp' --exclusive --short-option='r' 	--long-option='resolution' 					--description='Configure symlink resolution'
 
+complete --command='symp' --exclusive --short-option='O' 	--long-option='overwrites' 	--arguments='backup'	 	--description='Backup before overwriting'
 complete --command='symp' --exclusive --short-option='O' 	--long-option='overwrites' 	--arguments='interactive' 	--description='Confirm interactively'
 complete --command='symp' --exclusive --short-option='O' 	--long-option='overwrites' 	--arguments='force'		--description='No confirmation'
 complete --command='symp' --exclusive --short-option='O' 	--long-option='overwrites' 					--description='Change behavior for overwrites' 
