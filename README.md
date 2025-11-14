@@ -23,8 +23,8 @@
 [Wiki: Switches](https://github.com/Dracape/SymP/wiki/Usage#switches "Wiki: Page Usage#switches")
 # Demonstration
 The commands  
-- `ln --symbolic --force --no-target-directory`  
-- `cp --recursive --symbolic-link --force --no-target-directory`  
+- `ln --symbolic        --force --no-target-directory`  
+- `cp --symbolic-link   --force --no-target-directory --recursive`  
 - `symp`  
 
 will be used on the following file-hierarchy (since this program is an balance between the 2 standard utility commands):  
@@ -69,7 +69,7 @@ will be used on the following file-hierarchy (since this program is an balance b
 	- **Without link-dir**: `🔗 link-dir → 📁 dir`
 
 <details>
-<summary>2. cp -rfsT</summary>
+<summary>2. cp -sfTr</summary>
 
 ```
 📁 same-dir
