@@ -1,11 +1,9 @@
 function _symp_arg_switch_overwrites --description='Parse switch: overwrites'
-	for mode in {$argv}
-		# If the mode is not in the short form, add an extra `-` to it
-		if test (count (string split \0 {$mode})) -ne 1
-			set -- mode '-'{$mode}
-		end
-		set --global --export -- overwrites '-'{$mode}
+	# If the argv is not in the short form, add an extra `-` to it
+	if test (count (string split -- \0 {$argv})) -ne 1
+		set -- argv '-'{$argv}
 	end
+	set --global --export -- overwrites '-'{$argv}
 
 	# Default
 	if ! set -qgx overwrites
