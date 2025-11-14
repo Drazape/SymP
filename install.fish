@@ -180,7 +180,7 @@ end
 fd --regex '^_symp_\w*' {$local_vendor_functions_dir} --exec-batch rm --force 
 
 set --local libraries (fd --base-directory=./lib/ --type=file --extension=fish)
-set --local absolute_library_names (string replace --all '/' '_' {$libraries} | string replace --all '_sub' \0 | string replace --all '_main' \0)
+set --local absolute_library_names (string replace --all '/main' \0 {$libraries} | string replace --all '/' '_')
 
 for i in (seq (count {$libraries}))
 	set --local install_path {$local_vendor_functions_dir}/_{$executable_name}_{$absolute_library_names[$i]} 
