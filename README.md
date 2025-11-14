@@ -23,13 +23,13 @@
 [Wiki: Switches](https://github.com/Dracape/SymP/wiki/Usage#switches "Wiki: Page Usage#switches")
 # Demonstration
 The commands  
-- `ln --symbolic`  
-- `cp --recursive --symbolic-link --force --dereference`  
+- `ln --symbolic --force --no-target-directory`  
+- `cp --recursive --symbolic-link --force --no-target-directory`  
 - `symp`  
 
 will be used on the following file-hierarchy (since this program is an balance between the 2 standard utility commands):  
-- **Source**: `dir/`  
-- **Target**: `link-dir/`  
+- **Source**: `📁 dir/`  
+- **Target**: `📁 link-dir/`  
 
 <details>
 <summary>File-hierarchy</summary>
@@ -64,39 +64,28 @@ will be used on the following file-hierarchy (since this program is an balance b
 </details>
 
 ## Results
-1. `ln --symbolic`
-
+1. `ln -sfT`
 	- **With link-dir**: `ln: Already exists`
-	- **Without link-dir**: `🔗 link-dir → dir`
+	- **Without link-dir**: `🔗 link-dir → 📁 dir`
 
 <details>
-<summary>2. cp --recursive --symbolic-link --force --dereference</summary>
+<summary>2. cp -rfsT</summary>
 
 ```
-📁 link-dir
-├── 📁 dir
-│   ├── 📁 same-dir
-│   │   ├── 📁 a
-│   │   │   ├── 📄 afile-1 → dir/same-dir/a/afile-1
-│   │   │   └── 📄 afile-2 → dir/same-dir/a/afile-2
-│   │   └── 📁 b
-│   │       ├── 📄 bfile-1 → dir/same-dir/b/bfile-1
-│   │       └── 📄 bfile-2 → dir/same-dir/b/bfile-2
-│   ├── 📁 udir-d
-│   │   └── 📄 subfile → dir/udir-d/subfile
-│   ├── 📄 same-file → dir/same-file
-│   └── 📄 ufile-d → dir/ufile-d
-├── 📁 same-dir
-│   ├── 📁 a
-│   │   ├── 📄 afile-1
-│   │   └── 📄 afile-2
-│   └── 📁 b
-│       ├── 📄 bfile-1
-│       └── 📄 bfile-2
-├── 📁 udir-l
-│   └── 📄 subfile
-├── 📄 same-file
-└── 📄 ufile-l
+📁 same-dir
+├── 📁 a
+│   ├── 🔗 afile-1 → 📄 dir/same-dir/a/afile-1
+│   └── 🔗 afile-2 → 📄 dir/same-dir/a/afile-2
+└── 📁 b
+    ├── 🔗 bfile-1 → 📄 dir/same-dir/b/bfile-1
+    └── 🔗 bfile-2 → 📄 dir/same-dir/b/bfile-2
+🔗 same-file → 📄 dir/same-file
+📁 udir-d
+└── 🔗 subfile → 📄 dir/udir-d/subfile
+📁 udir-l
+└── 📄 subfile
+🔗 ufile-d → 📄 dir/ufile-d
+📄 ufile-l
 ```
 </details>
 
@@ -105,12 +94,12 @@ will be used on the following file-hierarchy (since this program is an balance b
 
 ```
 📁 link-dir
-├── 🔗 same-dir → dir/same-dir
-├── 🔗 udir-d → dir/udir-d			# Directory not present in Target
+├── 🔗 same-dir → 📁 dir/same-dir
+├── 🔗 udir-d → 📁 dir/udir-d		# Directory not present in Target
 ├── 📁 udir-l
 │   └── 📄 subfile
-├── 🔗 same-file → dir/same-file
-├── 🔗 ufile-d → dir/ufile-d		# File not present in Target
+├── 🔗 same-file → 📄 dir/same-file
+├── 🔗 ufile-d → 📄 dir/ufile-d		# File not present in Target
 └── 📄 ufile-l
 ```
 </details>
