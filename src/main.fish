@@ -60,8 +60,12 @@ else if set -qx blend # Split multiple values if already set
 end
 
 ##### Overwrites
-_symp_arg_switch_overwrites {$_flag_overwrites}
-set --erase --local '_flag_overwrites'
+if set -ql '_flag_overwrites'
+	_symp_arg_switch_overwrites {$_flag_overwrites}
+	set --erase --local '_flag_overwrites'
+else if ! set -qgx 'overwrites' # Default
+	set --global --export -- overwrites '--force'
+end
 
 ##### Resolution
 if set -ql '_flag_resolution'
