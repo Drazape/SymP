@@ -11,7 +11,7 @@ function _symp_arg --description='Parse arguments'
 	## argument count != 1 or 2 → throw error
 	else
 		echo {$output_prefix} 'Atleast 1 argument must be specified' 1>&2
-		return 1
+		exit 1
 	end
 
 	# Normalize
