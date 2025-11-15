@@ -38,7 +38,7 @@ function _symp_operate_file_symlink --description="Symlink files while inheritin
 	if test {$resolution} = 'relative'
 		set --function -- relative_path --relative-to={$target_parent}
 	end
-	set --function source_file (realpath {$relative_path} {$source_file})
+	set --function source_file (realpath --no-symlinks {$relative_path} {$source_file})
 
 	## Link
 	ln --symbolic --no-target-directory {$SYMP_VERBOSE} {$overwrites} {$argv_opts} -- {$source_file} {$target_file} | string replace -- '->' '→'

@@ -169,7 +169,7 @@ begin
 	rm --force {$executable_install_path} # Remove if already exists
 	if set -ql _flag_symlink
 		mkdir -p (path dirname {$executable_install_path})
-		ln -s {$VERBOSE} -- (realpath ./main.fish) {$executable_install_path}
+		ln -s {$VERBOSE} -- (realpath --no-symlinks ./main.fish) {$executable_install_path}
 		chmod +x {$executable_install_path}
 	else
 		install -D {$VERBOSE} -- ./main.fish {$executable_install_path} # Install main executable script
@@ -186,7 +186,7 @@ for i in (seq (count {$libraries}))
 	set --local install_path {$local_vendor_functions_dir}/_{$executable_name}_{$absolute_library_names[$i]} 
 	if set -ql _flag_symlink
 		mkdir -p {$local_vendor_functions_dir}
-		ln -s {$VERBOSE} (realpath lib/"$libraries[$i]") {$install_path}
+		ln -s {$VERBOSE} (realpath --no-symlinks lib/"$libraries[$i]") {$install_path}
 	else
 		install -D --mode=644 {$VERBOSE} lib/"$libraries[$i]" {$install_path}
 	end
@@ -200,7 +200,7 @@ begin
 
 	if set -ql _flag_symlink
 		mkdir -p {$local_vendor_completions_dir}
-		ln -s {$VERBOSE} (realpath ./completion.fish) "$completion_install_path"
+		ln -s {$VERBOSE} (realpath --no-symlinks ./completion.fish) "$completion_install_path"
 	else
 		install -D --mode=644 {$VERBOSE} ./completion.fish "$completion_install_path"
 	end	
