@@ -1,5 +1,5 @@
 # Description
-*SymP* (**Sym**link **P**opulate) is a program written in [`fish`](https://fishshell.com/ "Official Fish home-page") that *SymP*ly *SymP*link the files with fewest *SymP*links as possible  
+*SymP* (**Sym**link **P**opulate) is a program written in [`fish`](https://fishshell.com/ "Official Fish home-page") that *SymP*ly *SymP*link files with fewest *SymP*links as possible  
 [Wiki: Purpose](https://github.com/Dracape/SymP/wiki#purpose "The home-page of the wiki: 'Purpose' section")
 ## Additional functionality
 - [**Resolution**](https://github.com/Dracape/SymP/wiki/Resolution "Wiki: single-Choice switch 'Resolution'"): Configure symlink resolution
