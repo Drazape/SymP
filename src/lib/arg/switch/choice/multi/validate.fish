@@ -1,4 +1,4 @@
-function _symp_arg_switch_multi-choice_validate --description='Validate dual-choice argparse switches' --inherit-variable='accept_values' --inherit-variable='decline_values'
+function _symp_arg_switch_choice_multi_validate --description='Validate dual-choice argparse switches' --inherit-variable='accept_values' --inherit-variable='decline_values'
 	argparse --max-args=0 'i/individual=+&' 'm/mandatory&' -- {$argv} 2>&1 # Specify individual flags that are allowed
 	set --erase --local _flag_{i,m} # Unused short versions
 

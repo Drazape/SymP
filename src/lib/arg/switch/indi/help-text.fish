@@ -1,4 +1,4 @@
-function _symp_arg_switch_help-text --description='Help text for the `--help` switch of SymP'
+function _symp_arg_switch_indi_help-text --description='Help text for the `--help` switch of SymP'
 	echo 'Populate TARGET with the least amount of symbolic links as possible from SOURCE_DIR.'\n
 	begin
 		set --local page 'Usage'

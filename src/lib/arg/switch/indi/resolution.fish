@@ -1,4 +1,4 @@
-function _symp_arg_switch_resolution --description='Parse switch: resolution'
+function _symp_arg_switch_indi_resolution --description='Parse switch: resolution'
 	if ! contains "$argv" 'a' 'absolute'
 		set --global --export resolution 'relative'
 	else
