@@ -4,12 +4,11 @@ function _symp_operate_case_recursive_operate-on-children --description 'Operate
 		set --append output_prefix (status current-function | string split '_' | tail -n 1)':' # Append the Output-prefix with the current function name
 	end
 
-	for item in (command ls -A "$source_dir") # Items in source content
+	for source_item in "$source_dir"/{,.}* # Items in source content
 		if set -q SYMP_VERBOSE # Verbosity announcement
-			echo {$output_prefix} 'Processing item: '{$item}
+			echo {$output_prefix} 'Processing item: '{$source_item}
 		end
-		set --local source_item "$source_dir"/"$item"
-		set --local target_item "$target_path"/"$item"
+		set --local target_item "$target_path"/(path basename "$source_item")
 
 		if path is --type=dir "$source_item"
 			"$this_function"_recurse "$source_item" "$target_item"
