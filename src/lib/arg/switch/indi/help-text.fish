@@ -2,16 +2,13 @@ function _symp_arg_switch_indi_help-text --description='Help text for the `--hel
 	echo 'Populate TARGET with the least amount of symbolic links as possible from SOURCE_DIR.'\n
 	begin
 		set --local page 'Usage'
-		set --function wiki_page 'https://github.com/Dracape/SymP/wiki'/{$page}
+		set --local wiki_page 'https://github.com/Dracape/SymP/wiki'/{$page}
 		set_color --bold --underline; echo -ne '\e]8;;'{$wiki_page}'\a'{$page}'\e]8;;\a:'; set_color normal; echo ' '"$program_name"' [OPTION] SOURCE_DIR TARGET'\n
 	end
-	begin
-		set --local section 'Arguments'
-		set_color --bold --underline; echo -e '\e]8;;'{$wiki_page}#{$section}'\a'{$section}'\e]8;;\a:'; set_color normal; echo \t'<paths>…'\n
-	end
+	set_color --bold --underline; echo 'Arguments:'; set_color normal; echo \t'<paths>…'\n
 
 
-	set_color --bold --underline; echo -e '\e]8;;'{$wiki_page}'#Switches\aOptions\e]8;;\a:'
+	set_color --bold --underline; echo 'Options:'
 	set_color --bold normal; echo -n -- '  -h'; set_color normal; echo -n ', '; set_color --bold; echo -- '--help'
 	set_color normal; echo \t'Print help'
 	
@@ -34,7 +31,7 @@ function _symp_arg_switch_indi_help-text --description='Help text for the `--hel
 
 
 	if set -q SYMP_VERBOSE
-		set_color --bold --underline; echo -e \n'\e]8;;'{$wiki_page}'#Environment\aVariables\e]8;;\a:'
+		set_color --bold --underline; echo \n'Variables:'
 		set_color --bold normal; echo -n '  SYMP_VERBOSE'; set_color normal; echo -n ', '; set_color --bold; echo -n 'VERBOSE'; set_color normal; echo -n '=['; set_color --bold; echo -n '1'; set_color normal; echo -n '|'; set_color --bold; echo -n 'true'; set_color normal; echo -n '|'; set_color --bold; echo -n 'yes'; set_color normal; echo ']' 
 		echo \t'Show more information'
 		set_color normal; echo -n \t'(Switch: '; set_color --italics; echo -n -- '-v';set_color normal; echo -n ', ';set_color --italics ; echo -n -- '--verbose' ; set_color normal; echo \)
