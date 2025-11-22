@@ -8,7 +8,7 @@ function _symp_operate_case_recursive_operate-on-children --description 'Operate
 		if set -q SYMP_VERBOSE # Verbosity announcement
 			echo {$output_prefix} 'Processing item: '{$source_item}
 		end
-		set --local -- target_item "$target_path"/(path basename "$source_item")
+		set --local -- target_item "$target_path"/(path basename -- "$source_item")
 
 		if path is --type=dir -- "$source_item"
 			"$this_function"_recurse "$source_item" "$target_item"

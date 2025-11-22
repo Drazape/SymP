@@ -27,7 +27,7 @@ function _symp_operate_file_symlink --description="Symlink files while inheritin
 
 
 	# Operation
-	set --function -- target_parent (path dirname {$target_file})
+	set --function -- target_parent (path dirname -- {$target_file})
 
 	## Access
 	if set -qx blend

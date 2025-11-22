@@ -15,6 +15,6 @@ function _symp_arg --description='Parse arguments'
 	end
 
 	# Normalize
-	set --global -- source_dir (path normalize {$source_dir})
-	set --global -- target_path (path normalize {$target_path})
+	set --global -- source_dir (path normalize -- {$source_dir})
+	set --global -- target_path (path normalize -- {$target_path})
 end
