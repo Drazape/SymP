@@ -10,7 +10,7 @@ function _symp_operate_file_verify_writability --description 'Verify that the so
 				echo {$output_prefix} 'testing for parent directory of non-directory file '\"{$file_path}\"': '(path dirname {$file_path})
 			end
 			set --function file_path (path dirname {$file_path})
-			set --erase --local argv
+			set --erase --local 'argv'
 		end
 
 		# Check permissions
