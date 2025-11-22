@@ -9,11 +9,11 @@ function _symp_operate_case_recursive_operate-on-children_overwrite --descriptio
 		echo {$output_prefix} 'Invalid number of arguments' 1>&2
 		return 1
 	end
-	set --local source_item {$argv[1]}
-	set --local target_item {$argv[2]}
+	set --local -- source_item {$argv[1]}
+	set --local -- target_item {$argv[2]}
 
 	if test -e {$target_item}
-		"$operate_function"_file_remove "$target_item" # Remove target item if it exists
+		"$operate_function"_file_remove -- "$target_item" # Remove target item if it exists
 	end
-	"$operate_function"_file_symlink "$source_item" "$target_item"
+	"$operate_function"_file_symlink -- "$source_item" "$target_item"
 end

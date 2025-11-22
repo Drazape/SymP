@@ -13,7 +13,7 @@ function _symp_operate_case_recursive --description 'Recursive operation on supe
 				echo {$output_prefix} 'Unique file: '"$target_path"/"$item_path"
 			end
 
-			set --function impure_subset
+			set --function 'impure_subset'
 			break
 		end
 	end

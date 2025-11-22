@@ -7,6 +7,6 @@ function _symp_operate_case_recursive_reserve-and-link --description 'Forcefully
 		echo {$output_prefix} 'Pure subset directory: '{$target_path}
 	end
 
-	"$operate_function"_file_remove -r "$target_path"
-	"$operate_function"_file_symlink -n "$source_dir" "$target_path"
+	"$operate_function"_file_remove -r -- "$target_path"
+	"$operate_function"_file_symlink -n -- "$source_dir" "$target_path"
 end

@@ -4,8 +4,8 @@ function _symp_operate_file_symlink_inherit_permission --description='Inherit pe
 	end
 	set --local this_function (status current-function)
 
-	set --local source_file {$argv[1]}
-	set --local target_parent {$argv[2]}
+	set --local -- source_file {$argv[1]}
+	set --local -- target_parent {$argv[2]}
 
 
 	set --local new_parent_octal (stat -c %a -- {$target_parent}) # New Parent directory's octal permissions for setting in source directories
@@ -26,11 +26,11 @@ function _symp_operate_file_symlink_inherit_permission --description='Inherit pe
 	end
 
 	# Set new permissions
-	if path is --type=dir {$source_file}
-		chmod {$new_parent_octal} {$source_file}
-		fd . --type=directory {$source_file} --exec-batch chmod {$new_parent_octal} '{}'
-		fd . --type=file {$source_file} --exec-batch chmod {$file_octal} '{}'	
+	if path is --type=dir -- {$source_file}
+		chmod -- {$new_parent_octal} {$source_file}
+		fd . --type=directory {$source_file} --exec-batch chmod -- {$new_parent_octal} '{}'
+		fd . --type=file {$source_file} --exec-batch chmod -- {$file_octal} '{}'	
 	else
-		chmod {$file_octal} {$source_file}
+		chmod -- {$file_octal} {$source_file}
 	end
 end

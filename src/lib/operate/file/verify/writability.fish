@@ -14,7 +14,7 @@ function _symp_operate_file_verify_writability --description 'Verify that the so
 		end
 
 		# Check permissions
-		if ! path is --perm=write --perm=exec {$file_path}
+		if ! path is --perm=write --perm=exec -- {$file_path}
 			echo {$output_prefix} 'Unwritable directory: '"$file_path" 1>&2
 			exit 1
 		end

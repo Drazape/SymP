@@ -20,14 +20,14 @@ function _symp_operate_file_symlink --description="Symlink files while inheritin
 	end
 
 	### Set file values
-	set --function source_file {$argv[1]}
-	set --function target_file {$argv[2]}
+	set --function -- source_file {$argv[1]}
+	set --function -- target_file {$argv[2]}
 	set --erase --local 'argv'
 
 
 
 	# Operation
-	set --function target_parent (path dirname {$target_file})
+	set --function -- target_parent (path dirname {$target_file})
 
 	## Access
 	if set -qx blend
@@ -38,7 +38,7 @@ function _symp_operate_file_symlink --description="Symlink files while inheritin
 	if test {$resolution} = 'relative'
 		set --function -- relative_path --relative-to={$target_parent}
 	end
-	set --function source_file (realpath --no-symlinks {$relative_path} {$source_file})
+	set --function -- source_file (realpath --no-symlinks {$relative_path} {$source_file})
 
 	## Link
 	ln --symbolic --no-target-directory {$SYMP_VERBOSE} {$overwrites} {$argv_opts} -- {$source_file} {$target_file} | string replace -- '->' '→'

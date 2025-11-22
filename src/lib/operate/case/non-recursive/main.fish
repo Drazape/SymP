@@ -14,7 +14,7 @@ function _symp_operate_case_non-recursive --description 'Simple, Non-recursive o
 			"$this_function"_link-entire
 		end
 	# If target is not a directory, it's a conflict. Overwrite it as a symlink.
-	else if ! path is --type=dir "$target_path"
+	else if ! path is --type=dir -- "$target_path"
 		if test "$file_occurrence" != 'unique'
 			if set -q SYMP_VERBOSE # Verbosity announcement
 				echo 'Non-directory target: '{$target_path}\t'Overwriting entire target'
