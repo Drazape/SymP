@@ -4,5 +4,4 @@ function _symp_operate_case_non-recursive_overwrite-entire --description 'Overwr
 	end
 	echo {$output_prefix} 'Warning: Target "'{$target_path}'" is not a directory'\t'Replacing with symlink' 1>&2
 	"$operate_function"_file_symlink -n -- "$source_dir" "$target_path"
-	exit 0
 end
