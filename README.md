@@ -10,12 +10,8 @@
     * **Interactive**: Confirm overwrites interactively
     * **Backup**: Create a backup before overwriting
 - [**Blend**](https://github.com/Dracape/SymP/wiki/Blend "Wiki: dual-choice switch 'Blend'"): Symlinked files inherit access of their new parent directory
-    * **Disable**: `none` `false` `0` `no` (default)
-    * **Enable**
-        - **Both**: `both` `true` `1` `yes` (default: empty flag)
-        - **Individual**
-            * **Permission**: DAC permissions
-            * **Ownership**: User & Group ownerships
+    * **Permission**: DAC permissions
+    * **Ownership**: User & Group ownerships
 - [**Occurrence**](https://github.com/Dracape/SymP/wiki/Occurrence "Wiki: dual-choice switch 'Blend'"): Filter files based on their appearance in the target
     * **Common**: Present in the target
     * **Unique**: Absent in the target (avoid overwrites)
