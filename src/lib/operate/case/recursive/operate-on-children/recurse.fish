@@ -1,6 +1,6 @@
 function _symp_operate_case_recursive_operate-on-children_recurse --description 'Re-operate on a new set of directories'
 	if set -qx SYMP_LIST_FUNCTIONS
-		set --append output_prefix (status current-function | string split '_' | tail -n 1)':' # Append the Output-prefix with the current function name
+		set --append output_prefix (status current-function | string split --right --max=1 --fields=2 -- '_')':' # Append the Output-prefix with the current function name
 	end
 
 	# Parse arguments
