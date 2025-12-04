@@ -1,7 +1,5 @@
 function _symp_operate_case_recursive_operate-on-children_overwrite --description 'Forcefully remove the target item (if it exists) and overwrite it with the source item'
-	if set -qx SYMP_LIST_FUNCTIONS
-		set --append output_prefix (status current-function | string split --right --max=1 --fields=2 -- '_')':' # Append the Output-prefix with the current function name
-	end
+	_"$program_name"_common_set-output-prefix (status current-function) # Append the Output-prefix with the current function name
 
 
 	# Parse arguments

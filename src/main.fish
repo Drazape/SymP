@@ -21,7 +21,7 @@ end
 ### Switches
 #### Parse
 argparse --name={$program_name} --max-args=2 'v/verbose&' 'h/help&' 'O/overwrites=&!_'"$program_name"'_switch_choice_validate-single interactive force backup' 'b/blend=*&!_'"$program_name"'_switch_choice_multi_validate -iownership -ipermission' 'o/occurrence=+&!_'"$program_name"'_switch_choice_multi_validate -m -icommon -iunique' 'r/resolution=!_'"$program_name"'_switch_choice_validate-single absolute relative' -- {$argv}
-_"$program_name"_exit-on-error
+_"$program_name"_common_exit-on-error
 set --erase --local _flag_{v,h,O,i,f,b,o,r} # Erase unused short versions
 #### Individual
 ##### Verbose
@@ -37,7 +37,7 @@ end
 
 
 argparse --name={$program_name} --min-args=2 -- {$argv} # Only allow 2 arguments (If help switch isn't used)
-_"$program_name"_exit-on-error
+_"$program_name"_common_exit-on-error
 
 ##### Occurrences
 begin

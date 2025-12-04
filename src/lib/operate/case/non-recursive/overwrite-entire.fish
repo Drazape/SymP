@@ -1,7 +1,5 @@
 function _symp_operate_case_non-recursive_overwrite-entire --description 'Overwrite the target'
-	if set -qx SYMP_LIST_FUNCTIONS
-		set --append output_prefix (status current-function | string split --right --max=1 --fields=2 -- '_')':' # Append the Output-prefix with the current function name
-	end
+	_"$program_name"_common_set-output-prefix (status current-function) # Append the Output-prefix with the current function name
 	echo {$output_prefix} 'Warning: Target "'{$target_path}'" is not a directory'\t'Replacing with symlink' 1>&2
 	"$operate_function"_file_symlink -n -- "$source_dir" "$target_path"
 end

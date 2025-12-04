@@ -1,8 +1,6 @@
 function _symp_operate_case_recursive --description 'Recursive operation on super-set directories'
-	if set -qx SYMP_LIST_FUNCTIONS
-		set --append output_prefix (status current-function | string split --right --max=1 --fields=2 -- '_')':' # Append the Output-prefix with the current function name
-	end
 	set --local this_function (status current-function) # Set function-name for execution on sub-functions
+	_"$program_name"_common_set-output-prefix {$this_function} # Append the Output-prefix with the current function name
 
 
 	# Determine if the Target is a pure subset of the Source
