@@ -28,7 +28,7 @@ function _symp_switch_choice_multi_validate --description='Validate dual-choice 
 	# Check
 	for user_choice in "$_flag_value"
 		if ! contains "$user_choice" {$accept_values}
-			echo 'Unknown value: '{$user_choice}
+			echo 'Unknown value: '(set_color --bold){$user_choice}(set_color normal)
 			return 1
 		end
 	end

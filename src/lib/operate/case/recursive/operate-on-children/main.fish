@@ -4,7 +4,7 @@ function _symp_operate_case_recursive_operate-on-children --description 'Operate
 
 	for source_item in "$source_dir"/{,.}* # Items in source content
 		if set -q SYMP_VERBOSE # Verbosity announcement
-			echo (set_color --dim){$output_prefix}(set_color normal) 'Processing item: '{$source_item}
+			echo (set_color --dim){$output_prefix}(set_color normal) 'Processing item: '(set_color --bold){$source_item}(set_color normal)
 		end
 		set --local -- target_item "$target_path"/(path basename -- "$source_item")
 
