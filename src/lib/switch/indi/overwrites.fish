@@ -3,5 +3,5 @@ function _symp_switch_indi_overwrites --description='Parse switch: overwrites'
 	if test (count (string split -- \0 {$argv})) -ne 1
 		set -- argv '-'{$argv}
 	end
-	set --global --export -- overwrites '-'{$argv}
+	set --global -- overwrites '-'{$argv}
 end

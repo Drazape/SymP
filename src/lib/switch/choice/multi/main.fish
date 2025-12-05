@@ -35,14 +35,14 @@ function _symp_switch_choice_multi --description='Parse multi-value switches' --
 			return # Don't set `blend` to anything
 		# Accept all
 		else if contains {$user_choice} {$accept_values} \0
-			set --global --export {$_flag_variable} {$_flag_individual}
+			set --global {$_flag_variable} {$_flag_individual}
 			return
 		end
 	end
 	# Apply individual modes
 	for mode in {$_flag_individual}
 		if contains {$mode} {$choices}
-			set --append --global --export {$_flag_variable} {$mode}
+			set --append --global {$_flag_variable} {$mode}
 		end
 	end
 end

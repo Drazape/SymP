@@ -12,7 +12,7 @@ set --global output_prefix {$program_name}':'
 #### Interactive
 if set --query SYMP_INTERACTIVE || contains "$INTERACTIVE[-1]" {$accept_values}
 	set --global -- overwrites '--interactive'
-	set --global --export 'SYMP_INTERACTIVE'
+	set --global 'SYMP_INTERACTIVE'
 end
 
 
@@ -26,7 +26,7 @@ set --erase --local _flag_{v,h,O,i,f,b,o,r} # Erase unused short versions
 #### Individual
 ##### Verbose
 if set -ql '_flag_verbose' || contains "$VERBOSE" {$accept_values}
-	set --global --export SYMP_VERBOSE '--verbose'
+	set --global SYMP_VERBOSE '--verbose'
 end
 
 ##### Help
@@ -46,9 +46,9 @@ begin
 		_"$program_name"_switch_choice_multi --individual={$arguments} --variable=file_occurrence {$_flag_occurrence}
 		set --erase --local '_flag_occurrence'
 	else if ! set -qx file_occurrence # Default
-		set --global --export file_occurrence {$arguments}
+		set --global file_occurrence {$arguments}
 	else # Split multiple values if already set
-		set --global --export file_occurrence (string split ' ' {$file_occurrence})
+		set --global file_occurrence (string split ' ' {$file_occurrence})
 	end
 end
 
@@ -58,7 +58,7 @@ if set -ql '_flag_blend'
 	_"$program_name"_switch_choice_multi --individual={$arguments} --variable='blend' {$_flag_blend}
 	set --erase --local '_flag_blend'
 else if set -qx blend # Split multiple values if already set
-	set --global --export blend (string split ' ' {$blend})
+	set --global blend (string split ' ' {$blend})
 end
 
 ##### Overwrites
@@ -66,19 +66,19 @@ if set -ql '_flag_overwrites'
 	_"$program_name"_switch_indi_overwrites {$_flag_overwrites}
 	set --erase --local '_flag_overwrites'
 else if ! set -qgx 'overwrites' # Default
-	set --global --export -- overwrites '--force'
+	set --global -- overwrites '--force'
 end
 
 ##### Resolution
 if set -ql '_flag_resolution'
 	_"$program_name"_switch_indi_resolution {$_flag_resolution}
 else if ! set -qgx resolution
-	set --global --export resolution 'relative'
+	set --global resolution 'relative'
 end
 
 ##### Print Functions
 if contains "$LIST_FUNCTIONS" {$accept_values}
-	set --global --export SYMP_LIST_FUNCTIONS
+	set --global SYMP_LIST_FUNCTIONS
 end
 
 
