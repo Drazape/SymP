@@ -68,10 +68,8 @@ else if ! set -qg 'overwrites' # Default
 end
 
 ##### Resolution
-if set -ql '_flag_resolution'
-	_"$program_name"_switch_indi_resolution {$_flag_resolution}
-else if ! set -qg resolution
-	set --global -- resolution '--relative' # Default
+if ! contains "$_flag_resolution" 'a' 'absolute'
+	set --global -- resolution '--relative'
 end
 
 ##### Print Functions
