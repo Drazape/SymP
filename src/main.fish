@@ -7,7 +7,7 @@ set --function accept_values 'true' '1' 'yes'
 set --function decline_values 'none' 'false' '0' 'no'
 ### Individual
 #### Output prefix
-set --global output_prefix {$program_name}':'
+set --function output_prefix {$program_name}':'
 
 #### Interactive
 if set -qgx SYMP_INTERACTIVE || contains "$INTERACTIVE[-1]" {$accept_values}

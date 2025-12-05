@@ -1,5 +1,5 @@
 function _symp_operate --description 'Main operation logic'
-	_"$program_name"_common_set-output-prefix (status current-function) # Append the Output-prefix with the current function name
+	set --function output_prefix "$program_name"': '(status current-function)':' # Reset output-prefix
 	set --global operate_function (status current-function)
 
 	"$operate_function"_file_verify
