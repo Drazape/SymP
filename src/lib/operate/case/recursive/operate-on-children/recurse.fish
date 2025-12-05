@@ -3,7 +3,7 @@ function _symp_operate_case_recursive_operate-on-children_recurse --description 
 
 	# Verbosity announcement
 	if set -q SYMP_VERBOSE # Verbosity announcement
-		echo 'Recursing with source: '{$argv[1]}\t'target: '{$argv[2]}
+		echo 'Recursing:'\t'Source: '{$argv[1]}' target: '{$argv[2]}
 	end
 
 	# Main
