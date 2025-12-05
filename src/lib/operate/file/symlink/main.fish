@@ -13,7 +13,7 @@ function _symp_operate_file_symlink --description="Symlink files while inheritin
 	## Postitional
 	### 2 Only
 	if test (count {$argv}) -ne '2'
-		echo {$output_prefix} 'Only 2 arguments are accepted' 1>&2
+		echo (set_color --dim){$output_prefix}(set_color normal) 'Only 2 arguments are accepted' 1>&2
 		return 1
 	end
 
