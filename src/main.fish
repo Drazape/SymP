@@ -45,7 +45,7 @@ begin
 	if set -ql '_flag_occurrence'
 		_"$program_name"_switch_choice_multi --individual={$arguments} --variable=file_occurrence {$_flag_occurrence}
 		set --erase --local '_flag_occurrence'
-	else if ! set -qx file_occurrence # Default
+	else if ! set -qg file_occurrence # Default
 		set --global file_occurrence {$arguments}
 	else # Split multiple values if already set
 		set --global file_occurrence (string split ' ' {$file_occurrence})
@@ -57,7 +57,7 @@ if set -ql '_flag_blend'
 	set --local arguments 'permission' 'ownership'
 	_"$program_name"_switch_choice_multi --individual={$arguments} --variable='blend' {$_flag_blend}
 	set --erase --local '_flag_blend'
-else if set -qx blend # Split multiple values if already set
+else if set -qg blend # Split multiple values if already set
 	set --global blend (string split ' ' {$blend})
 end
 
@@ -65,14 +65,14 @@ end
 if set -ql '_flag_overwrites'
 	_"$program_name"_switch_indi_overwrites {$_flag_overwrites}
 	set --erase --local '_flag_overwrites'
-else if ! set -qgx 'overwrites' # Default
+else if ! set -qg 'overwrites' # Default
 	set --global -- overwrites '--force'
 end
 
 ##### Resolution
 if set -ql '_flag_resolution'
 	_"$program_name"_switch_indi_resolution {$_flag_resolution}
-else if ! set -qgx resolution
+else if ! set -qg resolution
 	set --global resolution 'relative'
 end
 
