@@ -10,7 +10,7 @@ set --function decline_values 'none' 'false' '0' 'no'
 set --global output_prefix {$program_name}':'
 
 #### Interactive
-if set --query SYMP_INTERACTIVE || contains "$INTERACTIVE[-1]" {$accept_values}
+if set -qgx SYMP_INTERACTIVE || contains "$INTERACTIVE[-1]" {$accept_values}
 	set --global -- overwrites '--interactive'
 	set --global 'SYMP_INTERACTIVE'
 end
@@ -57,8 +57,6 @@ if set -ql '_flag_blend'
 	set --local arguments 'permission' 'ownership'
 	_"$program_name"_switch_choice_multi --individual={$arguments} --variable='blend' {$_flag_blend}
 	set --erase --local '_flag_blend'
-else if set -qg blend # Split multiple values if already set
-	set --global blend (string split ' ' {$blend})
 end
 
 ##### Overwrites
