@@ -71,7 +71,7 @@ end
 if set -ql '_flag_resolution'
 	_"$program_name"_switch_indi_resolution {$_flag_resolution}
 else if ! set -qg resolution
-	set --global resolution 'relative'
+	set --global -- resolution '--relative' # Default
 end
 
 ##### Print Functions
