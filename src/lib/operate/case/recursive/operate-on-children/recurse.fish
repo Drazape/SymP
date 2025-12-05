@@ -3,7 +3,7 @@ function _symp_operate_case_recursive_operate-on-children_recurse --description 
 
 	# Verbosity announcement
 	if set -q SYMP_VERBOSE # Verbosity announcement
-		echo {$output_prefix} 'Re-operating on directory in Super-set "'{$source_dir}'": '{$source_item}\n'Recursing with source: '{$source_item}\t'target: '{$target_item}
+		echo 'Recursing with source: '{$source_item}\t'target: '{$target_item}
 	end
 
 	# Main
