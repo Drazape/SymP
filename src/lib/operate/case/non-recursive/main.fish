@@ -6,7 +6,7 @@ function _symp_operate_case_non-recursive --description 'Simple, Non-recursive o
 	if ! test -e "$target_path"
 		if test "$file_occurrence" != 'common'
 			if set -q SYMP_VERBOSE # Verbosity announcement
-				echo (set_color --dim){$output_prefix}(set_color normal) 'Non-existant target: '{$target_path_output}\t'linking entire source'
+				echo {$output_prefix} 'Non-existant target: '{$target_path_output}\t'linking entire source'
 			end
 
 			"$this_function"_link-entire
@@ -15,7 +15,7 @@ function _symp_operate_case_non-recursive --description 'Simple, Non-recursive o
 	else if ! path is --type=dir -- "$target_path"
 		if test "$file_occurrence" != 'unique'
 			if set -q SYMP_VERBOSE # Verbosity announcement
-				echo (set_color --dim){$output_prefix}(set_color normal) 'Non-directory target: '{$target_path_output}\t'Overwriting entire target'
+				echo {$output_prefix} 'Non-directory target: '{$target_path_output}\t'Overwriting entire target'
 			end
 
 			"$this_function"_overwrite-entire

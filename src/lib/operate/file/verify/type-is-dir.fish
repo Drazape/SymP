@@ -3,11 +3,11 @@ function _symp_operate_file_verify_type-is-dir --description 'Verify that the so
 
 	for file_path in {$argv}
 		if ! path is --type=dir -- {$file_path}
-			echo (set_color --dim){$output_prefix}(set_color normal) 'Not a directory: '(set_color --bold)"$file_path"(set_color normal) 1>&2
+			echo {$output_prefix} 'Not a directory: '(set_color --bold)"$file_path"(set_color normal) 1>&2
 			exit 1			
 		end
 	end
 	if set -q SYMP_VERBOSE # Verbosity announcement
-		echo (set_color --dim){$output_prefix}(set_color normal) 'Verified directory: '(set_color --bold){$argv}(set_color normal)
+		echo {$output_prefix} 'Verified directory: '(set_color --bold){$argv}(set_color normal)
 	end
 end

@@ -4,7 +4,7 @@ function _symp_operate_case_recursive_operate-on-children_overwrite --descriptio
 
 	# Parse arguments
 	if test (count {$argv}) -ne 2
-		echo (set_color --dim){$output_prefix}(set_color normal) 'Invalid number of arguments' 1>&2
+		echo {$output_prefix} 'Invalid number of arguments' 1>&2
 		return 1
 	end
 	set --local -- source_item {$argv[1]}
