@@ -54,8 +54,7 @@ end
 
 ##### Blend
 if set -ql '_flag_blend'
-	set --local arguments 'permission' 'ownership'
-	_"$program_name"_switch_choice_multi --individual={$arguments} --variable='blend' {$_flag_blend}
+	_"$program_name"_switch_choice_multi --individual={'permission','ownership'} --variable='blend' {$_flag_blend}
 	set --erase --local '_flag_blend'
 end
 
