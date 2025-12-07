@@ -1,6 +1,7 @@
 function _symp_operate --description 'Main operation logic'
 	if set -qgx 'SYMP_LIST_FUNCTIONS'
-		set --global output_prefix (set_color --dim)"$program_name"': operate:'(set_color normal) # Reset output-prefix
+		_"$program_name"_common_set-output-prefix --reset _{$program_name}
+		_"$program_name"_common_set-output-prefix (status current-function)
 	end
 	set --global operate_function (status current-function)
 
