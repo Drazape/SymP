@@ -9,9 +9,7 @@ set --global executable_name (string lower {$official_git_repository_name})
 ## Arguments
 ### Switches
 argparse 'r/repository=&' 'h/help&' 'v/verbose&' 's/symlink&' -- {$argv}
-if test "$status" -ne 0 # Exit on incorrect arguments
-    return 1
-end
+test "$status" -ne 0 && return 1
 set --erase --local _flag_{r,h,v,s} # Unused, short name flags
 
 ### Positional
@@ -77,9 +75,7 @@ begin
 	set --local coreutils ls rm ln chmod chown
 	for command in {$coreutils} 'fd'
 		if ! type --query {$command}
-			if contains {$command} {$coreutils}
-				set --function mention_if_core 'coreutils: '
-			end
+			contains {$command} {$coreutils} && set --function mention_if_core 'coreutils: '
 			echo (status basename)': Missing command: '"$mention_if_core"{$command} 1>&2
 			return 1
 		end
@@ -96,17 +92,13 @@ end
 
 ## Setup Cleanup
 function cleanup_temporary_repository --description='Nuke temporary repository on exit' --on-event=fish_exit
-	if set -qg tmp_repo
-		rm -rf {$repository_dir}
-	end
+	set -qg tmp_repo && rm -rf {$repository_dir}
 end
 
 ## Parse repository switch/variable
 if set -q REPOSITORY
 	if path is --type=dir {$REPOSITORY}/src # Set repository as local if the source code directory in the specified path exists
-		if set -q VERBOSE
-			echo 'Repository found locally: '{$REPOSITORY}
-		end
+		set -q VERBOSE && echo 'Repository found locally: '{$REPOSITORY}
 		set --global source_code_dir {$REPOSITORY}/src
 	else
 		if ! string match --regex -- 'https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()!@:%_\\+.~#?&\\/\\/=]*)' {$REPOSITORY}
@@ -114,16 +106,12 @@ if set -q REPOSITORY
 			return 1
 		end
 
-		if set -ql _flag_symlink
-			echo 'Cannot symlink from a temporary directory' >&2
-		end
+		if set -ql _flag_symlink && echo 'Cannot symlink from a temporary directory' >&2
 		set --global repository_dir (mktemp --directory /tmp/"$(string split '/' "$REPOSITORY" | tail -n 1)"-'XXXXXXXXX')
 		set --global tmp_repo
 
 		git clone "$REPOSITORY" "$repository_dir"
-		if test {$status} -ne 0
-			return 1
-		end
+		test {$status} -ne 0 && return 1
 
 		set --erase --function REPOSITORY
 		set --global source_code_dir {$repository_dir}/src
@@ -132,8 +120,7 @@ end
 
 ## Fallback
 if ! path is --type=dir {$source_code_dir}
-	if path is --type=dir {$PWD}/src # Local
-		set --global source_code_dir {$PWD}/src
+	path is --type=dir {$PWD}/src && set --global source_code_dir {$PWD}/src
 	else # Official remote
 		set --global repository_dir (mktemp --directory /tmp/"$official_git_repository_name"-XXXXXXXXXX)
 		set --global tmp_repo
@@ -145,9 +132,7 @@ end
 
 
 # Install to local-vendor directory
-if set -q VERBOSE # Verbosity announcement
-	echo (status basename)': Operating in '{$source_code_dir}
-end
+set -q VERBOSE && echo (status basename)': Operating in '{$source_code_dir}
 cd {$source_code_dir}
 
 
@@ -214,6 +199,4 @@ begin
 end
 
 # Clone wiki on standard installation
-if ! set -ql _flag_symlink
-	git clone https://github.com/Dracape/SymP.wiki.git /usr/local/share/doc/SymP
-end
+set -ql _flag_symlink || git clone https://github.com/Dracape/SymP.wiki.git /usr/local/share/doc/SymP

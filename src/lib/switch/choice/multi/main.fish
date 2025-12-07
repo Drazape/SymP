@@ -19,9 +19,7 @@ function _symp_switch_choice_multi --description='Parse multi-value switches' --
 	## User's choice
 	for choice in {$argv}
 		## Individual choices: Short → Long
-		if set -qf {$choice}
-			set choice $$choice
-		end
+		set -qf {$choice} && set choice $$choice
 		set --function --prepend choices {$choice} # Reverse values to prioritise last the last ones
 	end
 	set --erase --local 'argv' # Used
@@ -41,8 +39,6 @@ function _symp_switch_choice_multi --description='Parse multi-value switches' --
 	end
 	# Apply individual modes
 	for mode in {$_flag_individual}
-		if contains {$mode} {$choices}
-			set --append --global {$_flag_variable} {$mode}
-		end
+		contains {$mode} {$choices} && set --append --global {$_flag_variable} {$mode}
 	end
 end

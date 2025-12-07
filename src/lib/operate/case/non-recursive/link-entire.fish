@@ -1,5 +1,5 @@
 function _symp_operate_case_non-recursive_link-entire --description 'Link entire directory'
-	if set -q SYMP_VERBOSE # Verbosity announcement
+	if set -qg SYMP_VERBOSE # Verbosity announcement
 		_"$program_name"_common_set-output-prefix (status current-function)
 		echo {$output_prefix} 'Target does not exist: "'{$target_path_output}\"
 	end

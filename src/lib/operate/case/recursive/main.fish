@@ -7,9 +7,7 @@ function _symp_operate_case_recursive --description 'Recursive operation on supe
 	fd . --base-directory "$target_path" | while read --local item_path # Find all files and directories within the target, relative to itself
 		if ! test -e "$source_dir"/"$item_path" # Check if the file(s)/directories in the target are also in source
 			# A unique file/dir was found in the target. It is not a pure subset
-			if set -q SYMP_VERBOSE # Verbosity announcement
-				echo {$output_prefix} 'Unique file: '(set_color --bold)"$target_path"/"$item_path"(set_color normal)
-			end
+			set -qg SYMP_VERBOSE && echo {$output_prefix} 'Unique file: '(set_color --bold)"$target_path"/"$item_path"(set_color normal) # Verbosity announcement
 
 			set --function 'impure_subset'
 			break

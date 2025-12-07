@@ -7,21 +7,15 @@ function _symp_operate_file_symlink_inherit_permission --description='Inherit pe
 
 
 	set --local new_parent_octal (stat -c %a -- {$target_parent}) # New Parent directory's octal permissions for setting in source directories
-	if set -q SYMP_VERBOSE # Verbosity announcement
-		echo {$output_prefix} "Permissions of target's parent directory: "(set_color --bold){$new_parent_octal}(set_color normal)
-	end
+	set -qg SYMP_VERBOSE && echo {$output_prefix} "Permissions of target's parent directory: "(set_color --bold){$new_parent_octal}(set_color normal) # Verbosity announcement
 
 	# Calculate octal number for files (Remove executable bit if exists)
 	for byte in (string split \0 {$new_parent_octal} | tail -n 3)
-		if test (math $byte % 2) -eq 1
-			set byte (math $byte - 1)
-		end
+		test (math $byte % 2) -eq 1 && set byte (math $byte - 1)
 		set --append --function file_octal {$byte}
 	end
 	set --function file_octal (string join \0 {$file_octal})
-	if set -q SYMP_VERBOSE # Verbosity announcement
-		echo {$output_prefix} 'File octal calculated: '(set_color --bold){$file_octal}(set_color normal)
-	end
+	set -qg SYMP_VERBOSE && echo {$output_prefix} 'File octal calculated: '(set_color --bold){$file_octal}(set_color normal) # Verbosity announcement
 
 	# Set new permissions
 	if path is --type=dir -- {$source_file}

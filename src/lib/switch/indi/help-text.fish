@@ -30,7 +30,7 @@ function _symp_switch_indi_help-text --description='Help text for the `--help` s
 
 
 
-	if set -q SYMP_VERBOSE
+	if set -qg SYMP_VERBOSE
 		set_color --bold --underline; echo \n'Variables:'
 		set_color --bold normal; echo -n '  SYMP_VERBOSE'; set_color normal; echo -n ', '; set_color --bold; echo -n 'VERBOSE'; set_color normal; echo -n '=['; set_color --bold; echo -n '1'; set_color normal; echo -n '|'; set_color --bold; echo -n 'true'; set_color normal; echo -n '|'; set_color --bold; echo -n 'yes'; set_color normal; echo ']' 
 		echo \t'Show more information'

@@ -5,9 +5,7 @@ function _symp_operate_file_symlink --description="Symlink files while inheritin
 	# Parse arguments
 	## Switches
 	argparse --move-unknown -- {$argv} # Store `ln` arguments
-	if test "$status" -ne 0 # Exit on incorrect arguments
-		return 1
-	end
+	test "$status" -ne 0 && return 1 # Exit on incorrect arguments
 
 
 	## Postitional
@@ -27,10 +25,7 @@ function _symp_operate_file_symlink --description="Symlink files while inheritin
 	# Operation
 	set --function -- target_parent (path dirname -- {$target_file})
 
-	## Access
-	if set -qg blend
-		"$this_function"_inherit {$source_file} {$target_parent}
-	end
+	set -qg blend && "$this_function"_inherit {$source_file} {$target_parent} # Access
 
 	## Link
 	ln --symbolic --no-target-directory {$resolution} {$SYMP_VERBOSE} {$overwrites} {$argv_opts} -- (realpath --no-symlinks {$source_file}) {$target_file} | string replace -- '->' '→'

@@ -3,18 +3,14 @@ function _symp_operate_case_recursive_operate-on-children --description 'Operate
 	_"$program_name"_common_set-output-prefix (status current-function)
 
 	for source_item in "$source_dir"/{,.}* # Items in source content
-		if set -q SYMP_VERBOSE # Verbosity announcement
-			echo {$output_prefix} 'Processing item: '(set_color --bold){$source_item}(set_color normal)
-		end
+		set -qg SYMP_VERBOSE && echo {$output_prefix} 'Processing item: '(set_color --bold){$source_item}(set_color normal) # Verbosity announcement
 		set --local -- target_item "$target_path"/(path basename -- "$source_item")
 
 		if path is --type=dir -- "$source_item"
 			"$this_function"_recurse "$source_item" "$target_item"
 		else
 			if test -e "$target_item"
-				if contains 'common' {$file_occurrence}
-					"$this_function"_overwrite "$source_item" "$target_item"
-				end
+				contains 'common' {$file_occurrence} && "$this_function"_overwrite "$source_item" "$target_item"
 			else if contains 'unique' {$file_occurrence}
 				"$this_function"_overwrite "$source_item" "$target_item"
 			end

@@ -67,14 +67,10 @@ else if ! set -qg 'overwrites' # Default
 end
 
 ##### Resolution
-if ! contains "$_flag_resolution" 'a' 'absolute'
-	set --global -- resolution '--relative'
-end
+contains "$_flag_resolution" 'a' 'absolute' || set --global -- resolution '--relative' 
 
 ##### Print Functions
-if contains "$LIST_FUNCTIONS" {$accept_values}
-	set --global SYMP_LIST_FUNCTIONS
-end
+contains "$LIST_FUNCTIONS" {$accept_values} && set --global SYMP_LIST_FUNCTIONS
 
 
 

@@ -7,7 +7,5 @@ function _symp_operate_file_verify_type-is-dir --description 'Verify that the so
 			exit 1			
 		end
 	end
-	if set -q SYMP_VERBOSE # Verbosity announcement
-		echo {$output_prefix} 'Verified directory: '(set_color --bold){$argv}(set_color normal)
-	end
+	set -qg SYMP_VERBOSE && echo {$output_prefix} 'Verified directory: '(set_color --bold){$argv}(set_color normal)
 end
