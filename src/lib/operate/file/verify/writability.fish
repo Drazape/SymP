@@ -1,5 +1,5 @@
 function _symp_operate_file_verify_writability --description 'Verify that the source is a directory'
-	_"$program_name"_common_set-output-prefix (status current-function) # Append the Output-prefix with the current function name
+	_"$program_name"_common_set-output-prefix (status current-function)
 
 	for file_path in {$argv}
 		# Check for parent-directory if target is not a directory

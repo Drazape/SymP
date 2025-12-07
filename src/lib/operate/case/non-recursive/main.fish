@@ -1,5 +1,5 @@
 function _symp_operate_case_non-recursive --description 'Simple, Non-recursive operations'
-	_"$program_name"_common_set-output-prefix (status current-function) # Append the Output-prefix with the current function name
+	_"$program_name"_common_set-output-prefix (status current-function)
 	set --local this_function (status current-function) # Set function-name for execution on sub-functions
 
 	# If target doesn't exist, simply create a symlink to the source and exit

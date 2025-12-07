@@ -1,5 +1,5 @@
 function _symp_operate_case_recursive_operate-on-children_recurse --description 'Re-operate on a new set of directories'
-	_"$program_name"_common_set-output-prefix (status current-function) # Append the Output-prefix with the current function name
+	_"$program_name"_common_set-output-prefix (status current-function)
 
 	# Verbosity announcement
 	if set -q SYMP_VERBOSE # Verbosity announcement

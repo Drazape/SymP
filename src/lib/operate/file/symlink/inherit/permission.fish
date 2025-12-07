@@ -1,5 +1,5 @@
 function _symp_operate_file_symlink_inherit_permission --description='Inherit permissions of the new parent directory'
-	_"$program_name"_common_set-output-prefix (status current-function) # Append the Output-prefix with the current function name
+	_"$program_name"_common_set-output-prefix (status current-function)
 	set --local this_function (status current-function)
 
 	set --local -- source_file {$argv[1]}

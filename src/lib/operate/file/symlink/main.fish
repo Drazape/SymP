@@ -1,5 +1,5 @@
 function _symp_operate_file_symlink --description="Symlink files while inheriting their parent directory's permission"
-	_"$program_name"_common_set-output-prefix (status current-function) # Append the Output-prefix with the current function name
+	_"$program_name"_common_set-output-prefix (status current-function)
 	set --local this_function (status current-function)
 
 	# Parse arguments
