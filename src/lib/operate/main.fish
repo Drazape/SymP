@@ -7,7 +7,5 @@ function _symp_operate --description 'Main operation logic'
 
 	"$operate_function"_file_verify
 
-	if ! "$operate_function"_case_non-recursive 	# Simple, Non-recursive operations
-		"$operate_function"_case_recursive 	# Complex, Recursive operations (super-set directories)
-	end
+	"$operate_function"_case_non-recursive || "$operate_function"_case_recursive
 end
