@@ -1,8 +1,7 @@
 function _symp_operate --description 'Main operation logic'
-	if set -qgx 'SYMP_LIST_FUNCTIONS'
-		_"$program_name"_common_set-output-prefix --reset _{$program_name}
-		_"$program_name"_common_set-output-prefix (status current-function)
-	end
+	_"$program_name"_common_set-output-prefix --reset _{$program_name}
+	_"$program_name"_common_set-output-prefix (status current-function)
+
 	set --global operate_function (status current-function)
 
 	"$operate_function"_file_verify
