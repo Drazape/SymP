@@ -2,6 +2,13 @@ function providing-blend-value
 	test "$(commandline --current-process --current-token)" = '--blend='
 end
 
+begin # Directories
+set --local directories '(__fish_complete_directories)'
+	complete --command='symp' --no-files --arguments={$directories}
+end
+
+
+
 complete --command='symp' --short-option='h' --long-option='help' 		--description='Print help'
 complete --command='symp' --short-option='v' --long-option='verbose'	 	--description='Show more information'
 
