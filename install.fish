@@ -106,7 +106,7 @@ if set -q REPOSITORY
 			return 1
 		end
 
-		if set -ql _flag_symlink && echo 'Cannot symlink from a temporary directory' >&2
+		set -ql _flag_symlink && echo 'Cannot symlink from a temporary directory' >&2
 		set --global repository_dir (mktemp --directory /tmp/"$(string split '/' "$REPOSITORY" | tail -n 1)"-'XXXXXXXXX')
 		set --global tmp_repo
 
@@ -120,7 +120,8 @@ end
 
 ## Fallback
 if ! path is --type=dir {$source_code_dir}
-	path is --type=dir {$PWD}/src && set --global source_code_dir {$PWD}/src
+	if path is --type=dir ./src/
+		set --global source_code_dir {$PWD}/src
 	else # Official remote
 		set --global repository_dir (mktemp --directory /tmp/"$official_git_repository_name"-XXXXXXXXXX)
 		set --global tmp_repo
@@ -161,7 +162,7 @@ begin
 	rm --force {$executable_install_path} # Remove if already exists
 	if set -ql _flag_symlink
 		mkdir -p (path dirname {$executable_install_path})
-		ln -s {$VERBOSE} -- (realpath --no-symlinks ./main.fish) {$executable_install_path}
+		ln -s --relative {$VERBOSE} -- (realpath --no-symlinks ./main.fish) {$executable_install_path}
 		chmod +x {$executable_install_path}
 	else
 		install -D {$VERBOSE} -- ./main.fish {$executable_install_path} # Install main executable script
@@ -178,7 +179,7 @@ for i in (seq (count {$libraries}))
 	set --local install_path {$local_vendor_functions_dir}/_{$executable_name}_{$absolute_library_names[$i]} 
 	if set -ql _flag_symlink
 		mkdir -p {$local_vendor_functions_dir}
-		ln -s {$VERBOSE} (realpath --no-symlinks lib/"$libraries[$i]") {$install_path}
+		ln -s --relative {$VERBOSE} (realpath --no-symlinks lib/"$libraries[$i]") {$install_path}
 	else
 		install -D --mode=644 {$VERBOSE} lib/"$libraries[$i]" {$install_path}
 	end
@@ -192,7 +193,7 @@ begin
 
 	if set -ql _flag_symlink
 		mkdir -p {$local_vendor_completions_dir}
-		ln -s {$VERBOSE} (realpath --no-symlinks ./completion.fish) "$completion_install_path"
+		ln -s --relative {$VERBOSE} (realpath --no-symlinks ./completion.fish) "$completion_install_path"
 	else
 		install -D --mode=644 {$VERBOSE} ./completion.fish "$completion_install_path"
 	end	
