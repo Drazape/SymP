@@ -19,6 +19,6 @@ function _symp_operate_case_recursive --description 'Recursive operation on supe
 	if ! set -qf impure_subset && contains 'common' {$file_occurrence} # Target is a pure subset
 		"$this_function"_reserve-and-link
 	else # Target has unique files. Preserve them by linking contents individually
-		"$this_function"_operate-on-children
+		"$this_function"_children
 	end
 end

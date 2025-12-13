@@ -1,4 +1,4 @@
-function _symp_operate_case_recursive_operate-on-children_overwrite --description 'Forcefully remove the target item (if it exists) and overwrite it with the source item'
+function _symp_operate_case_recursive_children_overwrite --description 'Forcefully remove the target item (if it exists) and overwrite it with the source item'
 	_"$program_name"_common_set-output-prefix (status current-function)
 
 
