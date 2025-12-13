@@ -24,8 +24,8 @@ The commands
 - `symp`  
 
 will be used on the following file-hierarchy (since this program is an balance between the 2 standard utility commands):  
-- **Source**: `📁 original`  
-- **Target**: `📁 link`  
+- **Source**: 📁 *original*  
+- **Target**: 📁 *link*  
 
 <details>
 <summary>File-hierarchy</summary>
@@ -61,8 +61,8 @@ will be used on the following file-hierarchy (since this program is an balance b
 
 ## Results
 1. `ln -sfT`
-	- **With 📁 link**: `ln: Already exists`
-	- **Without 📁 link**: `🔗 link → 📁 original`
+	- **With 📁 *link***: `ln: Already exists`
+	- **Without 📁 *link***: `🔗 link → 📁 original`
 
 <details>
 <summary>2. cp -sfTr</summary>
