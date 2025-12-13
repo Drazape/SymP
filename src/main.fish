@@ -7,7 +7,7 @@ set --function accept_values 'true' '1' 'yes'
 set --function decline_values 'none' 'false' '0' 'no'
 ### Individual
 #### Output prefix
-set --function output_prefix {$program_name}':'
+set --function output_prefix (set_color --dim){$program_name}':'(set_color normal)
 
 #### Interactive
 if set -qgx SYMP_INTERACTIVE || contains "$INTERACTIVE[-1]" {$accept_values}
