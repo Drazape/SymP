@@ -14,9 +14,9 @@ function _symp_switch_indi_help-text --description='Help text for the `--help` s
 	
 	set_color --bold green; echo -n -- '  -v'; set_color normal; echo -n ', '; set_color --bold green; echo -n -- '--verbose'
 	set_color normal; echo \t\t\t\t\t\t\t'Show more information'
-	echo -n \t'('(set_color yellow)'Environment'(set_color normal)': '; set_color green --italics; echo -n 'SYMP_VERBOSE VERBOSE'; set_color normal; echo '=)'
+	echo -n \t'('(set_color yellow)'Environment'(set_color normal)': '; set_color green --italics; echo -n 'SYMP_VERBOSE VERBOSE'; set_color normal --dim; echo '='(set_color normal)')'
 	
-	set_color --bold green; echo -n -- '  -b'; set_color normal; echo -n ', '; set_color --bold green; echo -n -- '--blend'\t'-b'; set_color normal; echo -n '['; set_color --bold brgreen; echo -n 'o'; set_color normal; echo -n '|'; set_color --bold brgreen; echo -n 'p'; set_color normal; echo -n '], '; set_color --bold green; echo -n -- '--blend'; set_color normal; echo -n '=['; set_color --bold brgreen; echo -n 'ownership'; set_color normal; echo -n '|'; set_color --bold brgreen; echo -n 'permission'; set_color normal; echo -n ']'
+	set_color --bold green; echo -n -- '  -b'; set_color normal; echo -n ', '; set_color --bold green; echo -n -- '--blend'\t'-b'; set_color normal; echo -n '['; set_color --bold brgreen; echo -n 'o'; set_color normal; echo -n '|'; set_color --bold brgreen; echo -n 'p'; set_color normal; echo -n '], '; set_color --bold green; echo -n -- '--blend'; set_color normal --dim; echo -n '='(set_color normal)'['; set_color --bold brgreen; echo -n 'ownership'; set_color normal; echo -n '|'; set_color --bold brgreen; echo -n 'permission'; set_color normal; echo -n ']'
 	set_color normal; echo \t\t'Inherit access of the new parent'
 	
 	set_color --bold green; echo -n -- '  -o '; set_color normal; echo -n '['; set_color --bold brgreen; echo -n 'c'; set_color normal; echo -n '|'; set_color --bold brgreen; echo -n 'u'; set_color normal; echo -n '], '; set_color --bold green; echo -n -- '--occurrence'; set_color normal; echo -n ' ['; set_color --bold brgreen; echo -n 'common'; set_color normal; echo -n '|'; set_color --bold brgreen; echo -n 'unique'; set_color normal; echo -n ']'
@@ -27,17 +27,17 @@ function _symp_switch_indi_help-text --description='Help text for the `--help` s
 
 	set_color --bold green; echo -n -- '  -O '; set_color normal; echo -n '['; set_color --bold brgreen; echo -n 'i'; set_color normal; echo -n '|'; set_color --bold brgreen; echo -n 'f'; set_color normal; echo -n '], '; set_color --bold green; echo -n -- '--overwrites'; set_color normal; echo -n ' ['; set_color --bold brgreen;echo -n 'backup'; set_color normal; echo -n '|';set_color --bold brgreen ; echo -n 'interactive'; set_color normal; echo -n '|'; set_color --bold brgreen; echo -n 'force'; set_color normal; set_color white --dim; echo -n ' ('(set_color normal)(set_color red)'default'(set_color white --dim)')'(set_color normal)']'
 	echo \t'Change overwrite behavior'
-	echo \t'('(set_color yellow)'Environment'(set_color normal)': '(set_color --italics green)'SYMP_INTERACTIVE INTERACTIVE'(set_color normal)'=)'
+	echo \t'('(set_color yellow)'Environment'(set_color normal)': '(set_color --italics green)'SYMP_INTERACTIVE INTERACTIVE'(set_color normal --dim)'='(set_color normal)\)
 
 
 
 	if set -qg SYMP_VERBOSE
 		set_color blue --bold --underline; echo \n'Variables:'
-		set_color normal; echo -n '  '(set_color --bold green)'SYMP_VERBOSE'; set_color normal; echo -n ', '; set_color --bold green; echo -n 'VERBOSE'; set_color normal; echo -n '=['; set_color --bold brgreen; echo -n '1'; set_color normal; echo -n '|'; set_color --bold brgreen; echo -n 'true'; set_color normal; echo -n '|'; set_color --bold brgreen; echo -n 'yes'; set_color normal; echo -n ']' 
+		set_color normal; echo -n '  '(set_color --bold green)'SYMP_VERBOSE'; set_color normal; echo -n ', '; set_color --bold green; echo -n 'VERBOSE'; set_color normal --dim; echo -n '='(set_color normal)'['; set_color --bold brgreen; echo -n '1'; set_color normal; echo -n '|'; set_color --bold brgreen; echo -n 'true'; set_color normal; echo -n '|'; set_color --bold brgreen; echo -n 'yes'; set_color normal; echo -n ']' 
 		echo \t\t\t\t'Show more information'
 		set_color normal; echo -n \t'('(set_color yellow)'Switch'(set_color normal)': '; set_color --italics green; echo -n -- '-v';set_color normal; echo -n ', ';set_color --italics green ; echo -n -- '--verbose' ; set_color normal; echo \)
 	
-		set_color normal; echo -n '  '(set_color --bold green)'SYMP_INTERACTIVE'; set_color normal; echo -n ', '; set_color --bold green; echo -n 'INTERACTIVE'; set_color normal; echo -n '=['; set_color --bold brgreen; echo -n '1'; set_color normal; echo -n '|'; set_color --bold brgreen; echo -n 'true'; set_color normal; echo -n '|'; set_color --bold brgreen; echo -n 'yes'; set_color normal; echo -n ']'
+		set_color normal; echo -n '  '(set_color --bold green)'SYMP_INTERACTIVE'; set_color normal; echo -n ', '; set_color --bold green; echo -n 'INTERACTIVE'; set_color normal --dim; echo -n '='(set_color normal)'['; set_color --bold brgreen; echo -n '1'; set_color normal; echo -n '|'; set_color --bold brgreen; echo -n 'true'; set_color normal; echo -n '|'; set_color --bold brgreen; echo -n 'yes'; set_color normal; echo -n ']'
 		set_color normal; echo \t\t\t'Confirm overwrites interactively'
 		echo \t'('(set_color yellow)'Switch'(set_color normal)': --['(set_color --italics green)'O'(set_color normal)'|'(set_color --italics green)'overwrites'(set_color normal)'] ['(set_color --italics brgreen)'i'(set_color normal)'|'(set_color --italics brgreen)'interactive'(set_color normal)'])' 
 	end
