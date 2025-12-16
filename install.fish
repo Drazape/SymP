@@ -110,7 +110,7 @@ if set -q REPOSITORY
 		set --global repository_dir (mktemp --directory /tmp/"$(string split '/' "$REPOSITORY" | tail -n 1)"-'XXXXXXXXX')
 		set --global tmp_repo
 
-		git clone "$REPOSITORY" "$repository_dir"
+		git clone --filter=blob:none "$REPOSITORY" "$repository_dir"
 		test {$status} -ne 0 && return 1
 
 		set --erase --function REPOSITORY
