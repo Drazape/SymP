@@ -3,7 +3,7 @@ function providing-blend-value
 end
 
 begin # Directories
-set --local directories '(__fish_complete_directories)'
+	set --local directories '(__fish_complete_directories)'
 	complete --command='symp' --no-files --arguments={$directories}
 end
 
