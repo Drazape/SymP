@@ -27,7 +27,7 @@ function _symp_switch_indi_help-text --description='Help text for the `--help` s
 
 	set_color --bold green; echo -n -- '  -O '; set_color normal; echo -n '['; set_color --bold brgreen; echo -n 'i'; set_color normal; echo -n '|'; set_color --bold brgreen; echo -n 'f'; set_color normal; echo -n '], '; set_color --bold green; echo -n -- '--overwrites'; set_color normal; echo -n ' ['; set_color --bold brgreen;echo -n 'backup'; set_color normal; echo -n '|';set_color --bold brgreen ; echo -n 'interactive'; set_color normal; echo -n '|'; set_color --bold brgreen; echo -n 'force'; set_color normal; set_color white --dim; echo -n ' ('(set_color normal)(set_color red)'default'(set_color white --dim)')'(set_color normal)']'
 	echo \t'Change overwrite behavior'
-	echo \t'('(set_color yellow)'Environment: '(set_color --italics green)'SYMP_INTERACTIVE INTERACTIVE'(set_color normal)'=)'
+	echo \t'('(set_color yellow)'Environment'(set_color normal)': '(set_color --italics green)'SYMP_INTERACTIVE INTERACTIVE'(set_color normal)'=)'
 
 
 
@@ -35,7 +35,7 @@ function _symp_switch_indi_help-text --description='Help text for the `--help` s
 		set_color blue --bold --underline; echo \n'Variables:'
 		set_color normal; echo -n '  '(set_color --bold green)'SYMP_VERBOSE'; set_color normal; echo -n ', '; set_color --bold green; echo -n 'VERBOSE'; set_color normal; echo -n '=['; set_color --bold brgreen; echo -n '1'; set_color normal; echo -n '|'; set_color --bold brgreen; echo -n 'true'; set_color normal; echo -n '|'; set_color --bold brgreen; echo -n 'yes'; set_color normal; echo -n ']' 
 		echo \t\t\t'Show more information'
-		set_color normal; echo -n \t'('(set_color yellow)'Switch: '; set_color --italics green; echo -n -- '-v';set_color normal; echo -n ', ';set_color --italics green ; echo -n -- '--verbose' ; set_color normal; echo \)
+		set_color normal; echo -n \t'('(set_color yellow)'Switch'(set_color normal)': '; set_color --italics green; echo -n -- '-v';set_color normal; echo -n ', ';set_color --italics green ; echo -n -- '--verbose' ; set_color normal; echo \)
 	
 		set_color normal; echo -n '  '(set_color --bold green)'SYMP_INTERACTIVE'; set_color normal; echo -n ', '; set_color --bold green; echo -n 'INTERACTIVE'; set_color normal; echo -n '=['; set_color --bold brgreen; echo -n '1'; set_color normal; echo -n '|'; set_color --bold brgreen; echo -n 'true'; set_color normal; echo -n '|'; set_color --bold brgreen; echo -n 'yes'; set_color normal; echo -n ']'
 		set_color normal; echo \t\t'Confirm overwrites interactively'
