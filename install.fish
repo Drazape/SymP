@@ -125,7 +125,7 @@ if ! path is --type=dir {$source_code_dir}
 	else # Official remote
 		set --global repository_dir (mktemp --directory /tmp/"$official_git_repository_name"-XXXXXXXXXX)
 		set --global tmp_repo
-		git clone "$official_git_repository_url"'.git' {$repository_dir}
+		git clone --filter=blob:none "$official_git_repository_url"'.git' {$repository_dir}
 		set --global source_code_dir {$repository_dir}/src
 	end
 end
