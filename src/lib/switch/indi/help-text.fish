@@ -17,7 +17,7 @@ function _symp_switch_indi_help-text --description='Help text for the `--help` s
 	echo -n \t'('(set_color yellow)'Environment'(set_color normal)': '; set_color green --italics; echo -n 'SYMP_VERBOSE VERBOSE'; set_color normal --dim; echo '='(set_color normal)')'
 	
 	set_color normal; echo -n '  '; set_color --bold green; echo -n -- '-b'; set_color normal; echo -n ', '; set_color --bold green; echo -n -- '--blend'\t'-b'; set_color normal; echo -n '['; set_color --bold brgreen; echo -n 'o'; set_color normal --dim; echo -n '|'; set_color normal; set_color --bold brgreen; echo -n 'p'; set_color normal; echo -n '], '; set_color --bold green; echo -n -- '--blend'; set_color normal --dim; echo -n '='(set_color normal)'['; set_color --bold brgreen; echo -n 'ownership'; set_color normal --dim; echo -n '|'; set_color normal; set_color --bold brgreen; echo -n 'permission'; set_color normal; echo -n ']'
-	set_color normal; echo \t\t'Inherit access of the new parent'
+	set_color normal; echo \t\t'Inherit access attributes of the new parent'
 	
 	set_color normal; echo -n '  '; set_color --bold green; echo -n -- '-o'; set_color normal; echo -n ' ['; set_color --bold brgreen; echo -n 'c'; set_color normal --dim; echo -n '|'; set_color normal; set_color --bold brgreen; echo -n 'u'; set_color normal; echo -n '], '; set_color --bold green; echo -n -- '--occurrence'; set_color normal; echo -n ' ['; set_color --bold brgreen; echo -n 'common'; set_color normal --dim; echo -n '|'; set_color normal; set_color --bold brgreen; echo -n 'unique'; set_color normal; echo -n ']'
 	set_color normal; echo \t\t\t'Filter files based on their occurrences'
