@@ -200,4 +200,13 @@ begin
 end
 
 # Clone wiki on standard installation
-set -ql _flag_symlink || git clone --filter=blob:none https://github.com/Dracape/SymP.wiki.git /usr/local/share/doc/SymP
+if set -ql _flag_symlink
+	set --local doc_path /usr/local/share/doc/SymP
+
+	if ! path is --type=dir {$doc_path}
+		git clone --filter=blob:none https://github.com/Dracape/SymP.wiki.git {$doc_path}
+	else
+		cd {$doc_path}
+		git pull
+	end
+end
