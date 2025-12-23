@@ -200,4 +200,4 @@ begin
 end
 
 # Clone wiki on standard installation
-set -ql _flag_symlink || git clone https://github.com/Dracape/SymP.wiki.git /usr/local/share/doc/SymP
+set -ql _flag_symlink || git clone --filter=blob:none https://github.com/Dracape/SymP.wiki.git /usr/local/share/doc/SymP
