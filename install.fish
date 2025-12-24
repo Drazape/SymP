@@ -92,6 +92,8 @@ end
 if ! path is --type=dir {$source_code_dir}
 	if path is --type=dir ./src/
 		set --global source_code_dir {$PWD}/src
+	else if path is --type=dir (path dirname -- (status current-filename))/src
+		set --global source_code_dir (path dirname -- (status current-filename))/src
 	else # Official remote
 		set --global repository_dir (mktemp --directory /tmp/"$official_git_repository_name"-XXXXXXXXXX)
 		set --global tmp_repo
