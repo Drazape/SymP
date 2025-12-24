@@ -183,3 +183,6 @@ if set -ql _flag_symlink
 	end
 	install -D --mode=644 {$VERBOSE} -- ../README.md {$doc_path}
 end
+
+# Add license on vendor installation
+set -ql _flag_vendor && install -D --mode=644 {$VERBOSE} -- ../LICENSE /usr/share/licenses/{$executable_name}/LICENSE
