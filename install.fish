@@ -8,9 +8,9 @@ set --global executable_name (string lower {$official_git_repository_name})
 # Handle external configuration
 ## Arguments
 ### Switches
-argparse 'r/repository=&' 'v/verbose&' 'V/vendor&' 's/symlink&' -- {$argv}
+argparse 'r/repository=&' 'R/rootdir=&!path is --type=dir {$_flag_value}' 'v/verbose&' 'V/vendor&' 's/symlink&' -- {$argv}
 test "$status" -ne 0 && return 1
-set --erase --local _flag_{r,v,V,s} # Unused, short name flags
+set --erase --local _flag_{R,r,v,V,s} # Unused, short name flags
 
 ### Positional
 if test (count {$argv}) -ne 0
@@ -110,9 +110,9 @@ cd {$source_code_dir}
 
 
 ## Operate
-set --local local_vendor_functions_dir /usr"$local_dir"/share/fish/vendor_functions.d
+set --local local_vendor_functions_dir "$_flag_rootdir"/usr"$local_dir"/share/fish/vendor_functions.d
 ### Functions' path for root
-begin
+if ! set -ql _flag_vendor
 	set --local global_fish_config_path /etc/fish/conf.d/local-functions.fish
 
 	# Preparation
@@ -129,7 +129,7 @@ end
 ### Source code
 #### Main executable
 begin
-	set --local executable_install_path /usr"$local_dir"/bin/{$executable_name}
+	set --local executable_install_path "$_flag_rootdir"/usr"$local_dir"/bin/{$executable_name}
 
 	rm --force -- {$executable_install_path} # Remove if already exists
 	if set -ql _flag_symlink
@@ -142,7 +142,7 @@ begin
 end
 
 #### Libraries
-fd --regex '^_symp_\w*' {$local_vendor_functions_dir} --exec-batch rm --force 
+set -ql _flag_vendor || fd --regex '^_symp_\w*' {$local_vendor_functions_dir} --exec-batch rm --force 
 
 set --local -- libraries (fd --base-directory=./lib/ --type=file --extension=fish)
 set --local -- absolute_library_names (string replace --all '/main' \0 {$libraries} | string replace --all '/' '_')
@@ -159,7 +159,7 @@ end
 
 #### Completion
 begin
-	set --local local_vendor_completions_dir /usr"$local_dir"/share/fish/vendor_completions.d
+	set --local local_vendor_completions_dir "$_flag_rootdir"/usr"$local_dir"/share/fish/vendor_completions.d
 	set --local -- completion_install_path "$local_vendor_completions_dir"/"$executable_name".fish
 	rm --force -- {$completion_install_path}
 
@@ -173,7 +173,7 @@ end
 
 # Clone wiki on standard installation
 if set -ql _flag_symlink
-	set --local doc_path /usr"$local_dir"/share/doc/SymP
+	set --local doc_path "$_flag_rootdir"/usr"$local_dir"/share/doc/SymP
 
 	if ! path is --type=dir {$doc_path}
 		git clone --filter=blob:none https://github.com/Dracape/SymP.wiki.git -- {$doc_path}
