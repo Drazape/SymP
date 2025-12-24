@@ -8,9 +8,9 @@ set --global executable_name (string lower {$official_git_repository_name})
 # Handle external configuration
 ## Arguments
 ### Switches
-argparse 'r/repository=&' 'h/help&' 'v/verbose&' 's/symlink&' -- {$argv}
+argparse 'r/repository=&' 'h/help&' 'v/verbose&' 'V/vendor&' 's/symlink&' -- {$argv}
 test "$status" -ne 0 && return 1
-set --erase --local _flag_{r,h,v,s} # Unused, short name flags
+set --erase --local _flag_{r,h,v,V,s} # Unused, short name flags
 
 ### Positional
 if test (count {$argv}) -ne 0
@@ -59,6 +59,9 @@ if set -ql _flag_help
 	end
 	return 0
 end
+
+#### Vendor
+set -ql _flag_vendor || set local_dir '/local'
 
 
 
@@ -138,7 +141,7 @@ cd {$source_code_dir}
 
 
 ## Operate
-set --local local_vendor_functions_dir /usr/local/share/fish/vendor_functions.d
+set --local local_vendor_functions_dir /usr"$local_dir"/share/fish/vendor_functions.d
 ### Functions' path for root
 begin
 	set --local global_fish_config_path /etc/fish/conf.d/local-functions.fish
@@ -157,7 +160,7 @@ end
 ### Source code
 #### Main executable
 begin
-	set --local executable_install_path /usr/local/bin/{$executable_name}
+	set --local executable_install_path /usr"$local_dir"/bin/{$executable_name}
 
 	rm --force {$executable_install_path} # Remove if already exists
 	if set -ql _flag_symlink
@@ -187,7 +190,7 @@ end
 
 #### Completion
 begin
-	set --local local_vendor_completions_dir /usr/local/share/fish/vendor_completions.d
+	set --local local_vendor_completions_dir /usr"$local_dir"/share/fish/vendor_completions.d
 	set --local completion_install_path "$local_vendor_completions_dir"/"$executable_name".fish
 	rm --force {$completion_install_path}
 
@@ -201,7 +204,7 @@ end
 
 # Clone wiki on standard installation
 if set -ql _flag_symlink
-	set --local doc_path /usr/local/share/doc/SymP
+	set --local doc_path /usr"$local_dir"/share/doc/SymP
 
 	if ! path is --type=dir {$doc_path}
 		git clone --filter=blob:none https://github.com/Dracape/SymP.wiki.git {$doc_path}
