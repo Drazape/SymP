@@ -80,8 +80,6 @@ set --global -- source_dir (path normalize -- {$argv[1]})
 set --global -- target_path (path normalize -- {$argv[2]})
 set --erase --local argv # Used
 
-set --global -- target_path_output (set_color --bold){$target_path}(set_color normal) ### Output (These variables are only used when the path is to be given in output)
-
 
 
 
