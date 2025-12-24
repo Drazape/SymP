@@ -62,14 +62,14 @@ end
 
 ## Setup Cleanup
 function cleanup_temporary_repository --description='Nuke temporary repository on exit' --on-event=fish_exit
-	set -qg tmp_repo && rm -rf {$repository_dir}
+	set -qg tmp_repo && rm -rf -- {$repository_dir}
 end
 
 ## Parse repository switch/variable
 if set -q REPOSITORY
-	if path is --type=dir {$REPOSITORY}/src # Set repository as local if the source code directory in the specified path exists
+	if path is --type=dir -- {$REPOSITORY}/src # Set repository as local if the source code directory in the specified path exists
 		set -q VERBOSE && echo 'Repository found locally: '{$REPOSITORY}
-		set --global source_code_dir {$REPOSITORY}/src
+		set --global -- source_code_dir {$REPOSITORY}/src
 	else
 		if ! string match --regex -- 'https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()!@:%_\\+.~#?&\\/\\/=]*)' {$REPOSITORY}
 			echo -- (status basename)': Invalid path' 1>&2
@@ -77,28 +77,28 @@ if set -q REPOSITORY
 		end
 
 		set -ql _flag_symlink && echo 'Cannot symlink from a temporary directory' >&2
-		set --global repository_dir (mktemp --directory /tmp/"$(string split '/' "$REPOSITORY" | tail -n 1)"-'XXXXXXXXX')
+		set --global -- repository_dir (mktemp --directory /tmp/"$(string split '/' "$REPOSITORY" | tail -n 1)"-'XXXXXXXXX')
 		set --global tmp_repo
 
 		git clone --filter=blob:none "$REPOSITORY" "$repository_dir"
 		test {$status} -ne 0 && return 1
 
 		set --erase --function REPOSITORY
-		set --global source_code_dir {$repository_dir}/src
+		set --global -- source_code_dir {$repository_dir}/src
 	end
 end
 
 ## Fallback
-if ! path is --type=dir {$source_code_dir}
+if ! path is --type=dir -- {$source_code_dir}
 	if path is --type=dir ./src/
-		set --global source_code_dir {$PWD}/src
+		set --global -- source_code_dir {$PWD}/src
 	else if path is --type=dir (path dirname -- (status current-filename))/src
-		set --global source_code_dir (path dirname -- (status current-filename))/src
+		set --global -- source_code_dir (path dirname -- (status current-filename))/src
 	else # Official remote
-		set --global repository_dir (mktemp --directory /tmp/"$official_git_repository_name"-XXXXXXXXXX)
+		set --global -- repository_dir (mktemp --directory /tmp/"$official_git_repository_name"-XXXXXXXXXX)
 		set --global tmp_repo
 		git clone --filter=blob:none "$official_git_repository_url"'.git' {$repository_dir}
-		set --global source_code_dir {$repository_dir}/src
+		set --global -- source_code_dir {$repository_dir}/src
 	end
 end
 
@@ -116,8 +116,8 @@ begin
 	set --local global_fish_config_path /etc/fish/conf.d/local-functions.fish
 
 	# Preparation
-	mkdir -p (path dirname {$global_fish_config_path})
-	touch {$global_fish_config_path}
+	mkdir -p -- (path dirname {$global_fish_config_path})
+	touch -- {$global_fish_config_path}
 
 	# Main file
 	echo 'if ! contains '"$local_vendor_functions_dir"' {$fish_function_path}
@@ -131,11 +131,11 @@ end
 begin
 	set --local executable_install_path /usr"$local_dir"/bin/{$executable_name}
 
-	rm --force {$executable_install_path} # Remove if already exists
+	rm --force -- {$executable_install_path} # Remove if already exists
 	if set -ql _flag_symlink
 		mkdir -p (path dirname {$executable_install_path})
 		ln -s --relative {$VERBOSE} -- (realpath --no-symlinks ./main.fish) {$executable_install_path}
-		chmod +x {$executable_install_path}
+		chmod -- +x {$executable_install_path}
 	else
 		install -D {$VERBOSE} -- ./main.fish {$executable_install_path} # Install main executable script
 	end
@@ -144,30 +144,30 @@ end
 #### Libraries
 fd --regex '^_symp_\w*' {$local_vendor_functions_dir} --exec-batch rm --force 
 
-set --local libraries (fd --base-directory=./lib/ --type=file --extension=fish)
-set --local absolute_library_names (string replace --all '/main' \0 {$libraries} | string replace --all '/' '_')
+set --local -- libraries (fd --base-directory=./lib/ --type=file --extension=fish)
+set --local -- absolute_library_names (string replace --all '/main' \0 {$libraries} | string replace --all '/' '_')
 
 for i in (seq (count {$libraries}))
-	set --local install_path {$local_vendor_functions_dir}/_{$executable_name}_{$absolute_library_names[$i]} 
+	set --local -- install_path {$local_vendor_functions_dir}/_{$executable_name}_{$absolute_library_names[$i]} 
 	if set -ql _flag_symlink
-		mkdir -p {$local_vendor_functions_dir}
-		ln -s --relative {$VERBOSE} (realpath --no-symlinks lib/"$libraries[$i]") {$install_path}
+		mkdir -p -- {$local_vendor_functions_dir}
+		ln -s --relative {$VERBOSE} -- (realpath --no-symlinks lib/"$libraries[$i]") {$install_path}
 	else
-		install -D --mode=644 {$VERBOSE} lib/"$libraries[$i]" {$install_path}
+		install -D --mode=644 {$VERBOSE} -- lib/"$libraries[$i]" {$install_path}
 	end
 end
 
 #### Completion
 begin
 	set --local local_vendor_completions_dir /usr"$local_dir"/share/fish/vendor_completions.d
-	set --local completion_install_path "$local_vendor_completions_dir"/"$executable_name".fish
-	rm --force {$completion_install_path}
+	set --local -- completion_install_path "$local_vendor_completions_dir"/"$executable_name".fish
+	rm --force -- {$completion_install_path}
 
 	if set -ql _flag_symlink
-		mkdir -p {$local_vendor_completions_dir}
-		ln -s --relative {$VERBOSE} (realpath --no-symlinks ./completion.fish) "$completion_install_path"
+		mkdir -p -- {$local_vendor_completions_dir}
+		ln -s --relative {$VERBOSE} -- (realpath --no-symlinks ./completion.fish) "$completion_install_path"
 	else
-		install -D --mode=644 {$VERBOSE} ./completion.fish "$completion_install_path"
+		install -D --mode=644 {$VERBOSE} -- ./completion.fish "$completion_install_path"
 	end	
 end
 
@@ -176,7 +176,7 @@ if set -ql _flag_symlink
 	set --local doc_path /usr"$local_dir"/share/doc/SymP
 
 	if ! path is --type=dir {$doc_path}
-		git clone --filter=blob:none https://github.com/Dracape/SymP.wiki.git {$doc_path}
+		git clone --filter=blob:none https://github.com/Dracape/SymP.wiki.git -- {$doc_path}
 	else
 		cd {$doc_path}
 		git pull
