@@ -8,9 +8,9 @@ set --global executable_name (string lower {$official_git_repository_name})
 # Handle external configuration
 ## Arguments
 ### Switches
-argparse 'r/repository=&' 'h/help&' 'v/verbose&' 'V/vendor&' 's/symlink&' -- {$argv}
+argparse 'r/repository=&' 'v/verbose&' 'V/vendor&' 's/symlink&' -- {$argv}
 test "$status" -ne 0 && return 1
-set --erase --local _flag_{r,h,v,V,s} # Unused, short name flags
+set --erase --local _flag_{r,v,V,s} # Unused, short name flags
 
 ### Positional
 if test (count {$argv}) -ne 0
@@ -25,39 +25,6 @@ end
 if set -ql _flag_verbose || set -qlx VERBOSE
 	set --global --export VERBOSE '--verbose'
 	set --erase --local _flag_verbose
-end
-
-#### Help
-if set -ql _flag_help
-	echo -e 'Install \e]8;;'{$official_git_repository_url}'\a'{$official_git_repository_name}'\e]8;;\a' # Description with hyper-link
-	set_color --bold --underline; echo -n \n'Usage:'; set_color normal; echo ' '(status basename)' [OPTION]'
-	set_color --bold --underline; echo \n'Options:'
-
-	set_color --bold normal; echo -n -- '  -h'; set_color normal; echo -n ', '; set_color --bold; echo -- '--help'
-	set_color normal; echo \t'Print help'
-
-	set_color --bold; echo -n -- '  -v'; set_color normal; echo -n ', '; set_color --bold; echo -- '--verbose'
-	set_color normal; echo \t'Show more information'
-	echo -n \t'(Variable: '; set_color --italics; echo -n 'VERBOSE'; set_color normal; echo \)
-
-	set_color --bold; echo -n -- '  -r'; set_color normal; echo -n ', '; set_color --bold; echo -- '--repository'
-	set_color normal; echo \t'Specify source-code repository path (local or remote git)'
-	echo -n \t'(Variable: '; set_color --italics; echo -n 'REPOSITORY'; set_color normal; echo \)
-
-	set_color --bold; echo -n -- '  -s'; set_color normal; echo -n ', '; set_color --bold; echo -- '--symlink'
-	set_color normal; echo \t'Symlink files from git-repository instead of copying'
-
-	if set -qgx VERBOSE
-		set_color --bold --underline; echo \n'Variables:'
-		set_color --bold normal; echo '  VERBOSE'
-		set_color normal; echo \t'Show more information'
-		echo -n \t'(Switch: '; set_color --italics; echo -n -- '-v'; set_color normal; echo -n ', '; set_color --italics; echo -n -- '--verbose'; set_color normal; echo \)
-
-		set_color --bold; echo '  REPOSITORY'
-		set_color normal; echo \t'Specify source-code repository path (local or remote git)'
-		echo -n \t'(Switch: '; set_color --italics; echo -n -- '-r'; set_color normal; echo -n ', '; set_color --italics; echo -n -- '--repository'; set_color normal; echo \)
-	end
-	return 0
 end
 
 #### Vendor
