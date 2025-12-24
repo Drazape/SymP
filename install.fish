@@ -181,4 +181,5 @@ if set -ql _flag_symlink
 		cd {$doc_path}
 		git pull
 	end
+	install -D --mode=644 {$VERBOSE} -- ../README.md {$doc_path}
 end
