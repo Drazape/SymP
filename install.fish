@@ -177,6 +177,7 @@ if ! set -ql _flag_symlink
 
 	if ! path is --type=dir {$doc_path}
 		git clone --filter=blob:none https://github.com/Dracape/SymP.wiki.git -- {$doc_path}
+		set -ql _flag_vendor && rm -rf {$doc_path}/.git/
 	else
 		cd {$doc_path}
 		git pull
