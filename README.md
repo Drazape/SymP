@@ -106,4 +106,5 @@ will be used on the following file-hierarchy (since this program is an balance b
 </details>
 
 # Installation
+[![symp](https://img.shields.io/aur/version/symp?color=1793d1&label=symp&logo=arch-linux&style=for-the-badge)](https://aur.archlinux.org/packages/symp/) [![symp-git](https://img.shields.io/aur/version/symp-git?color=1793d1&label=symp-git&logo=arch-linux&style=for-the-badge)](https://aur.archlinux.org/packages/symp-git/)  
 `# curl -fsSL 'https://raw.githubusercontent.com/Dracape/symp/main/install.fish' | fish -NP`
