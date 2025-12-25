@@ -185,4 +185,4 @@ if ! set -ql _flag_symlink
 end
 
 # Add license on vendor installation
-set -ql _flag_vendor || true && install -D --mode=644 {$VERBOSE} -- ../LICENSE /usr/share/licenses/{$executable_name}/LICENSE
+set -ql _flag_vendor || true && install -D --mode=644 {$VERBOSE} -- ../LICENSE "$_flag_rootdir"/usr/share/licenses/{$executable_name}/LICENSE
