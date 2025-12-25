@@ -174,15 +174,16 @@ end
 # Clone wiki on standard installation
 if ! set -ql _flag_symlink
 	set --local doc_path "$_flag_rootdir"/usr"$local_dir"/share/doc/SymP
+	set --local wiki_path {$doc_path}/wiki
 
-	if ! path is --type=dir {$doc_path}
-		git clone --filter=blob:none https://github.com/Dracape/SymP.wiki.git -- {$doc_path}
-		set -ql _flag_vendor && rm -rf {$doc_path}/.git/
-	else
-		cd {$doc_path}
+	if ! path is --type=dir {$wiki_path}
+		git clone --filter=blob:none https://github.com/Dracape/SymP.wiki.git -- {$wiki_path}
+		set -ql _flag_vendor && rm -rf {$wiki_path}/.git/
+	else if ! set -ql _flag_vendor
+		cd {$wiki_path}
 		git pull
 	end
-	install -D --mode=644 {$VERBOSE} -- ../README.md {$doc_path}
+	install -D --mode=644 {$VERBOSE} -- ../README.md {$doc_path}/
 end
 
 # Add license on vendor installation
