@@ -172,7 +172,7 @@ begin
 end
 
 # Clone wiki on standard installation
-if set -ql _flag_symlink
+if ! set -ql _flag_symlink
 	set --local doc_path "$_flag_rootdir"/usr"$local_dir"/share/doc/SymP
 
 	if ! path is --type=dir {$doc_path}
@@ -185,4 +185,4 @@ if set -ql _flag_symlink
 end
 
 # Add license on vendor installation
-set -ql _flag_vendor && install -D --mode=644 {$VERBOSE} -- ../LICENSE /usr/share/licenses/{$executable_name}/LICENSE
+set -ql _flag_vendor || true && install -D --mode=644 {$VERBOSE} -- ../LICENSE /usr/share/licenses/{$executable_name}/LICENSE
