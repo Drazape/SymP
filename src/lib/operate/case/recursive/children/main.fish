@@ -1,4 +1,4 @@
-function _symp_operate_case_recursive_children --description 'Operate individually on contents of `$target_path`'
+function _symp_operate_case_recursive_children --description='Operate individually on contents of `$target_path`'
 	set --local this_function (status current-function) # Set function-name for execution on sub-functions
 	_"$program_name"_common_set-output-prefix (status current-function)
 

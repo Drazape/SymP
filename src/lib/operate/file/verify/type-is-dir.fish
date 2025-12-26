@@ -1,4 +1,4 @@
-function _symp_operate_file_verify_type-is-dir --description 'Verify that the source is a directory'
+function _symp_operate_file_verify_type-is-dir --description='Verify that the source is a directory'
 	_"$program_name"_common_set-output-prefix (status current-function)
 
 	for file_path in {$argv}
