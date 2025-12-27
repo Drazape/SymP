@@ -1,4 +1,4 @@
-function _symp_switch_choice_validate-single --description='Validate single-choice switches'
+function _symp_arg_switch_choice_validate-single --description='Validate single-choice switches'
 	# Allow the first letter of the argument as a short version
 	for individual_value in {$argv}
 		set --append accept_values {$individual_value} (string sub --end=1 {$individual_value})

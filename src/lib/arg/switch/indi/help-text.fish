@@ -1,4 +1,4 @@
-function _symp_switch_indi_help-text --description='Help text for the `--help` switch of SymP'
+function _symp_arg_switch_indi_help-text --description='Help text for the `--help` switch of SymP'
 	set_color magenta; echo 'Populate '(set_color --italics)'TARGET'(set_color normal)(set_color magenta)' with the least amount of symbolic links as possible from '(set_color --italics)'SOURCE_DIR.'\n; set_color normal
 	begin
 		set --local page 'Usage'
