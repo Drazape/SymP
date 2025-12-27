@@ -4,4 +4,5 @@ function _symp_operate_file_verify --description='Verify positional arguments (s
 
 	"$this_function"_type-is-dir "$source_dir"
 	"$this_function"_writability "$target_path"
+	"$this_function"_unique-files {$source_dir} {$target_path}
 end
