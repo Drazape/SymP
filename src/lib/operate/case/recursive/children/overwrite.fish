@@ -1,12 +1,6 @@
 function _symp_operate_case_recursive_children_overwrite --description='Forcefully remove the target item (if it exists) and overwrite it with the source item'
 	_"$program_name"_common_set-output-prefix (status current-function)
 
-
-	# Parse arguments
-	if test (count {$argv}) -ne 2
-		echo {$output_prefix} 'Invalid number of arguments' 1>&2
-		return 1
-	end
 	set --local -- source_item {$argv[1]}
 	set --local -- target_item {$argv[2]}
 

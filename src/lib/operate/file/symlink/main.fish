@@ -9,12 +9,6 @@ function _symp_operate_file_symlink --description="Symlink files while inheritin
 
 
 	## Postitional
-	### 2 Only
-	if test (count {$argv}) -ne '2'
-		echo {$output_prefix} 'Only 2 arguments are accepted' 1>&2
-		return 1
-	end
-
 	### Set file values
 	set --function -- source_file {$argv[1]}
 	set --function -- target_file {$argv[2]}
