@@ -1,5 +1,5 @@
 function providing-blend-value
-	test "$(commandline --current-process --current-token)" = '--blend='
+	string match --quiet --regex -- '^--blend=\w*$' "$(commandline --current-process --current-token)"
 end
 
 begin # Directories
