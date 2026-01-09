@@ -20,7 +20,7 @@ end
 ## Arguments
 ### Switches
 #### Parse
-argparse --name={$program_name} 'v/verbose&' 'h/help&' 'O/overwrites=&!_'"$program_name"'_arg_switch_choice_validate-single interactive force backup' 'b/blend=*&!_'"$program_name"'_arg_switch_choice_multi_validate -iownership -ipermission' 'o/occurrence=+&!_'"$program_name"'_arg_switch_choice_multi_validate -m -icommon -iunique' 'r/resolution=!_'"$program_name"'_arg_switch_choice_validate-single absolute relative' -- {$argv}
+argparse --name={$program_name} 'v/verbose&' 'h/help&' 'O/overwrites=&!_'"$program_name"'_arg_switch_choice_validate-single interactive force backup' 'b/blend=*&!_'"$program_name"'_arg_switch_choice_multi_validate -i{ownership,permission}' 'o/occurrence=+&!_'"$program_name"'_arg_switch_choice_multi_validate -m -i{common,unique}' 'r/resolution=!_'"$program_name"'_arg_switch_choice_validate-single absolute relative' -- {$argv}
 _"$program_name"_common_exit-on-error
 set --erase --local _flag_{v,h,O,i,f,b,o,r} # Erase unused short versions
 #### Individual
