@@ -39,6 +39,6 @@ function _symp_arg_switch_indi_help-text --description='Help text for the `--hel
 	
 		set_color normal; echo -n '  '(set_color --bold green)'SYMP_INTERACTIVE'; set_color normal; echo -n ', '; set_color --bold green; echo -n 'INTERACTIVE'; set_color normal --dim; echo -n '='(set_color normal)'['; set_color --bold brgreen; echo -n '1'; set_color normal --dim; echo -n '|'; set_color normal; set_color --bold brgreen; echo -n 'true'; set_color normal --dim; echo -n '|'; set_color normal; set_color --bold brgreen; echo -n 'yes'; set_color normal; echo -n ']'
 		set_color normal; echo \t\t\t'Confirm overwrites interactively'
-		echo \t'('(set_color yellow)'Switch'(set_color normal)': --['(set_color --italics green)'O'(set_color normal)'|'(set_color --italics green)'overwrites'(set_color normal)'] ['(set_color --italics brgreen)'i'(set_color normal)'|'(set_color --italics brgreen)'interactive'(set_color normal)'])' 
+		echo \t'('(set_color yellow)'Switch'(set_color normal)': --['(set_color --italics green)'O'(set_color --dim normal)'|'(set_color normal)(set_color --italics green)'overwrites'(set_color normal)'] ['(set_color --italics brgreen)'i'(set_color --dim normal)'|'(set_color normal)(set_color --italics brgreen)'interactive'(set_color normal)'])' 
 	end
 end
