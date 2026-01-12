@@ -32,7 +32,7 @@ end
 ##### Help
 if set -ql '_flag_help'
 	_{$program_name}_arg_switch_indi_help-text
-	return 0
+	return
 end
 
 
