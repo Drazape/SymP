@@ -46,10 +46,8 @@ begin
 	if set -ql '_flag_occurrence'
 		_"$program_name"_arg_switch_choice_multi --individual={$arguments} --variable=file_occurrence {$_flag_occurrence}
 		set --erase --local '_flag_occurrence'
-	else if ! set -qg file_occurrence # Default
+	else
 		set --global file_occurrence {$arguments}
-	else # Split multiple values if already set
-		set --global file_occurrence (string split ' ' {$file_occurrence})
 	end
 end
 
@@ -63,7 +61,7 @@ end
 if set -ql '_flag_overwrites'
 	_"$program_name"_arg_switch_indi_overwrites {$_flag_overwrites}
 	set --erase --local '_flag_overwrites'
-else if ! set -qg 'overwrites' # Default
+else
 	set --global -- overwrites '--force'
 end
 
