@@ -18,8 +18,7 @@ function _symp_arg_switch_choice_multi --description='Parse multi-value switches
 
 	## User's choice
 	for choice in {$argv}
-		## Individual choices: Short → Long
-		set -qf {$choice} && set choice $$choice
+		set -qf {$choice} && set choice $$choice # Individual choices: Short → Long
 		set --function --prepend choices {$choice} # Reverse values to prioritise last the last ones
 	end
 	set --erase --local 'argv' # Used
