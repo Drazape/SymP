@@ -1,4 +1,10 @@
 #!/usr/bin/env fish
+
+# The main executable of the program
+# This is only run once and not included in any recursion of the program at individual directories
+# The job it is to parse all the external input into something easily readable by the program internally
+
+
 set --global program_name 'symp'
 
 # Behavior setting
