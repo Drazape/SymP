@@ -1,4 +1,4 @@
-function _symp_arg_switch_choice_multi --description='Parse multi-value switches' --inherit-variable='accept_values' --inherit-variable='decline_values'
+function _symp_arg_switch_choice_multi --description='Parse multi-value switches' --inherit-variable={accept,decline}'_values'
 
 	argparse 'i/individual=+&' 'v/variable=&' -- {$argv} 2>&1 # Specify individual flags that are allowed
 	set --erase --local _flag_{i,v,m}
