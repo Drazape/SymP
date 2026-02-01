@@ -17,9 +17,7 @@ function _symp_operate_file_symlink --description="Symlink files while inheritin
 
 
 	# Operation
-	set --function -- target_parent (path dirname -- {$target_file})
-
-	set -qg blend && "$this_function"_inherit {$source_file} {$target_parent} # Access
+	set -qg blend && "$this_function"_inherit {$source_file} (path dirname -- {$target_file}) # Access
 
 	## Link
 	ln --symbolic --no-target-directory {$resolution} {$SYMP_VERBOSE} {$overwrites} {$argv_opts} -- (realpath --no-symlinks {$source_file}) {$target_file} | string replace -- '->' '→'
