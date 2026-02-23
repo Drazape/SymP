@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 set --global official_git_repository_name 'SymP'
-set --global official_git_repository_url 'https://github.com/Dracape/'{$official_git_repository_name}
+set --global official_git_repository_url 'https://github.com/Drazape/'{$official_git_repository_name}
 set --global executable_name (string lower {$official_git_repository_name})
 
 
@@ -177,7 +177,7 @@ if ! set -ql _flag_symlink
 	set --local wiki_path {$doc_path}/wiki
 
 	if ! path is --type=dir {$wiki_path}
-		git clone --filter=blob:none https://github.com/Dracape/SymP.wiki.git -- {$wiki_path}
+		git clone --filter=blob:none https://github.com/Drazape/SymP.wiki.git -- {$wiki_path}
 		set -ql _flag_vendor && rm -rf {$wiki_path}/.git/
 	else if ! set -ql _flag_vendor
 		cd {$wiki_path}

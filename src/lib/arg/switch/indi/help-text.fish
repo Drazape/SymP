@@ -2,7 +2,7 @@ function _symp_arg_switch_indi_help-text --description='Help text for the `--hel
 	set_color magenta; echo 'Populate '(set_color --italics)'TARGET'(set_color normal)(set_color magenta)' with the least amount of symbolic links as possible from '(set_color --italics)'SOURCE_DIR.'\n; set_color normal
 	begin
 		set --local page 'Usage'
-		set --local wiki_page 'https://github.com/Dracape/SymP/wiki'/{$page}
+		set --local wiki_page 'https://github.com/Drazape/SymP/wiki'/{$page}
 		set_color blue --bold --underline; echo -ne '\e]8;;'{$wiki_page}'\a'{$page}'\e]8;;\a:'; set_color normal; echo ' '"$program_name"' '(set_color cyan)'[OPTION]'(set_color normal)' SOURCE_DIR TARGET'\n
 	end
 	set_color blue --bold --underline; echo 'Arguments:'; set_color normal; echo \t'<paths>…'\n

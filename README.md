@@ -1,22 +1,22 @@
 # Description
 *SymP* (**Sym**link **P**opulate) is a program written in [`fish`](https://fishshell.com/ "Official Fish home-page") that *SymP*ly *SymP*links files with fewest *SymP*links as possible  
-[Wiki: Purpose](https://github.com/Dracape/SymP/wiki#purpose "The home-page of the wiki: 'Purpose' section")
+[Wiki: Purpose](https://github.com/Drazape/SymP/wiki#purpose "The home-page of the wiki: 'Purpose' section")
 ## Additional functionality
-- [**Resolution**](https://github.com/Dracape/SymP/wiki/Resolution "Wiki: single-Choice switch 'Resolution'"): Configure symlink resolution
+- [**Resolution**](https://github.com/Drazape/SymP/wiki/Resolution "Wiki: single-Choice switch 'Resolution'"): Configure symlink resolution
 	* **Absolute**: Point to the **absolute** path
 	* **Relative**: Point to the **relative** path
-- [**Overwrites**](https://github.com/Dracape/SymP/wiki/Overwrites "Wiki: single-choice switch 'Overwrites'"): Change behavior for performing overwrites
+- [**Overwrites**](https://github.com/Drazape/SymP/wiki/Overwrites "Wiki: single-choice switch 'Overwrites'"): Change behavior for performing overwrites
 	* **Force**: Overwrite files without confirmation
 	* **Interactive**: Confirm overwrites interactively
 	* **Backup**: Create a backup before overwriting
-- [**Blend**](https://github.com/Dracape/SymP/wiki/Blend "Wiki: dual-choice switch 'Blend'"): Symlinked files inherit access of their new parent directory
+- [**Blend**](https://github.com/Drazape/SymP/wiki/Blend "Wiki: dual-choice switch 'Blend'"): Symlinked files inherit access of their new parent directory
 	* **Permission**: DAC permissions
 	* **Ownership**: User & Group ownerships
-- [**Occurrence**](https://github.com/Dracape/SymP/wiki/Occurrence "Wiki: dual-choice switch 'Blend'"): Filter files based on their appearance in the target
+- [**Occurrence**](https://github.com/Drazape/SymP/wiki/Occurrence "Wiki: dual-choice switch 'Blend'"): Filter files based on their appearance in the target
 	* **Common**: Present in the target
 	* **Unique**: Absent in the target (avoid overwrites)
 
-[Wiki: Switches](https://github.com/Dracape/SymP/wiki/Usage#switches "Wiki: Page Usage#switches")
+[Wiki: Switches](https://github.com/Drazape/SymP/wiki/Usage#switches "Wiki: Page Usage#switches")
 # Demonstration
 The commands  
 - `ln --symbolic      --force --no-target-directory`  
@@ -107,7 +107,7 @@ will be used on the following file-hierarchy (since this program is an balance b
 
 # Installation
 [![symp](https://img.shields.io/aur/version/symp?color=1793d1&label=symp&logo=arch-linux&style=for-the-badge)](https://aur.archlinux.org/packages/symp/ "Arch User Repository") [![symp-git](https://img.shields.io/aur/version/symp-git?color=1793d1&label=symp-git&logo=arch-linux&style=for-the-badge)](https://aur.archlinux.org/packages/symp-git/ "Arch User Repository")  
-`# curl -fsSL 'https://raw.githubusercontent.com/Dracape/symp/main/install.fish' | fish -NP`
+`# curl -fsSL 'https://raw.githubusercontent.com/Drazape/symp/main/install.fish' | fish -NP`
 
 ### Dependencies
 - `fish`
