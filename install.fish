@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
-set --global official_git_repository_url 'https://github.com/Dracape/SymP'
-set --global official_git_repository_name (string split --fields=5 '/' {$official_git_repository_url})
+set --global official_git_repository_name 'SymP'
+set --global official_git_repository_url 'https://github.com/Dracape/'{$official_git_repository_name}
 set --global executable_name (string lower {$official_git_repository_name})
 
 
